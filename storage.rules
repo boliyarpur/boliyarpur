@@ -3,7 +3,7 @@ service firebase.storage {
   match /b/{bucket}/o {
     function isAdmin() {
       return request.auth != null
-        && request.auth.token.email == "mdtusher2345@gmail.com";
+        && (request.auth.uid == "c364D7xHrZVEz8EnFWHu65Rjcd82" || request.auth.token.email == "mdtusher2345@gmail.com");
     }
     function approvedPost(postId) {
       return firestore.exists(/databases/(default)/documents/communityPosts/$(postId))
