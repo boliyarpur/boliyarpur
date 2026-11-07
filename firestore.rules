@@ -7,25 +7,33 @@ service cloud.firestore {
     }
 
     match /communityPosts/{postId} {
-      // Visitors can only read posts approved by the admin.
-      allow read: if resource.data.status == "approved" || isAdmin();
+      allow read: if (resource.data.status == "approved") || isAdmin();
 
-      // Public submissions must be authenticated anonymously and always start pending.
       allow create: if request.auth != null
-        && request.resource.data.status == "pending"
         && request.resource.data.uid == request.auth.uid
+        && request.resource.data.status == "pending"
         && request.resource.data.title is string
         && request.resource.data.title.size() >= 3
         && request.resource.data.title.size() <= 120
         && request.resource.data.story is string
         && request.resource.data.story.size() <= 3000
         && request.resource.data.authorName is string
+        && request.resource.data.authorName.size() > 0
         && request.resource.data.authorName.size() <= 60
         && request.resource.data.category is string
         && request.resource.data.category.size() <= 40;
 
-      // Only the configured admin can approve, edit or delete posts.
-      allow update, delete: if isAdmin();
+      // Submitter may attach a media path only to their own pending post.
+      allow update: if isAdmin() || (
+        request.auth != null
+        && resource.data.uid == request.auth.uid
+        && resource.data.status == "pending"
+        && request.resource.data.status == "pending"
+        && request.resource.data.diff(resource.data).affectedKeys()
+          .hasOnly(["mediaPath", "mediaType"])
+      );
+
+      allow delete: if isAdmin();
     }
   }
 }
