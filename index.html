@@ -37,7 +37,7 @@
     <a class="brand" href="#home"><span class="brand-mark">ব</span><span>বলিয়াপুর কমিউনিটি</span></a>
     <button class="menu-btn" id="menuBtn" aria-label="মেনু খুলুন">☰</button>
     <nav class="navlinks" id="navLinks">
-      <a href="#home">হোম</a><a href="#about">আমাদের গ্রাম</a><a href="#directory">সকল সেবা</a><a href="#notices">নোটিশ</a><a href="#gallery">গ্যালারি</a><a href="#contact">যোগাযোগ</a>
+      <a href="#home">হোম</a><a href="#about">আমাদের গ্রাম</a><a href="#directory">সকল সেবা</a><a href="#notices">নোটিশ</a><a href="#gallery">গ্যালারি</a><a href="#citizen-portal">নাগরিক পোস্ট</a><a href="#contact">যোগাযোগ</a>
     </nav>
   </div>
 </header>
@@ -224,5 +224,7 @@ document.getElementById("menuBtn").addEventListener("click",()=>document.getElem
 document.querySelectorAll("#navLinks a").forEach(a=>a.addEventListener("click",()=>document.getElementById("navLinks").classList.remove("open")));
 renderDirectory();renderNotices();renderGallery();setContact();updateCounts();
 </script>
+<link rel="stylesheet" href="community.css">
+<script type="module" src="community-portal.js"></script>
 </body>
 </html>
