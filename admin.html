@@ -1,39 +1,87 @@
 <!doctype html>
-<html lang="bn"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>Boliyapur Admin</title><link rel="stylesheet" href="community.css"><style>body{font-family:system-ui,"Noto Sans Bengali",sans-serif;background:#f5f8f6;color:#17251e;margin:0}.wrap{width:min(900px,92%);margin:35px auto}.panel{background:white;border:1px solid #e1e9e4;border-radius:16px;padding:22px;margin:16px 0}.field{display:block;width:100%;padding:12px;margin:8px 0;border:1px solid #dce6df;border-radius:9px;box-sizing:border-box;font:inherit}.btn{padding:10px 15px;border:0;border-radius:9px;background:#198754;color:white;font-weight:700;cursor:pointer;margin:5px}.danger{background:#a83225}.post{border:1px solid #dce6df;padding:15px;border-radius:12px;margin:12px 0}.post img,.post video{max-width:100%;max-height:300px;display:block}.muted{color:#68776e}.hidden{display:none}</style></head>
-<body><main class="wrap"><h1>বলিয়াপুর নাগরিক পোর্টাল — Admin</h1><p class="muted">শুধু অনুমোদিত Admin অ্যাকাউন্ট দিয়ে প্রবেশ করুন।</p>
-<section class="panel" id="loginPanel"><h2>Admin লগইন</h2><input class="field" id="email" type="email" placeholder="Admin email"><input class="field" id="password" type="password" placeholder="Password"><button class="btn" id="login">লগইন</button><p id="loginStatus" role="status"></p></section>
-<section class="panel hidden" id="dashboard"><h2>অপেক্ষমাণ পোস্ট</h2><p id="adminStatus" class="muted"></p><button class="btn" id="logout">লগআউট</button><div id="pendingList"></div></section></main>
+<html lang="bn">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow"><title>Boliyapur Admin</title>
+<style>
+body{font-family:system-ui,"Noto Sans Bengali",sans-serif;background:#f5f8f6;color:#17251e;margin:0;line-height:1.6}
+.wrap{width:min(900px,92%);margin:30px auto}.panel{background:#fff;border:1px solid #e1e9e4;border-radius:16px;padding:22px;margin:16px 0}
+.field{display:block;width:100%;padding:12px;margin:8px 0 14px;border:1px solid #dce6df;border-radius:9px;box-sizing:border-box;font:inherit}
+.btn{padding:10px 15px;border:0;border-radius:9px;background:#198754;color:#fff;font-weight:700;cursor:pointer;margin:5px}.danger{background:#a83225}
+.post{border:1px solid #dce6df;padding:16px;border-radius:12px;margin:14px 0}.muted{color:#68776e}.hidden{display:none!important}
+.notice{background:#fff4d6;padding:12px;border-radius:10px}.post p{white-space:pre-wrap;overflow-wrap:anywhere}
+</style></head>
+<body><main class="wrap">
+<h1>বলিয়াপুর নাগরিক পোর্টাল — Admin</h1>
+<p class="muted">এখান থেকে নাগরিকদের জমা দেওয়া পোস্ট যাচাই, প্রকাশ ও মুছে ফেলতে পারবেন।</p>
+<section class="panel" id="loginPanel"><h2>Admin লগইন</h2>
+<label for="email">Admin Email</label><input class="field" id="email" type="email" autocomplete="username" placeholder="Admin email">
+<label for="password">Password</label><input class="field" id="password" type="password" autocomplete="current-password" placeholder="Password">
+<button class="btn" id="login">লগইন</button><p id="loginStatus" role="status"></p></section>
+<section class="panel hidden" id="dashboard"><h2>Admin Dashboard</h2><p id="adminStatus" class="muted"></p>
+<label for="adminDisplayName"><b>প্রকাশকের নাম</b> — ওয়েবসাইটে এই নাম দেখাবে</label>
+<input class="field" id="adminDisplayName" maxlength="60" placeholder="যেমন: Boliyapur Admin">
+<p class="notice">প্রথমবার লগইনের পর আপনার UID কপি করে Firestore Rules-এ Admin UID হিসেবে বসাতে হবে। Rules প্রকাশের পর Pending পোস্ট দেখা ও Approve করা যাবে।</p>
+<button class="btn" id="logout">লগআউট</button></section>
+<section class="panel hidden" id="pendingPanel"><h2>অনুমোদনের অপেক্ষায় থাকা পোস্ট</h2>
+<p class="muted">পোস্ট যাচাই করে Approve / প্রকাশ চাপুন। প্রকাশের পর মূল ওয়েবসাইটে রিয়েল-টাইমে দেখা যাবে।</p>
+<div id="pendingList">লোড হচ্ছে...</div></section>
+</main>
 <script type="module">
 import {initializeApp} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
 import {getAuth,signInWithEmailAndPassword,onAuthStateChanged,signOut} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
 import {getFirestore,collection,query,where,onSnapshot,updateDoc,deleteDoc,doc,serverTimestamp} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
-import {getStorage,ref,getDownloadURL} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-storage.js";
 import {firebaseConfig} from "./firebase-config.js";
-const $=id=>document.getElementById(id);let stop=null;
-if(!firebaseConfig.apiKey||firebaseConfig.apiKey.includes("PASTE_")||!firebaseConfig.projectId||firebaseConfig.projectId.includes("PASTE_")){
- $("loginStatus").textContent="Firebase Web App config এখনো বসানো হয়নি। আগে firebase-config.js সম্পূর্ণ করুন।";$("login").disabled=true;
-}else{
-const app=initializeApp(firebaseConfig),auth=getAuth(app),db=getFirestore(app);
-const storageEnabled=!!firebaseConfig.storageBucket&&!firebaseConfig.storageBucket.includes("PASTE_");
-const storage=storageEnabled?getStorage(app):null;
-$("login").onclick=async()=>{try{await signInWithEmailAndPassword(auth,$("email").value,$("password").value);$("loginStatus").textContent="লগইন সফল";}catch(e){$("loginStatus").textContent="লগইন হয়নি: "+e.message;}};
-$("logout").onclick=()=>signOut(auth);
-onAuthStateChanged(auth,user=>{
- $("loginPanel").classList.toggle("hidden",!!user);$("dashboard").classList.toggle("hidden",!user);$("pendingPanel").classList.toggle("hidden",!user);
- if(stop){stop();stop=null;}if(!user)return;
- $("adminStatus").textContent="লগইন: "+(user.email||"Admin")+" | আপনার Firebase UID: "+user.uid+"। Firestore Rules-এ এই UID Admin হিসেবে সেট করতে হবে।";
- if(!$("adminDisplayName").value.trim())$("adminDisplayName").value=(user.email||"Boliyapur Admin").split("@")[0];
- const q=query(collection(db,"communityPosts"),where("status","==","pending"));
- stop=onSnapshot(q,async snap=>{
-  const rows=await Promise.all(snap.docs.map(async d=>{
-   const p=d.data();let media="";
-   if(p.mediaPath&&storage){try{const url=await getDownloadURL(ref(storage,p.mediaPath));media=p.mediaType==="video"?'<video controls src="'+esc(url)+'"></video>':'<img src="'+esc(url)+'" alt="জমা দেওয়া ছবি">';}catch{media='<p class="muted">মিডিয়া পাওয়া যাচ্ছে না</p>';}}
-   return '<article class="post"><h3>'+esc(p.title)+'</h3>'+media+'<p>'+esc(p.story)+'</p><p class="muted">নাম: '+esc(p.authorName)+' · এলাকা: '+esc(p.area)+' · বিভাগ: '+esc(p.category)+'</p><button class="btn" data-approve="'+d.id+'">Approve / প্রকাশ</button><button class="btn danger" data-delete="'+d.id+'">Delete</button></article>';
-  }));
-  $("pendingList").innerHTML=rows.length?rows.join(""):"<p>কোনো অপেক্ষমাণ পোস্ট নেই।</p>";
- },err=>{$("pendingList").textContent="পোস্ট পড়া যাচ্ছে না: "+err.message;});
-});
-$("pendingList").onclick=async e=>{const a=e.target.closest("[data-approve]"),d=e.target.closest("[data-delete]");try{if(a)const publisher=$("adminDisplayName").value.trim();if(!publisher){alert("প্রকাশকের নাম লিখুন।");return;}await updateDoc(doc(db,"communityPosts",a.dataset.approve),{status:"approved",approvedBy:publisher,approvedAt:serverTimestamp()});if(d&&confirm("এই পোস্টটি স্থায়ীভাবে মুছে ফেলবেন?"))await deleteDoc(doc(db,"communityPosts",d.dataset.delete));}catch(err){alert("কাজটি করা যায়নি: "+err.message);}};
+const $=id=>document.getElementById(id);
+let stopPending=null,db=null,auth=null;
 function esc(v){return String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
+if(!firebaseConfig.apiKey||firebaseConfig.apiKey.includes("PASTE_")||!firebaseConfig.projectId||firebaseConfig.projectId.includes("PASTE_")){
+ $("loginStatus").textContent="Firebase Web App config এখনো সম্পূর্ণ বসানো হয়নি। firebase-config.js আপডেট করুন।";
+ $("login").disabled=true;
+}else{
+ const app=initializeApp(firebaseConfig);auth=getAuth(app);db=getFirestore(app);
+ $("login").addEventListener("click",async()=>{
+  $("login").disabled=true;
+  try{await signInWithEmailAndPassword(auth,$("email").value.trim(),$("password").value);$("loginStatus").textContent="লগইন সফল।";}
+  catch(e){$("loginStatus").textContent="লগইন হয়নি: "+e.message;}
+  finally{$("login").disabled=false;}
+ });
+ $("logout").addEventListener("click",()=>signOut(auth));
+ onAuthStateChanged(auth,user=>{
+  $("loginPanel").classList.toggle("hidden",!!user);
+  $("dashboard").classList.toggle("hidden",!user);
+  $("pendingPanel").classList.toggle("hidden",!user);
+  if(stopPending){stopPending();stopPending=null;}
+  if(!user)return;
+  $("adminStatus").textContent="লগইন: "+(user.email||"Admin")+" | Firebase UID: "+user.uid;
+  if(!$("adminDisplayName").value.trim())$("adminDisplayName").value="Boliyapur Admin";
+  const pendingQuery=query(collection(db,"communityPosts"),where("status","==","pending"));
+  stopPending=onSnapshot(pendingQuery,snapshot=>{
+   const posts=snapshot.docs;
+   if(!posts.length){$("pendingList").innerHTML="<p>এখন কোনো Pending পোস্ট নেই।</p>";return;}
+   $("pendingList").innerHTML=posts.map(d=>{
+    const p=d.data();
+    return '<article class="post"><h3>'+esc(p.title)+'</h3><p>'+esc(p.story)+'</p><p class="muted">জমাদানকারী: '+esc(p.authorName)+' · এলাকা: '+esc(p.area)+' · বিভাগ: '+esc(p.category)+'</p><button class="btn" data-approve="'+esc(d.id)+'">Approve / প্রকাশ</button><button class="btn danger" data-delete="'+esc(d.id)+'">Delete</button></article>';
+   }).join("");
+  },err=>{
+   $("pendingList").innerHTML='<p class="notice">পোস্ট লোড করা যাচ্ছে না: '+esc(err.message)+'<br>সম্ভবত Firestore Rules-এ এই Admin UID এখনো বসানো হয়নি।</p>';
+  });
+ });
+ $("pendingList").addEventListener("click",async e=>{
+  const approve=e.target.closest("[data-approve]");
+  const remove=e.target.closest("[data-delete]");
+  try{
+   if(approve){
+    const publisher=$("adminDisplayName").value.trim();
+    if(!publisher){alert("প্রকাশকের নাম লিখুন।");$("adminDisplayName").focus();return;}
+    approve.disabled=true;approve.textContent="প্রকাশ হচ্ছে...";
+    await updateDoc(doc(db,"communityPosts",approve.dataset.approve),{
+     status:"approved",approvedBy:publisher,approvedAt:serverTimestamp()
+    });
+   }else if(remove&&confirm("এই পোস্টটি স্থায়ীভাবে মুছে ফেলবেন?")){
+    remove.disabled=true;await deleteDoc(doc(db,"communityPosts",remove.dataset.delete));
+   }
+  }catch(err){alert("কাজটি করা যায়নি: "+err.message);}
+ });
 }
 </script></body></html>
