@@ -1154,4 +1154,3 @@ window.BOLIYAPUR_VALIDATE = function() {
 // Run basic validation
 
 window.BOLIYAPUR_VALIDATE();
-window.BOLIYAPUR_HELPERS
