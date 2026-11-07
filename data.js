@@ -14,7 +14,6 @@ window.BOLIYAPUR_DATA = {
   email: "boliyarpursavar@gmail.com",    // চাইলে যোগাযোগের ইমেইল দিন
 
 heroImage: "images/gallery/village-road.jpg.jpeg",
-
   notices: [
     {
       title: "কমিউনিটি নোটিশ",
