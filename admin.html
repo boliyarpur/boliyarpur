@@ -21,7 +21,7 @@ body{font-family:system-ui,"Noto Sans Bengali",sans-serif;background:#f5f8f6;col
 <section class="panel hidden" id="dashboard"><h2>Admin Dashboard</h2><p id="adminStatus" class="muted"></p>
 <label for="adminDisplayName"><b>প্রকাশকের নাম</b> — ওয়েবসাইটে এই নাম দেখাবে</label>
 <input class="field" id="adminDisplayName" maxlength="60" placeholder="যেমন: Boliyapur Admin">
-<p class="notice">প্রথমবার লগইনের পর আপনার UID কপি করে Firestore Rules-এ Admin UID হিসেবে বসাতে হবে। Rules প্রকাশের পর Pending পোস্ট দেখা ও Approve করা যাবে।</p>
+<p class="notice">Firestore Rules-এ নির্ধারিত Admin ইমেইল দিয়ে লগইন করতে হবে। Firebase Console-এ Rules প্রকাশ না করলে Pending পোস্ট দেখা বা Approve করা যাবে না।</p>
 <button class="btn" id="logout">লগআউট</button></section>
 <section class="panel hidden" id="pendingPanel"><h2>অনুমোদনের অপেক্ষায় থাকা পোস্ট</h2>
 <p class="muted">পোস্ট যাচাই করে Approve / প্রকাশ চাপুন। প্রকাশের পর মূল ওয়েবসাইটে রিয়েল-টাইমে দেখা যাবে।</p>
@@ -61,10 +61,10 @@ if(!firebaseConfig.apiKey||firebaseConfig.apiKey.includes("PASTE_")||!firebaseCo
    if(!posts.length){$("pendingList").innerHTML="<p>এখন কোনো Pending পোস্ট নেই।</p>";return;}
    $("pendingList").innerHTML=posts.map(d=>{
     const p=d.data();
-    return '<article class="post"><h3>'+esc(p.title)+'</h3><p>'+esc(p.story)+'</p><p class="muted">জমাদানকারী: '+esc(p.authorName)+' · এলাকা: '+esc(p.area)+' · বিভাগ: '+esc(p.category)+'</p><button class="btn" data-approve="'+esc(d.id)+'">Approve / প্রকাশ</button><button class="btn" data-edit="'"+esc(d.id)+"">Edit</button><button class="btn danger" data-delete="'+esc(d.id)+'">Delete</button></article>';
+    return '<article class="post"><h3>'+esc(p.title)+'</h3><p>'+esc(p.story)+'</p><p class="muted">জমাদানকারী: '+esc(p.authorName)+' · এলাকা: '+esc(p.area)+' · বিভাগ: '+esc(p.category)+'</p><button class="btn" data-approve="'+esc(d.id)+'">Approve / প্রকাশ</button><button class="btn" data-edit="'+esc(d.id)+'">Edit</button><button class="btn danger" data-delete="'+esc(d.id)+'">Delete</button></article>';
    }).join("");
   },err=>{
-   $("pendingList").innerHTML='<p class="notice">পোস্ট লোড করা যাচ্ছে না: '+esc(err.message)+'<br>সম্ভবত Firestore Rules-এ এই Admin UID এখনো বসানো হয়নি।</p>';
+   $("pendingList").innerHTML='<p class="notice">পোস্ট লোড করা যাচ্ছে না: '+esc(err.message)+'<br>Firebase Console-এ Firestore Rules প্রকাশিত হয়েছে কি না এবং Admin ইমেইল অনুমোদিত কি না পরীক্ষা করুন।</p>';
   });
  });
  $("pendingList").addEventListener("click",async e=>{
