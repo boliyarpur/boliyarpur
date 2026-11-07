@@ -1,10 +1,11 @@
-// Firebase Console > Project settings > Your apps > SDK setup and configuration
-// Replace every placeholder with the exact values from your Firebase web app.
+// Firebase Console > Project settings > General > Your apps > SDK setup and configuration
+// নিচের তিনটি placeholder-এর জায়গায় Firebase Console থেকে আসল মান বসাতে হবে।
 export const firebaseConfig = {
-  apiKey: "PASTE_API_KEY_HERE",
-  authDomain: "PASTE_PROJECT_ID.firebaseapp.com",
-  projectId: "PASTE_PROJECT_ID",
-  storageBucket: "PASTE_STORAGE_BUCKET_HERE",
-  messagingSenderId: "PASTE_MESSAGING_SENDER_ID",
-  appId: "PASTE_APP_ID"
+  apiKey: "PASTE_REAL_API_KEY_HERE",
+  authDomain: "boliyapur-community.firebaseapp.com",
+  projectId: "boliyapur-community",
+  storageBucket: "boliyapur-community.firebasestorage.app",
+  messagingSenderId: "PASTE_REAL_MESSAGING_SENDER_ID_HERE",
+  appId: "PASTE_REAL_APP_ID_HERE",
+  measurementId: "G-YOUR_MEASUREMENT_ID"
 };
