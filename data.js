@@ -1154,3 +1154,18 @@ window.BOLIYAPUR_VALIDATE = function() {
 // Run basic validation
 
 window.BOLIYAPUR_VALIDATE();
+
+// Connect all directory categories to the old services section
+
+window.BOLIYAPUR_DATA.services = [
+
+  ...window.BOLIYAPUR_DATA.education,
+
+  ...window.BOLIYAPUR_DATA.health,
+
+  ...window.BOLIYAPUR_DATA.unionServices,
+
+  ...window.BOLIYAPUR_DATA.businesses
+
+];
+
