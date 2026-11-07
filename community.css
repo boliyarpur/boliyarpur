@@ -1,0 +1,25 @@
+/* Boliyapur Citizen Portal */
+.citizen-section{padding:58px 0;background:#f5f8f6}
+.citizen-wrap{width:min(1160px,92%);margin:auto}
+.citizen-head h2{color:#0f5132;margin:0;font-size:clamp(1.6rem,3vw,2.25rem)}
+.citizen-head p{color:#64736b;margin:6px 0 22px}
+.citizen-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,.72fr);gap:20px;align-items:start}
+.citizen-panel{background:#fff;border:1px solid #e1e9e4;border-radius:18px;padding:22px;box-shadow:0 8px 26px #173e2a08}
+.citizen-panel h3{margin:0 0 14px;color:#0f5132}
+.citizen-form label{display:block;font-weight:700;font-size:.92rem;margin:12px 0 5px}
+.citizen-form input,.citizen-form select,.citizen-form textarea{width:100%;padding:12px;border:1px solid #dce6df;border-radius:10px;background:#fff;font:inherit}
+.citizen-form textarea{min-height:110px;resize:vertical}
+.citizen-help{font-size:.82rem;color:#68776e;margin:6px 0}
+.citizen-submit{border:0;border-radius:10px;padding:12px 18px;background:#198754;color:#fff;font-weight:800;cursor:pointer;margin-top:14px}
+.citizen-submit:disabled{opacity:.55;cursor:wait}
+.citizen-status{padding:11px 13px;border-radius:10px;background:#edf5ef;color:#24563a;margin-top:12px;display:none}
+.citizen-status.error{background:#fff0ed;color:#9a3020}
+.citizen-feed{display:grid;gap:13px}
+.citizen-post{border:1px solid #e1e9e4;border-radius:14px;overflow:hidden;background:#fff}
+.citizen-post img,.citizen-post video{display:block;width:100%;max-height:300px;object-fit:cover;background:#eef3ef}
+.citizen-post-body{padding:15px}
+.citizen-post-body h4{margin:0 0 6px;color:#173b29}
+.citizen-post-body p{margin:0;color:#53645a;white-space:pre-wrap}
+.citizen-post-meta{font-size:.8rem;color:#718077;margin-bottom:8px}
+.citizen-empty{padding:24px;text-align:center;color:#68776e;background:#fff;border:1px dashed #dce6df;border-radius:12px}
+@media(max-width:760px){.citizen-grid{grid-template-columns:1fr}.citizen-panel{padding:17px}}
