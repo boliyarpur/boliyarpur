@@ -703,9 +703,9 @@ window.BOLIYAPUR_DATA = {
 
       category: "কমিউনিটি যোগাযোগ",
 
-      phone: "01605150684",
+      phone: "01605150864",
 
-      whatsapp: "8801605150684",
+      whatsapp: "8801605150864",
 
       email: "boliyarpursavar@gmail.com",
 
@@ -920,7 +920,7 @@ window.BOLIYAPUR_DATA = {
 
     contactEmail: "boliyarpursavar@gmail.com",
 
-    whatsapp: "8801605150684",
+    whatsapp: "8801605150864",
 
     allowPublicSubmission: true,
 
@@ -943,7 +943,7 @@ window.BOLIYAPUR_DATA = {
 
     email: "boliyarpursavar@gmail.com",
 
-    phone: "01605150684",
+    phone: "01605150864",
 
     address:
       "Boliyapur, Bongaon Union, Savar, Dhaka, Bangladesh",
