@@ -30,7 +30,8 @@ body{font-family:system-ui,"Noto Sans Bengali",sans-serif;background:#f5f8f6;col
 <script type="module">
 import {initializeApp} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
 import {getAuth,signInWithEmailAndPassword,onAuthStateChanged,signOut} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
-import {getFirestore,collection,query,where,onSnapshot,updateDoc,deleteDoc,doc,serverTimestamp} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
+import {getFirestore,collection,query,where,onSnapshot,updateDoc,deleteDoc,doc,serverTimestamp,getDoc} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
+import {getStorage,ref,deleteObject} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-storage.js";
 import {firebaseConfig} from "./firebase-config.js";
 const $=id=>document.getElementById(id);
 let stopPending=null,db=null,auth=null;
@@ -39,7 +40,7 @@ if(!firebaseConfig.apiKey||firebaseConfig.apiKey.includes("PASTE_")||!firebaseCo
  $("loginStatus").textContent="Firebase Web App config এখনো সম্পূর্ণ বসানো হয়নি। firebase-config.js আপডেট করুন।";
  $("login").disabled=true;
 }else{
- const app=initializeApp(firebaseConfig);auth=getAuth(app);db=getFirestore(app);
+ const app=initializeApp(firebaseConfig);auth=getAuth(app);db=getFirestore(app);const storage=getStorage(app);
  $("login").addEventListener("click",async()=>{
   $("login").disabled=true;
   try{await signInWithEmailAndPassword(auth,$("email").value.trim(),$("password").value);$("loginStatus").textContent="লগইন সফল।";}
@@ -61,7 +62,7 @@ if(!firebaseConfig.apiKey||firebaseConfig.apiKey.includes("PASTE_")||!firebaseCo
    if(!posts.length){$("pendingList").innerHTML="<p>এখন কোনো Pending পোস্ট নেই।</p>";return;}
    $("pendingList").innerHTML=posts.map(d=>{
     const p=d.data();
-    return '<article class="post"><h3>'+esc(p.title)+'</h3><p>'+esc(p.story)+'</p><p class="muted">জমাদানকারী: '+esc(p.authorName)+' · এলাকা: '+esc(p.area)+' · বিভাগ: '+esc(p.category)+'</p><button class="btn" data-approve="'+esc(d.id)+'">Approve / প্রকাশ</button><button class="btn" data-edit="'+esc(d.id)+'">Edit</button><button class="btn danger" data-delete="'+esc(d.id)+'">Delete</button></article>';
+    const media=p.mediaUrl?((p.mediaType||"").startsWith("video/")?'<video controls playsinline preload="metadata" src="'+esc(p.mediaUrl)+'" style="width:100%;max-height:420px;background:#111;border-radius:10px"></video>':'<img loading="lazy" src="'+esc(p.mediaUrl)+'" alt="'+esc(p.title)+'" style="width:100%;max-height:420px;object-fit:contain;background:#eef3ef;border-radius:10px">'):"";return '<article class="post">'+media+'<h3>'+esc(p.title)+'</h3><p>'+esc(p.story)+'</p><p class="muted">জমাদানকারী: '+esc(p.authorName)+' · এলাকা: '+esc(p.area)+' · বিভাগ: '+esc(p.category)+' · ফাইল: '+esc(p.mediaName||"শুধু লেখা")+'</p><button class="btn" data-approve="'+esc(d.id)+'">Approve / প্রকাশ</button><button class="btn" data-edit="'+esc(d.id)+'">Edit</button><button class="btn danger" data-delete="'+esc(d.id)+'">Delete</button></article>';
    }).join("");
   },err=>{
    $("pendingList").innerHTML='<p class="notice">পোস্ট লোড করা যাচ্ছে না: '+esc(err.message)+'<br>Firebase Console-এ Firestore Rules প্রকাশিত হয়েছে কি না এবং Admin ইমেইল অনুমোদিত কি না পরীক্ষা করুন।</p>';
@@ -89,8 +90,8 @@ if(!firebaseConfig.apiKey||firebaseConfig.apiKey.includes("PASTE_")||!firebaseCo
     await updateDoc(doc(db,"communityPosts",approve.dataset.approve),{
      status:"approved",approvedBy:publisher,approvedAt:serverTimestamp()
     });
-   }else if(remove&&confirm("এই পোস্টটি স্থায়ীভাবে মুছে ফেলবেন?")){
-    remove.disabled=true;await deleteDoc(doc(db,"communityPosts",remove.dataset.delete));
+   }else if(remove&&confirm("এই পোস্ট ও আপলোড করা ফাইল স্থায়ীভাবে মুছে ফেলবেন?")){
+    remove.disabled=true;const postRef=doc(db,"communityPosts",remove.dataset.delete);const snap=await getDoc(postRef);if(snap.exists()&&snap.data().storagePath){try{await deleteObject(ref(storage,snap.data().storagePath));}catch(storageErr){console.warn("Storage file delete issue",storageErr);}}await deleteDoc(postRef);
    }
   }catch(err){alert("কাজটি করা যায়নি: "+err.message);}
  });
