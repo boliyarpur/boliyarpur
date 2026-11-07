@@ -69,9 +69,20 @@ if(!firebaseConfig.apiKey||firebaseConfig.apiKey.includes("PASTE_")||!firebaseCo
  });
  $("pendingList").addEventListener("click",async e=>{
   const approve=e.target.closest("[data-approve]");
+  const edit=e.target.closest("[data-edit]");
   const remove=e.target.closest("[data-delete]");
   try{
-   if(approve){
+   if(edit){
+    const ref=doc(db,"communityPosts",edit.dataset.edit);
+    const snap=await import("https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js").then(m=>m.getDoc(ref));
+    if(!snap.exists())return;
+    const old=snap.data();
+    const title=prompt("পোস্টের শিরোনাম সম্পাদনা করুন:",old.title||"");
+    if(title===null)return;
+    const story=prompt("পোস্টের বিস্তারিত সম্পাদনা করুন:",old.story||"");
+    if(story===null)return;
+    await updateDoc(ref,{title:title.trim(),story:story.trim(),editedAt:serverTimestamp()});
+   }else if(approve){
     const publisher=$("adminDisplayName").value.trim();
     if(!publisher){alert("প্রকাশকের নাম লিখুন।");$("adminDisplayName").focus();return;}
     approve.disabled=true;approve.textContent="প্রকাশ হচ্ছে...";
