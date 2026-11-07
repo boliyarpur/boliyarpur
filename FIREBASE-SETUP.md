@@ -1,39 +1,30 @@
 # Boliyapur Citizen Portal — Firebase Setup
 
-The existing directory is retained in index.html. This repository adds a public citizen submission section and a separate admin moderation page.
-
-## What works after Firebase setup
-- Public visitor signs in anonymously and submits a post.
-- New posts are saved with status=pending.
-- Only the Admin UID configured in the security rules can read pending posts, approve, or delete them.
+## Live approval workflow
+- Visitors sign in anonymously and submit text-only posts or posts with an image/video.
+- Every new submission is saved with status=pending.
+- Admin Dashboard listens to pending submissions in real time.
+- Only the configured Admin can read pending posts, edit, approve, or delete them.
+- The public website listens to approved posts in real time. When Admin approves a post, it appears without a page refresh.
 - Public visitors can read only approved posts.
-- Approved posts appear on the main site through Firestore realtime updates.
 
-## Firebase setup
-1. Create a Firebase project at https://console.firebase.google.com/
-2. Add a Web App (</>) and paste its config into firebase-config.js.
-3. Authentication > Sign-in method: enable Anonymous and Email/Password.
-4. Firestore Database: create a database. Start in production mode.
-5. Authentication > Users: create an admin account with Email/Password.
-6. Open https://boliyarpur.github.io/boliyarpur/admin.html and sign in once. Copy the UID displayed in the admin dashboard.
-7. Replace REPLACE_WITH_ADMIN_UID in firestore.rules with that exact UID.
-8. Publish firestore.rules in Firebase Console > Firestore Database > Rules.
-9. Publish Storage rules only if you decide to enable Firebase Storage and accept its billing requirements (see below).
-10. Confirm GitHub Pages is deployed, then test a text-only submission and approve it in admin.html.
-
-## Important: Firebase Storage billing
-As of 2026, Cloud Storage for Firebase requires the Blaze pay-as-you-go plan to create/use a default bucket. A billing account/payment method is required. No-cost usage quotas may apply, but usage above quotas can be charged. Do NOT enable Blaze unless you understand and accept this. See:
-https://firebase.google.com/docs/storage/faqs-storage-changes-announced-sept-2024
-
-If you want to stay on the no-cost Spark plan, use text-only posts (and optionally allow users to paste public image/video links); Firebase Storage uploads will not work on Spark. If you enable Blaze, create the Storage bucket, set firebase-config.js storageBucket to the exact bucket name shown in Firebase, then publish storage.rules.
+## Firebase setup (one-time)
+1. Open https://console.firebase.google.com/ and select project boliyapur-community.
+2. Authentication > Sign-in method: enable Anonymous and Email/Password.
+3. Authentication > Users: confirm the Admin account mdtusher2345@gmail.com exists.
+4. Firestore Database: create a database if not already created.
+5. Open the Rules tab and publish the exact contents of firestore.rules from this repository.
+6. For text-only posts, Firestore is sufficient on the Spark plan.
+7. For image/video uploads, create/enable the Firebase Storage bucket, ensure the bucket name matches firebase-config.js, then publish storage.rules. Firebase Storage may require the Blaze pay-as-you-go plan; review current billing requirements before enabling it.
+8. Ensure GitHub Pages is enabled for the main branch.
 
 ## URLs
-- Public site: https://boliyarpur.github.io/boliyarpur/
-- Admin: https://boliyarpur.github.io/boliyarpur/admin.html
+- Public website: https://boliyarpur.github.io/boliyarpur/
+- Admin Dashboard: https://boliyarpur.github.io/boliyarpur/admin.html
 
 ## Security
-- Firebase web config is intended for browser apps; Security Rules protect data.
-- Never put service-account JSON, private keys, or admin passwords in this repository.
-- Anonymous visitors can submit pending posts only. Only the configured Admin UID can read pending submissions, approve, or delete.
-- Media is stored under its pending post. Storage rules allow public reads only after the related Firestore post becomes approved.
-- Upload rules cap a single image/video at under 100 MB; actual limits and pricing are controlled by Firebase/Google Cloud.
+- Never put passwords, service-account JSON, or private keys in this repository.
+- Browser Firebase config is public; Firestore and Storage Security Rules enforce access.
+- Anonymous users can create pending posts only. They cannot approve or publish content.
+- Storage files are readable publicly only after the corresponding post is approved.
+- Upload limits in the form: images 15 MB; videos 100 MB.
