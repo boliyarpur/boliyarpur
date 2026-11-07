@@ -1,38 +1,22 @@
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
-    function isAdmin() {
-      return request.auth != null
-        && request.auth.token.email == "mdtusher2345@gmail.com";
-    }
-
+    function isAdmin() { return request.auth != null && request.auth.token.email == "mdtusher2345@gmail.com"; }
     match /communityPosts/{postId} {
-      // Public visitors can read approved posts. Only admin can read pending posts.
-      allow read: if (resource.data.status == "approved") || isAdmin();
-
-      // Anonymous visitors can submit text posts only, always as pending.
+      allow read: if resource.data.status == "approved" || isAdmin();
       allow create: if request.auth != null
-        && request.resource.data.keys().hasOnly([
-          "uid", "authorName", "area", "category", "title", "story", "status", "createdAt"
-        ])
+        && request.resource.data.keys().hasOnly(["uid","authorName","area","category","title","story","mediaUrl","mediaType","mediaName","storagePath","status","createdAt"])
         && request.resource.data.uid == request.auth.uid
         && request.resource.data.status == "pending"
-        && request.resource.data.title is string
-        && request.resource.data.title.size() >= 3
-        && request.resource.data.title.size() <= 120
-        && request.resource.data.story is string
-        && request.resource.data.story.size() >= 1
-        && request.resource.data.story.size() <= 3000
-        && request.resource.data.authorName is string
-        && request.resource.data.authorName.size() > 0
-        && request.resource.data.authorName.size() <= 60
-        && request.resource.data.area is string
-        && request.resource.data.area.size() <= 80
-        && request.resource.data.category is string
-        && request.resource.data.category.size() <= 40
+        && request.resource.data.title is string && request.resource.data.title.size() >= 2 && request.resource.data.title.size() <= 120
+        && request.resource.data.story is string && request.resource.data.story.size() <= 2000
+        && request.resource.data.authorName is string && request.resource.data.authorName.size() > 0 && request.resource.data.authorName.size() <= 60
+        && request.resource.data.area is string && request.resource.data.area.size() <= 80
+        && request.resource.data.category is string && request.resource.data.category.size() <= 40
+        && request.resource.data.mediaUrl is string && request.resource.data.mediaType is string
+        && request.resource.data.mediaName is string && request.resource.data.storagePath is string
+        && request.resource.data.storagePath.matches('communityUploads/' + request.auth.uid + '/' + postId + '/.*')
         && request.resource.data.createdAt == request.time;
-
-      // Only the configured admin can approve, edit or delete.
       allow update, delete: if isAdmin();
     }
   }
