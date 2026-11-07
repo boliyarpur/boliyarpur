@@ -38,7 +38,7 @@ else{
   onSnapshot(approved,snap=>{
    const docs=snap.docs.sort((a,b)=>(b.data().createdAt?.seconds||0)-(a.data().createdAt?.seconds||0));
    if(!docs.length){feed.innerHTML='<div class="citizen-empty">এখনো কোনো অনুমোদিত পোস্ট নেই। আপনিই প্রথম পোস্ট জমা দিতে পারেন!</div>';return;}
-   feed.innerHTML=docs.map(d=>{const p=d.data();return '<article class="citizen-post"><div class="citizen-post-body"><div class="citizen-post-meta">'+esc(p.category)+' · '+esc(p.area||"বলিয়াপুর")+' · '+esc(p.authorName)+'</div><h4>'+esc(p.title)+'</h4><p>'+esc(p.story)+'</p></div></article>';}).join("");
+   feed.innerHTML=docs.map(d=>{const p=d.data();return '<article class="citizen-post"><div class="citizen-post-body"><div class="citizen-post-meta">'+esc(p.category)+' · '+esc(p.area||"বলিয়াপুর")+' · '+esc(p.authorName)+' · প্রকাশ করেছেন: '+esc(p.approvedBy||'Boliyapur Admin')+'</div><h4>'+esc(p.title)+'</h4><p>'+esc(p.story)+'</p></div></article>';}).join("");
   },err=>{feed.innerHTML='<div class="citizen-empty">পোস্ট লোড করা যায়নি। Firebase Rules ও Database পরীক্ষা করুন।</div>';});
   form.addEventListener("submit",async e=>{
    e.preventDefault();submit.disabled=true;submit.textContent="পাঠানো হচ্ছে...";
