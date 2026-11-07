@@ -1,31 +1,22 @@
 rules_version = '2';
 service firebase.storage {
   match /b/{bucket}/o {
-    function post(postId) {
-      return firestore.get(/databases/(default)/documents/communityPosts/$(postId));
-    }
     function isAdmin() {
       return request.auth != null
-        && request.auth.uid == "REPLACE_WITH_ADMIN_UID";
+        && request.auth.token.email == "mdtusher2345@gmail.com";
     }
-
-    match /community/{postId}/{uid}/{fileName} {
-      // A visitor can read media only after its post has been approved.
-      allow read: if isAdmin() || (
-        postId != ""
-        && post(postId).data.status == "approved"
-      );
-
-      // Only the owner of the pending post can upload its media.
+    function approvedPost(postId) {
+      return firestore.exists(/databases/(default)/documents/communityPosts/$(postId))
+        && firestore.get(/databases/(default)/documents/communityPosts/$(postId)).data.status == "approved";
+    }
+    match /communityUploads/{uid}/{postId}/{fileName} {
+      allow read: if isAdmin() || approvedPost(postId);
       allow create: if request.auth != null
         && request.auth.uid == uid
-        && post(postId).data.uid == request.auth.uid
-        && post(postId).data.status == "pending"
-        && request.resource.size < 100 * 1024 * 1024
-        && (request.resource.contentType.matches('image/.*')
-          || request.resource.contentType.matches('video/(mp4|webm|quicktime)'));
-
-      allow update, delete: if isAdmin();
+        && request.resource.size <= 100 * 1024 * 1024
+        && request.resource.contentType.matches('(image/(jpeg|png|webp|gif)|video/(mp4|webm|quicktime))');
+      allow update: if false;
+      allow delete: if isAdmin();
     }
   }
 }
