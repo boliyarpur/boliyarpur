@@ -1,47 +1,47 @@
 
 /*
-===========================================================
-          BOLIYAPUR COMMUNITY DIRECTORY
-          OFFICIAL LOCAL INFORMATION DATABASE
-===========================================================
+============================================================
+       BOLIYAPUR COMMUNITY DIRECTORY
+       MASTER INFORMATION DATABASE — 2026
+============================================================
 
 Area:
-Boliyapur, 9 No. Bongaon Union, Savar, Dhaka, Bangladesh
+Boliyapur, Bongaon Union, Savar, Dhaka, Bangladesh
 
-File:
-data.js
+Main file: data.js
 
-Image folders:
-images/gallery/
-images/services/
-images/news/
-images/schools/
-images/members/
+OFFICIAL COMMUNITY CONTACT:
+Phone: 01605150684
+WhatsApp: 8801605150684
 
 IMPORTANT:
-1. Only Boliyapur village institutions belong in services.
-2. Union-wide government services are separately labelled.
-3. Never publish unverified phone numbers as official.
-4. Empty fields can be updated later.
-5. All images should use English filenames.
-6. Do not invent email addresses or contact details.
-===========================================================
+- Never invent institutional information.
+- Unverified records remain marked for verification.
+- Keep village and union-wide services separate.
+- Only publish approved and active information.
+============================================================
 */
 
-window.BOLIYAPUR_DATA = {
+(function () {
+"use strict";
 
-  // ======================================================
-  // 01. WEBSITE SETTINGS
-  // ======================================================
+// ==========================================================
+// 01. WEBSITE SETTINGS
+// ==========================================================
+
+const CONTACT_PHONE = "01605150684";
+const CONTACT_WHATSAPP = "8801605150684";
+const CONTACT_EMAIL = "boliyarpursavar@gmail.com";
+
+const DATA = {
 
   siteName: "বলিয়াপুর | Boliyapur Community",
-
   siteNameEnglish: "Boliyapur Community Directory",
 
   tagline: "আমাদের গ্রাম, আমাদের পরিচয়",
 
   description:
-    "বলিয়াপুর গ্রামের শিক্ষা প্রতিষ্ঠান, স্বাস্থ্যসেবা, স্থানীয় ব্যবসা, যোগাযোগ, সংবাদ ও প্রয়োজনীয় তথ্যের একটি কমিউনিটি ডিরেক্টরি।",
+    "বলিয়াপুর ও আশপাশের এলাকার শিক্ষা, স্বাস্থ্য, ব্যবসা, সরকারি সেবা, যোগাযোগ, সংবাদ ও প্রয়োজনীয় তথ্যের একটি কমিউনিটি ডিরেক্টরি।",
 
   country: "Bangladesh",
   division: "Dhaka",
@@ -51,593 +51,461 @@ window.BOLIYAPUR_DATA = {
   village: "Boliyapur",
 
   language: "bn",
-
   timezone: "Asia/Dhaka",
 
-  whatsapp: "8801605150864",
-  phone: "8801605150864",
-
-  email: "boliyarpursavar@gmail.com",
+  phone: CONTACT_PHONE,
+  whatsapp: CONTACT_WHATSAPP,
+  email: CONTACT_EMAIL,
 
   heroImage: "images/gallery/village-road.jpg.jpeg",
-
   logo: "images/logo.png",
-
   favicon: "images/favicon.png",
 
   facebook: "",
   youtube: "",
   instagram: "",
 
-  // ======================================================
-  // 02. WEBSITE MENU
-  // ======================================================
+  established: "",
+  lastUpdated: "2026-11-07",
+
+  // ========================================================
+  // 02. WEBSITE NAVIGATION
+  // ========================================================
 
   menu: [
     { title: "হোম", link: "#home" },
     { title: "আমাদের গ্রাম", link: "#about" },
-    { title: "শিক্ষাপ্রতিষ্ঠান", link: "#education" },
+    { title: "শিক্ষা", link: "#education" },
     { title: "স্বাস্থ্যসেবা", link: "#health" },
     { title: "স্থানীয় সেবা", link: "#services" },
-    { title: "ব্যবসা প্রতিষ্ঠান", link: "#business" },
+    { title: "ব্যবসা", link: "#business" },
+    { title: "সরকারি সেবা", link: "#government" },
     { title: "সংবাদ", link: "#news" },
     { title: "নোটিশ", link: "#notices" },
     { title: "গ্যালারি", link: "#gallery" },
     { title: "যোগাযোগ", link: "#contact" }
   ],
 
-  // ======================================================
+  // ========================================================
   // 03. VERIFICATION SYSTEM
-  // ======================================================
+  // ========================================================
 
   verificationLabels: {
     verified: "যাচাইকৃত",
     sourceListed: "উৎসে তালিকাভুক্ত",
-    needsCheck: "পুনরায় যাচাই প্রয়োজন",
     userProvided: "ব্যবহারকারীর দেওয়া তথ্য",
-    pending: "তথ্য সংগ্রহ চলছে"
+    needsCheck: "পুনরায় যাচাই প্রয়োজন",
+    pending: "তথ্য সংগ্রহ চলছে",
+    official: "সরকারি জরুরি নম্বর"
   },
 
-  // ======================================================
-  // 04. NOTICES
-  // ======================================================
+  // ========================================================
+  // 04. VILLAGE INFORMATION
+  // ========================================================
+
+  about: {
+    name: "বলিয়াপুর",
+    englishName: "Boliyapur",
+    union: "৯ নম্বর বনগাঁও ইউনিয়ন",
+    upazila: "সাভার",
+    district: "ঢাকা",
+    country: "বাংলাদেশ",
+
+    description:
+      "বলিয়াপুর ও আশপাশের এলাকার মানুষের প্রয়োজনীয় তথ্য, শিক্ষা প্রতিষ্ঠান, স্বাস্থ্যসেবা, স্থানীয় ব্যবসা এবং সামাজিক কার্যক্রম এক জায়গায় তুলে ধরাই এই উদ্যোগের উদ্দেশ্য।",
+
+    history: "",
+    population: "",
+    area: "",
+    postalCode: "",
+    mapUrl:
+      "https://www.google.com/maps/search/?api=1&query=Boliyapur+Savar+Dhaka"
+  },
+
+  // ========================================================
+  // 05. NOTICES
+  // ========================================================
 
   notices: [
     {
-      id: 1,
+      id: "NOTICE-001",
       title: "বলিয়াপুর কমিউনিটি নোটিশ",
       category: "সাধারণ ঘোষণা",
-      text:
-        "বলিয়াপুর গ্রামের নাগরিকদের জন্য গুরুত্বপূর্ণ ঘোষণা এখানে প্রকাশ করা হবে।",
+      text: "গুরুত্বপূর্ণ স্থানীয় ঘোষণা এখানে প্রকাশ করা হবে।",
       date: "",
       image: "",
       link: "",
-      status: "active"
+      status: "draft"
     },
     {
-      id: 2,
+      id: "NOTICE-002",
       title: "শিক্ষাপ্রতিষ্ঠানের ভর্তি বিজ্ঞপ্তি",
       category: "শিক্ষা",
-      text:
-        "স্থানীয় শিক্ষাপ্রতিষ্ঠানের যাচাইকৃত ভর্তি বিজ্ঞপ্তি এখানে প্রকাশ করা হবে।",
+      text: "যাচাইকৃত ভর্তি বিজ্ঞপ্তি এখানে প্রকাশ করা হবে।",
       date: "",
       image: "",
       link: "",
-      status: "active"
+      status: "draft"
     }
   ],
 
-  // ======================================================
-  // 05. LOCAL NEWS
-  // ======================================================
+  // ========================================================
+  // 06. LOCAL NEWS
+  // ========================================================
 
   news: [
     {
-      id: 1,
+      id: "NEWS-001",
       title: "বলিয়াপুর গ্রামের স্থানীয় খবর",
       category: "কমিউনিটি সংবাদ",
       date: "",
       author: "",
-      description:
-        "বলিয়াপুর গ্রামের যাচাই করা সংবাদ, সামাজিক কার্যক্রম ও উন্নয়নমূলক তথ্য এখানে প্রকাশ করা হবে।",
+      description: "গ্রামের যাচাইকৃত সংবাদ ও উন্নয়নমূলক কার্যক্রম।",
       image: "images/news/boliyapur-local-news.jpg",
-      link: "",
       source: "",
+      link: "",
       status: "draft"
     },
     {
-      id: 2,
+      id: "NEWS-002",
       title: "বলিয়াপুরের শিক্ষা সংবাদ",
       category: "শিক্ষা",
       date: "",
       author: "",
-      description:
-        "স্থানীয় স্কুল ও মাদ্রাসার ভর্তি, পরীক্ষার ফলাফল ও শিক্ষা কার্যক্রমের খবর।",
+      description: "স্থানীয় শিক্ষাপ্রতিষ্ঠানের খবর ও শিক্ষা কার্যক্রম।",
       image: "",
-      link: "",
       source: "",
+      link: "",
       status: "draft"
     },
     {
-      id: 3,
+      id: "NEWS-003",
       title: "বলিয়াপুরের সামাজিক কার্যক্রম",
-      category: "সামাজিক সংবাদ",
+      category: "সামাজিক",
       date: "",
       author: "",
-      description:
-        "গ্রামের সামাজিক অনুষ্ঠান, খেলাধুলা, সাংস্কৃতিক আয়োজন ও জনকল্যাণমূলক কার্যক্রম।",
+      description: "সামাজিক অনুষ্ঠান, খেলাধুলা ও জনকল্যাণমূলক কার্যক্রম।",
       image: "",
-      link: "",
       source: "",
+      link: "",
       status: "draft"
     }
   ],
 
-  // ======================================================
-  // 06. EDUCATION INSTITUTIONS
-  // ======================================================
+  // ========================================================
+  // 07. EDUCATION CATEGORIES
+  // ========================================================
+
+  educationCategories: [
+    "সরকারি প্রাথমিক বিদ্যালয়",
+    "বেসরকারি প্রাথমিক বিদ্যালয়",
+    "উচ্চ বিদ্যালয়",
+    "কলেজ",
+    "কিন্ডারগার্টেন",
+    "মাদ্রাসা",
+    "হিফজ মাদ্রাসা",
+    "কারিগরি শিক্ষা",
+    "বিশেষ শিক্ষা প্রতিষ্ঠান",
+    "কোচিং সেন্টার"
+  ],
+
+  // ========================================================
+  // 08. EDUCATION INSTITUTIONS
+  // ========================================================
 
   education: [
 
     {
       id: "EDU-001",
-
       name: "বলিয়ারপুর সরকারি প্রাথমিক বিদ্যালয়",
-
       nameEnglish: "Baliarpur Government Primary School",
-
       category: "সরকারি প্রাথমিক বিদ্যালয়",
-
       type: "primary-school",
 
-      description:
-        "বলিয়াপুর এলাকার সরকারি প্রাথমিক বিদ্যালয়।",
+      description: "বলিয়াপুর এলাকার সরকারি প্রাথমিক বিদ্যালয়।",
 
       headTeacher: "কামরুন নেছা",
-
       phone: "01719107451",
-
       email: "boliarpurgovtps@gmail.com",
 
-      address:
-        "বলিয়ারপুর, বনগাঁও ইউনিয়ন, সাভার, ঢাকা",
-
+      address: "বলিয়ারপুর, বনগাঁও ইউনিয়ন, সাভার, ঢাকা",
       village: "Boliyapur",
 
-      image:
-        "images/schools/boliarpur-government-primary-school.jpg",
+      image: "images/schools/boliarpur-government-primary-school.jpg",
 
       mapUrl:
         "https://www.google.com/maps/search/?api=1&query=Baliarpur+Government+Primary+School+Savar+Dhaka",
 
       website: "",
-
       facebook: "",
 
-      source:
-        "Bongaon Union official website",
-
-      sourceUrl:
-        "https://bongaonup.dhaka.gov.bd/",
+      source: "Bongaon Union official website",
+      sourceUrl: "https://bongaonup.dhaka.gov.bd/",
 
       verification: "sourceListed",
-
       contactVerification: "needsCheck",
-
       status: "active"
     },
 
     {
       id: "EDU-002",
-
       name: "জামি'আ ইসলামিয়া আরাবিয়া বলিয়ারপুর মাদ্রাসা",
-
       nameEnglish: "Jamia Islamia Arabia Baliarpur Madrasa",
-
       category: "মাদ্রাসা",
-
       type: "madrasa",
 
       description:
-        "বলিয়াপুর এলাকার ইসলামি শিক্ষা প্রতিষ্ঠান। সরকারি ইউনিয়ন পোর্টালে প্রকাশিত তথ্য অনুযায়ী প্রধান শিক্ষক মুফতী আব্দুর রাজ্জাক কাসেমী।",
+        "বলিয়াপুর এলাকার ইসলামি শিক্ষা প্রতিষ্ঠান। ইউনিয়ন পোর্টালে প্রকাশিত তথ্য অনুযায়ী প্রধান শিক্ষক মুফতী আব্দুর রাজ্জাক কাসেমী।",
 
-      headTeacher:
-        "মুফতী আব্দুর রাজ্জাক কাসেমী",
-
+      headTeacher: "মুফতী আব্দুর রাজ্জাক কাসেমী",
       phone: "01712019451",
-
       email: "",
 
-      address:
-        "বলিয়ারপুর, বনগাঁও ইউনিয়ন, সাভার, ঢাকা",
-
+      address: "বলিয়ারপুর, বনগাঁও ইউনিয়ন, সাভার, ঢাকা",
       village: "Boliyapur",
 
-      image:
-        "images/schools/jamia-boliarpur.jpg",
+      image: "images/schools/jamia-boliarpur.jpg",
 
       mapUrl:
         "https://www.google.com/maps/search/?api=1&query=Jamia+Islamia+Arabia+Baliarpur+Savar",
 
       website: "",
-
       facebook: "",
 
-      source:
-        "Bongaon Union official website",
-
-      sourceUrl:
-        "https://bongaonup.dhaka.gov.bd/",
+      source: "Bongaon Union official website",
+      sourceUrl: "https://bongaonup.dhaka.gov.bd/",
 
       verification: "sourceListed",
-
       contactVerification: "needsCheck",
-
       status: "active"
     }
 
   ],
 
-  // ======================================================
-  // 07. OTHER EDUCATION RESEARCH LEADS
-  // These are NOT confirmed public directory entries.
-  // ======================================================
+  // ========================================================
+  // 09. EDUCATION RESEARCH LEADS
+  // Not displayed as confirmed institutions
+  // ========================================================
 
   educationResearch: [
 
     {
       id: "EDU-LEAD-001",
-
-      name:
-        "Sunkin Institute for Autistic Children and Trust Home",
-
+      name: "Sunkin Institute for Autistic Children and Trust Home",
       category: "বিশেষ শিক্ষা প্রতিষ্ঠান",
-
       address: "",
-
       phone: "",
-
       email: "",
-
-      mapUrl: "",
-
-      facebook: "",
-
       source: "",
-
-      description:
-        "অনুসন্ধানে এই প্রতিষ্ঠানের নাম পাওয়া গেছে। বলিয়াপুরের সঠিক অবস্থান, ঠিকানা ও কার্যক্রম যাচাই না হওয়া পর্যন্ত মূল ডিরেক্টরিতে প্রকাশ করা যাবে না।",
-
+      description: "বলিয়াপুরের সঙ্গে অবস্থানগত সম্পর্ক যাচাই প্রয়োজন।",
       verification: "pending",
-
       status: "research-only"
     },
 
     {
       id: "EDU-LEAD-002",
-
       name: "বলিয়াপুরের অন্যান্য কিন্ডারগার্টেন",
-
       category: "কিন্ডারগার্টেন",
-
       address: "",
-
       phone: "",
-
       email: "",
-
-      description:
-        "স্থানীয় Facebook পোস্ট, Google Maps ও শিক্ষা-সংক্রান্ত সূত্র থেকে নাম সংগ্রহ করতে হবে।",
-
       verification: "pending",
-
       status: "research-only"
     },
 
     {
       id: "EDU-LEAD-003",
-
       name: "বলিয়াপুরের অন্যান্য মাদ্রাসা",
-
       category: "মাদ্রাসা",
-
       address: "",
-
       phone: "",
-
       email: "",
-
-      description:
-        "স্থানীয় কওমি, হিফজ ও অন্যান্য মাদ্রাসার নাম ও অবস্থান যাচাই করতে হবে।",
-
       verification: "pending",
-
       status: "research-only"
     },
 
     {
       id: "EDU-LEAD-004",
-
-      name: "বলিয়াপুরের অন্যান্য প্রাথমিক ও উচ্চ বিদ্যালয়",
-
+      name: "বলিয়াপুরের অন্যান্য বিদ্যালয়",
       category: "বিদ্যালয়",
-
       address: "",
-
       phone: "",
-
       email: "",
-
-      description:
-        "সরকারি শিক্ষা ডেটাবেস, EIIN, স্থানীয় পোস্ট ও প্রতিষ্ঠানের নিজস্ব সূত্র থেকে তথ্য সংগ্রহ করতে হবে।",
-
       verification: "pending",
-
       status: "research-only"
     }
 
   ],
 
-  // ======================================================
-  // 08. SCHOOL EVENTS
-  // ======================================================
+  // ========================================================
+  // 10. SCHOOL EVENTS
+  // ========================================================
 
   schools: [
-
     {
-      id: 1,
-
-      title:
-        "বলিয়ারপুর সরকারি প্রাথমিক বিদ্যালয়ের শিক্ষা কার্যক্রম",
-
+      id: "SCHOOL-EVENT-001",
+      title: "বলিয়ারপুর সরকারি প্রাথমিক বিদ্যালয়ের শিক্ষা কার্যক্রম",
+      school: "বলিয়ারপুর সরকারি প্রাথমিক বিদ্যালয়",
       date: "",
-
-      description:
-        "বিদ্যালয়ের ভর্তি বিজ্ঞপ্তি, পরীক্ষা, ফলাফল, বার্ষিক অনুষ্ঠান ও পুরস্কার বিতরণীর খবর।",
-
+      description: "ভর্তি, পরীক্ষা, ফলাফল ও বার্ষিক অনুষ্ঠান।",
       image: "",
-
-      school:
-        "বলিয়ারপুর সরকারি প্রাথমিক বিদ্যালয়",
-
       status: "draft"
     },
-
     {
-      id: 2,
-
-      title:
-        "বলিয়ারপুর মাদ্রাসার শিক্ষা কার্যক্রম",
-
+      id: "SCHOOL-EVENT-002",
+      title: "বলিয়ারপুর মাদ্রাসার শিক্ষা কার্যক্রম",
+      school: "জামি'আ ইসলামিয়া আরাবিয়া বলিয়ারপুর মাদ্রাসা",
       date: "",
-
-      description:
-        "মাদ্রাসার ভর্তি, শিক্ষা কার্যক্রম, ধর্মীয় অনুষ্ঠান ও অন্যান্য আয়োজন।",
-
+      description: "ভর্তি ও শিক্ষা কার্যক্রমের খবর।",
       image: "",
-
-      school:
-        "জামি'আ ইসলামিয়া আরাবিয়া বলিয়ারপুর মাদ্রাসা",
-
       status: "draft"
     }
-
   ],
 
-  // ======================================================
-  // 09. HEALTH SERVICES
-  // ======================================================
+  // ========================================================
+  // 11. HEALTH SERVICES
+  // ========================================================
+
+  healthCategories: [
+    "হাসপাতাল",
+    "কমিউনিটি ক্লিনিক",
+    "স্বাস্থ্য ও পরিবার কল্যাণ কেন্দ্র",
+    "ডাক্তার",
+    "ফার্মেসি",
+    "ডায়াগনস্টিক সেন্টার",
+    "অ্যাম্বুলেন্স",
+    "মাতৃসেবা",
+    "অন্যান্য"
+  ],
 
   health: [
-
     {
       id: "HEALTH-001",
-
       name: "বলিয়ারপুর কমিউনিটি ক্লিনিক",
-
       category: "কমিউনিটি ক্লিনিক",
 
       description:
-        "বলিয়াপুর এলাকার প্রাথমিক স্বাস্থ্যসেবা কেন্দ্র হিসেবে তথ্য দেওয়া হয়েছে। সরকারি স্বাস্থ্য পোর্টাল থেকে সঠিক অবস্থান ও কার্যক্রম পুনরায় যাচাই প্রয়োজন।",
+        "বলিয়াপুর এলাকার প্রাথমিক স্বাস্থ্যসেবা কেন্দ্র হিসেবে তথ্য দেওয়া হয়েছে। অবস্থান ও কার্যক্রম পুনরায় যাচাই প্রয়োজন।",
 
       phone: "",
-
       email: "",
+      address: "বলিয়ারপুর, বনগাঁও ইউনিয়ন, সাভার, ঢাকা",
 
-      address:
-        "বলিয়ারপুর, বনগাঁও ইউনিয়ন, সাভার, ঢাকা",
+      image: "",
+      website: "",
 
       mapUrl:
         "https://www.google.com/maps/search/?api=1&query=Boliyapur+Community+Clinic+Savar",
 
-      image: "",
-
-      website: "",
-
       source: "",
-
       verification: "needsCheck",
-
       status: "draft"
     }
-
   ],
 
-  // ======================================================
-  // 10. UNION-WIDE GOVERNMENT SERVICES
-  // These serve the village but are not all located inside it.
-  // ======================================================
+  // ========================================================
+  // 12. UNION-WIDE GOVERNMENT SERVICES
+  // ========================================================
 
   unionServices: [
 
     {
       id: "GOV-001",
-
       name: "৯ নম্বর বনগাঁও ইউনিয়ন পরিষদ",
-
       category: "সরকারি প্রতিষ্ঠান",
 
       description:
-        "বনগাঁও ইউনিয়নের স্থানীয় সরকার প্রতিষ্ঠান। নাগরিক সনদ, জন্ম ও মৃত্যু নিবন্ধনসহ বিভিন্ন নাগরিক সেবা সম্পর্কে তথ্য পাওয়া যায়।",
+        "জন্ম ও মৃত্যু নিবন্ধন, নাগরিক সনদসহ ইউনিয়ন পরিষদের বিভিন্ন সেবা।",
 
       phone: "",
-
       email: "bangaounup9@gmail.com",
 
-      address:
-        "নগরকোন্ডা, বনগাঁও ইউনিয়ন, সাভার, ঢাকা",
+      address: "নগরকোন্ডা, বনগাঁও ইউনিয়ন, সাভার, ঢাকা",
 
-      image:
-        "images/services/bongaon-union-parishad.jpg",
+      image: "images/services/bongaon-union-parishad.jpg",
 
       mapUrl:
         "https://www.google.com/maps/search/?api=1&query=Bongaon+Union+Parishad+Savar",
 
-      website:
-        "https://bongaonup.dhaka.gov.bd/",
+      website: "https://bongaonup.dhaka.gov.bd/",
 
       verification: "needsCheck",
-
       serviceArea: "Bongaon Union",
-
       status: "active"
     },
 
     {
       id: "GOV-002",
-
       name: "বনগাঁও ইউনিয়ন তথ্য ও সেবা কেন্দ্র",
-
       category: "সরকারি ডিজিটাল সেবা",
-
-      description:
-        "ইউনিয়নের নাগরিকদের তথ্য ও ডিজিটাল সেবা গ্রহণের কেন্দ্র।",
-
+      description: "ইউনিয়নের ডিজিটাল নাগরিক সেবা কেন্দ্র।",
       phone: "",
-
       email: "",
-
-      address:
-        "বনগাঁও ইউনিয়ন পরিষদ কার্যালয়, নগরকোন্ডা",
-
+      address: "বনগাঁও ইউনিয়ন পরিষদ কার্যালয়, নগরকোন্ডা",
       image: "",
-
-      mapUrl:
-        "https://www.google.com/maps/search/?api=1&query=Bongaon+Union+Information+Service+Center+Savar",
-
-      website:
-        "https://bongaonup.dhaka.gov.bd/",
-
+      mapUrl: "",
+      website: "https://bongaonup.dhaka.gov.bd/",
       verification: "needsCheck",
-
       serviceArea: "Bongaon Union",
-
       status: "draft"
     },
 
     {
       id: "GOV-003",
-
       name: "বনগাঁও ইউনিয়ন ভূমি অফিস",
-
       category: "ভূমি সেবা",
-
-      description:
-        "ভূমি সংক্রান্ত সরকারি সেবা ও তথ্যের জন্য ইউনিয়ন ভূমি অফিসের যোগাযোগ ও অবস্থান যাচাই করুন।",
-
+      description: "ভূমি সংক্রান্ত সরকারি সেবা।",
       phone: "",
-
       email: "",
-
-      address:
-        "বনগাঁও ইউনিয়ন, সাভার, ঢাকা",
-
+      address: "বনগাঁও ইউনিয়ন, সাভার, ঢাকা",
       image: "",
-
       mapUrl:
         "https://www.google.com/maps/search/?api=1&query=Bongaon+Union+Land+Office+Savar",
-
-      website:
-        "https://bongaonup.dhaka.gov.bd/",
-
+      website: "",
       verification: "needsCheck",
-
       serviceArea: "Bongaon Union",
-
       status: "draft"
     },
 
     {
       id: "GOV-004",
-
       name: "বনগাঁও ইউনিয়ন সমাজসেবা অফিস",
-
       category: "সমাজসেবা",
-
-      description:
-        "সামাজিক নিরাপত্তা ও সমাজসেবা সংক্রান্ত সরকারি তথ্য ও সেবার জন্য।",
-
+      description: "সামাজিক নিরাপত্তা ও সমাজসেবা সংক্রান্ত তথ্য।",
       phone: "",
-
       email: "",
-
-      address:
-        "বনগাঁও ইউনিয়ন, সাভার, ঢাকা",
-
+      address: "বনগাঁও ইউনিয়ন, সাভার, ঢাকা",
       image: "",
-
-      mapUrl:
-        "https://www.google.com/maps/search/?api=1&query=Bongaon+Union+Social+Service+Office+Savar",
-
+      mapUrl: "",
       website: "",
-
       verification: "needsCheck",
-
       serviceArea: "Bongaon Union",
-
       status: "draft"
     },
 
     {
       id: "GOV-005",
-
       name: "বনগাঁও ইউনিয়ন স্বাস্থ্য ও পরিবার কল্যাণ কেন্দ্র",
-
       category: "স্বাস্থ্যসেবা",
-
-      description:
-        "ইউনিয়নের প্রাথমিক স্বাস্থ্য ও পরিবার পরিকল্পনা সেবা সম্পর্কে তথ্য।",
-
+      description: "প্রাথমিক স্বাস্থ্য ও পরিবার পরিকল্পনা সেবা।",
       phone: "",
-
       email: "",
-
-      address:
-        "বনগাঁও ইউনিয়ন, সাভার, ঢাকা",
-
+      address: "বনগাঁও ইউনিয়ন, সাভার, ঢাকা",
       image: "",
-
-      mapUrl:
-        "https://www.google.com/maps/search/?api=1&query=Bongaon+Union+Health+Family+Welfare+Center",
-
-      website:
-        "https://bongaonup.dhaka.gov.bd/",
-
+      mapUrl: "",
+      website: "https://bongaonup.dhaka.gov.bd/",
       verification: "needsCheck",
-
       serviceArea: "Bongaon Union",
-
       status: "draft"
     }
 
   ],
 
-  // ======================================================
-  // 11. LOCAL BUSINESS DIRECTORY
-  // ======================================================
+  // ========================================================
+  // 13. LOCAL BUSINESS DIRECTORY
+  // ========================================================
 
   businessCategories: [
-
     "মুদি দোকান",
     "ফার্মেসি",
     "রেস্টুরেন্ট",
@@ -650,266 +518,185 @@ window.BOLIYAPUR_DATA = {
     "গবাদিপশু ও পোলট্রি",
     "হার্ডওয়্যার",
     "পরিবহন",
+    "সেলুন",
+    "বিউটি পার্লার",
+    "মেরামত ও সার্ভিস",
     "অন্যান্য"
   ],
 
-  businesses: [
+  businesses: [],
 
-    {
-      id: "BUS-001",
+  // ========================================================
+  // 14. OTHER LOCAL SERVICES
+  // ========================================================
 
-      name: "স্থানীয় ব্যবসা প্রতিষ্ঠান",
+  services: [],
 
-      category: "অন্যান্য",
-
-      owner: "",
-
-      description:
-        "ব্যবসার নাম, মালিকের অনুমতি নিয়ে প্রকাশিত ফোন নম্বর, ঠিকানা ও সেবার বিবরণ এখানে যোগ করুন।",
-
-      phone: "",
-
-      whatsapp: "",
-
-      email: "",
-
-      address: "",
-
-      image: "",
-
-      mapUrl: "",
-
-      facebook: "",
-
-      openingHours: "",
-
-      verification: "pending",
-
-      status: "draft"
-    }
-
+  serviceCategories: [
+    "শিক্ষা",
+    "স্বাস্থ্য",
+    "সরকারি সেবা",
+    "পরিবহন",
+    "ব্যবসা",
+    "অন্যান্য"
   ],
 
-  // ======================================================
-  // 12. IMPORTANT CONTACTS
-  // ======================================================
+  // ========================================================
+  // 15. IMPORTANT CONTACTS
+  // ========================================================
 
   contacts: [
 
     {
       id: "CONTACT-001",
-
       name: "Boliyapur Community",
-
       category: "কমিউনিটি যোগাযোগ",
 
-      phone: "01605150864",
-
-      whatsapp: "8801605150864",
-
-      email: "boliyarpursavar@gmail.com",
+      phone: CONTACT_PHONE,
+      whatsapp: CONTACT_WHATSAPP,
+      email: CONTACT_EMAIL,
 
       description:
-        "ওয়েবসাইটের তথ্য সংশোধন, নতুন প্রতিষ্ঠান যোগ করা এবং কমিউনিটি যোগাযোগের জন্য।",
+        "ওয়েবসাইটের তথ্য সংশোধন, নতুন প্রতিষ্ঠান যোগ এবং কমিউনিটি যোগাযোগের জন্য।",
 
       verification: "userProvided"
     },
 
     {
       id: "CONTACT-002",
-
       name: "বনগাঁও ইউনিয়ন পরিষদ",
-
       category: "সরকারি যোগাযোগ",
 
       phone: "",
-
       email: "bangaounup9@gmail.com",
 
       website: "https://bongaonup.dhaka.gov.bd/",
 
-      description:
-        "ইউনিয়ন পরিষদের যোগাযোগের জন্য প্রকাশিত ইমেইল। বর্তমান কার্যকারিতা যাচাই প্রয়োজন।",
+      description: "ইউনিয়ন পরিষদের যোগাযোগ।",
 
       verification: "needsCheck"
     }
 
   ],
 
-  // ======================================================
-  // 13. LOCAL EMERGENCY SERVICES
-  // ======================================================
+  // ========================================================
+  // 16. EMERGENCY CONTACTS
+  // ========================================================
 
   emergency: [
 
     {
+      id: "EMERGENCY-001",
       name: "জাতীয় জরুরি সেবা",
-
       category: "Emergency",
-
       phone: "999",
-
-      description:
-        "পুলিশ, ফায়ার সার্ভিস ও অ্যাম্বুলেন্সসহ জরুরি সহায়তা।",
-
+      description: "পুলিশ, ফায়ার সার্ভিস ও জরুরি সহায়তা।",
       verification: "official"
     },
 
     {
+      id: "EMERGENCY-002",
       name: "জাতীয় স্বাস্থ্য বাতায়ন",
-
       category: "Health",
-
       phone: "16263",
-
-      description:
-        "স্বাস্থ্য বিষয়ক পরামর্শ ও সেবা।",
-
+      description: "স্বাস্থ্য বিষয়ক পরামর্শ।",
       verification: "official"
     },
 
     {
+      id: "EMERGENCY-003",
       name: "ফায়ার সার্ভিস",
-
       category: "Fire Service",
-
       phone: "102",
-
-      description:
-        "অগ্নিনির্বাপণ ও উদ্ধার সহায়তা।",
-
+      description: "অগ্নিনির্বাপণ ও উদ্ধার সহায়তা।",
       verification: "official"
     }
 
   ],
 
-  // ======================================================
-  // 14. PHOTO GALLERY
-  // ======================================================
+  // ========================================================
+  // 17. PHOTO GALLERY
+  // ========================================================
 
   gallery: [
 
     {
-      id: 1,
-
+      id: "GALLERY-001",
       title: "বলিয়াপুর গ্রামের রাস্তা",
-
       category: "গ্রামের দৃশ্য",
-
-      image:
-        "images/gallery/village-road.jpg.jpeg",
-
+      image: "images/gallery/village-road.jpg.jpeg",
       date: "",
-
       description: ""
     },
 
     {
-      id: 2,
-
+      id: "GALLERY-002",
       title: "বলিয়ারপুর সরকারি প্রাথমিক বিদ্যালয়",
-
       category: "শিক্ষাপ্রতিষ্ঠান",
-
-      image:
-        "images/schools/boliarpur-government-primary-school.jpg",
-
+      image: "images/schools/boliarpur-government-primary-school.jpg",
       date: "",
-
       description: ""
     },
 
     {
-      id: 3,
-
+      id: "GALLERY-003",
       title: "বলিয়ারপুর মাদ্রাসা",
-
       category: "শিক্ষাপ্রতিষ্ঠান",
-
-      image:
-        "images/schools/jamia-boliarpur.jpg",
-
+      image: "images/schools/jamia-boliarpur.jpg",
       date: "",
-
       description: ""
     },
 
     {
-      id: 4,
-
+      id: "GALLERY-004",
       title: "বনগাঁও ইউনিয়ন পরিষদ",
-
       category: "সরকারি প্রতিষ্ঠান",
-
-      image:
-        "images/services/bongaon-union-parishad.jpg",
-
+      image: "images/services/bongaon-union-parishad.jpg",
       date: "",
-
       description: ""
     },
 
     {
-      id: 5,
-
+      id: "GALLERY-005",
       title: "বলিয়াপুর গ্রামের সামাজিক অনুষ্ঠান",
-
       category: "সামাজিক অনুষ্ঠান",
-
-      image:
-        "images/gallery/community-event.jpg",
-
+      image: "images/gallery/community-event.jpg",
       date: "",
-
       description: ""
     },
 
     {
-      id: 6,
-
+      id: "GALLERY-006",
       title: "বলিয়াপুরের প্রাকৃতিক সৌন্দর্য",
-
       category: "প্রকৃতি",
-
-      image:
-        "images/gallery/village-nature.jpg",
-
+      image: "images/gallery/village-nature.jpg",
       date: "",
-
       description: ""
     }
 
   ],
 
-  // ======================================================
-  // 15. VIDEOS
-  // ======================================================
+  // ========================================================
+  // 18. VIDEOS
+  // ========================================================
 
   videos: [
-
     {
-      id: 1,
-
+      id: "VIDEO-001",
       title: "বলিয়াপুর গ্রামের ভিডিও",
-
       category: "Village",
-
       thumbnail: "",
-
       videoUrl: "",
-
       youtubeUrl: "",
-
       date: "",
-
-      description: ""
+      description: "",
+      status: "draft"
     }
-
   ],
 
-  // ======================================================
-  // 16. COMMUNITY CONTRIBUTION
-  // ======================================================
+  // ========================================================
+  // 19. COMMUNITY CONTRIBUTION
+  // ========================================================
 
   contribution: {
 
@@ -918,32 +705,30 @@ window.BOLIYAPUR_DATA = {
     description:
       "আপনার জানা কোনো স্কুল, মাদ্রাসা, ব্যবসা, স্বাস্থ্যকেন্দ্র বা গুরুত্বপূর্ণ সেবার তথ্য আমাদের পাঠান। যাচাই করার পর ডিরেক্টরিতে যুক্ত করা হবে।",
 
-    contactEmail: "boliyarpursavar@gmail.com",
-
-    whatsapp: "8801605150864",
+    contactPhone: CONTACT_PHONE,
+    contactEmail: CONTACT_EMAIL,
+    whatsapp: CONTACT_WHATSAPP,
 
     allowPublicSubmission: true,
-
     requireVerification: true
   },
 
-  // ======================================================
-  // 17. WEBSITE FOOTER
-  // ======================================================
+  // ========================================================
+  // 20. WEBSITE FOOTER
+  // ========================================================
 
   footer: {
 
     title: "Boliyapur Community",
 
     description:
-      "বলিয়াপুর গ্রামের মানুষের জন্য একটি তথ্যভিত্তিক কমিউনিটি প্ল্যাটফর্ম।",
+      "বলিয়াপুর ও আশপাশের মানুষের জন্য একটি তথ্যভিত্তিক কমিউনিটি প্ল্যাটফর্ম।",
 
     copyright:
       "© 2026 Boliyapur Community. All Rights Reserved.",
 
-    email: "boliyarpursavar@gmail.com",
-
-    phone: "01605150864",
+    email: CONTACT_EMAIL,
+    phone: CONTACT_PHONE,
 
     address:
       "Boliyapur, Bongaon Union, Savar, Dhaka, Bangladesh",
@@ -954,115 +739,194 @@ window.BOLIYAPUR_DATA = {
 };
 
 
-// ========================================================
-// 18. DIRECTORY HELPER FUNCTIONS
-// ========================================================
+// ==========================================================
+// 21. BUILD COMBINED DIRECTORY
+// ==========================================================
 
-// Phone number formatting
+// All service categories are combined here.
+// This is created BEFORE validation to prevent errors.
 
-window.BOLIYAPUR_HELPERS = {
+DATA.services = [
+  ...DATA.education,
+  ...DATA.health,
+  ...DATA.unionServices,
+  ...DATA.businesses
+];
 
-  getPhoneLink: function(phone) {
 
+// ==========================================================
+// 22. DIRECTORY HELPER FUNCTIONS
+// ==========================================================
+
+const HELPERS = {
+
+  // Convert phone number to clickable telephone link
+
+  getPhoneLink: function (phone) {
     if (!phone) return "";
 
-    return "tel:" + phone.replace(/[^0-9+]/g, "");
+    const clean = String(phone).replace(/[^0-9+]/g, "");
 
+    return clean ? "tel:" + clean : "";
   },
 
-  getEmailLink: function(email) {
+  // Convert email to mail link
 
+  getEmailLink: function (email) {
     if (!email) return "";
 
-    return "mailto:" + email;
-
+    return "mailto:" + String(email).trim();
   },
 
-  getWhatsAppLink: function(number) {
+  // Generate WhatsApp link
 
+  getWhatsAppLink: function (number) {
     if (!number) return "";
 
-    return "https://wa.me/" +
-      number.replace(/[^0-9]/g, "");
+    const clean = String(number).replace(/[^0-9]/g, "");
 
+    return clean
+      ? "https://wa.me/" + clean
+      : "";
   },
 
-  getMapLink: function(item) {
+  // Google Maps link
+
+  getMapLink: function (item) {
+    if (!item) return "";
 
     if (item.mapUrl) return item.mapUrl;
 
     if (!item.address) return "";
 
-    return "https://www.google.com/maps/search/?api=1&query=" +
-      encodeURIComponent(item.address);
-
+    return (
+      "https://www.google.com/maps/search/?api=1&query=" +
+      encodeURIComponent(item.address)
+    );
   },
 
-  // Only publish active records
+  // Get active education institutions
 
-  getActiveServices: function() {
-
-    return window.BOLIYAPUR_DATA.services.filter(
+  getEducation: function () {
+    return DATA.education.filter(
       item => item.status === "active"
     );
-
   },
 
-  // Get education records
+  // Get active services
 
-  getEducation: function() {
-
-    return window.BOLIYAPUR_DATA.education.filter(
+  getActiveServices: function () {
+    return DATA.services.filter(
       item => item.status === "active"
     );
-
   },
 
-  // Search all public local services
+  // Get active businesses
 
-  searchServices: function(keyword) {
+  getBusinesses: function () {
+    return DATA.businesses.filter(
+      item => item.status === "active"
+    );
+  },
 
-    const query = keyword.toLowerCase().trim();
+  // Get active health services
+
+  getHealth: function () {
+    return DATA.health.filter(
+      item => item.status === "active"
+    );
+  },
+
+  // Search across the directory
+
+  searchServices: function (keyword) {
+
+    const query = String(keyword || "")
+      .toLowerCase()
+      .trim();
 
     if (!query) return [];
 
     const all = [
-      ...window.BOLIYAPUR_DATA.services,
-      ...window.BOLIYAPUR_DATA.education,
-      ...window.BOLIYAPUR_DATA.health,
-      ...window.BOLIYAPUR_DATA.businesses
+      ...DATA.education,
+      ...DATA.health,
+      ...DATA.unionServices,
+      ...DATA.businesses
     ];
 
     return all.filter(item => {
 
-      const name = (item.name || "").toLowerCase();
-
-      const category =
-        (item.category || "").toLowerCase();
-
-      const address =
-        (item.address || "").toLowerCase();
+      const searchable = [
+        item.name,
+        item.nameEnglish,
+        item.category,
+        item.address,
+        item.description
+      ]
+      .filter(Boolean)
+      .join(" ")
+      .toLowerCase();
 
       return (
-        name.includes(query) ||
-        category.includes(query) ||
-        address.includes(query)
+        searchable.includes(query) &&
+        item.status === "active"
       );
 
     });
 
   },
 
-  // Get records that need checking
+  // Search education institutions
 
-  getPendingVerification: function() {
+  searchEducation: function (keyword) {
+
+    const query = String(keyword || "").toLowerCase().trim();
+
+    if (!query) return [];
+
+    return DATA.education.filter(item => {
+
+      const content = [
+        item.name,
+        item.nameEnglish,
+        item.category,
+        item.address
+      ].filter(Boolean).join(" ").toLowerCase();
+
+      return (
+        content.includes(query) &&
+        item.status === "active"
+      );
+
+    });
+
+  },
+
+  // Find an institution by ID
+
+  getById: function (id) {
 
     const all = [
-      ...window.BOLIYAPUR_DATA.education,
-      ...window.BOLIYAPUR_DATA.educationResearch,
-      ...window.BOLIYAPUR_DATA.health,
-      ...window.BOLIYAPUR_DATA.unionServices,
-      ...window.BOLIYAPUR_DATA.businesses
+      ...DATA.education,
+      ...DATA.health,
+      ...DATA.unionServices,
+      ...DATA.businesses
+    ];
+
+    return all.find(item => item.id === id) || null;
+
+  },
+
+  // Get pending verification records
+
+  getPendingVerification: function () {
+
+    const all = [
+      ...DATA.education,
+      ...DATA.educationResearch,
+      ...DATA.health,
+      ...DATA.unionServices,
+      ...DATA.businesses
     ];
 
     return all.filter(item =>
@@ -1070,102 +934,171 @@ window.BOLIYAPUR_HELPERS = {
       item.verification === "needsCheck"
     );
 
+  },
+
+  // Get all published notices
+
+  getActiveNotices: function () {
+    return DATA.notices.filter(
+      item => item.status === "active"
+    );
+  },
+
+  // Get published news
+
+  getActiveNews: function () {
+    return DATA.news.filter(
+      item => item.status === "active"
+    );
+  },
+
+  // Directory statistics
+
+  getStatistics: function () {
+    return {
+      education: DATA.education.length,
+      health: DATA.health.length,
+      government: DATA.unionServices.length,
+      businesses: DATA.businesses.length,
+      notices: DATA.notices.length,
+      news: DATA.news.length,
+      gallery: DATA.gallery.length,
+      videos: DATA.videos.length
+    };
   }
 
 };
 
 
-// ========================================================
-// 19. BASIC DATA VALIDATION
-// ========================================================
+// ==========================================================
+// 23. DATA VALIDATION SYSTEM
+// ==========================================================
 
-window.BOLIYAPUR_VALIDATE = function() {
-
-  const data = window.BOLIYAPUR_DATA;
+function VALIDATE() {
 
   const problems = [];
+  const warnings = [];
 
-  if (!data.siteName) {
+  if (!DATA.siteName) {
     problems.push("Website name missing");
   }
 
-  if (!Array.isArray(data.education)) {
-    problems.push("Education data missing");
-  }
-
-  if (!Array.isArray(data.services)) {
-    problems.push("Services data missing");
-  }
-
-  const all = [
-    ...data.education,
-    ...data.health,
-    ...data.businesses,
-    ...data.unionServices
+  const requiredArrays = [
+    "education",
+    "health",
+    "unionServices",
+    "businesses",
+    "services",
+    "news",
+    "notices",
+    "gallery",
+    "contacts",
+    "emergency"
   ];
 
-  all.forEach(item => {
+  requiredArrays.forEach(key => {
+    if (!Array.isArray(DATA[key])) {
+      problems.push("Invalid or missing array: " + key);
+    }
+  });
+
+  // Check duplicate IDs
+
+  const allRecords = [
+    ...DATA.education,
+    ...DATA.health,
+    ...DATA.unionServices,
+    ...DATA.businesses
+  ];
+
+  const ids = new Set();
+
+  allRecords.forEach(item => {
+
+    if (!item.id) {
+      problems.push("Record ID missing: " + (item.name || "Unknown"));
+    } else if (ids.has(item.id)) {
+      problems.push("Duplicate ID: " + item.id);
+    } else {
+      ids.add(item.id);
+    }
 
     if (!item.name) {
       problems.push("Institution name missing");
     }
 
     if (!item.category) {
-      problems.push(
-        "Category missing: " + (item.name || "Unknown")
-      );
+      warnings.push("Category missing: " + (item.name || item.id));
     }
 
     if (!item.verification) {
-      problems.push(
-        "Verification status missing: " +
-        (item.name || "Unknown")
-      );
+      warnings.push("Verification status missing: " + (item.name || item.id));
     }
 
   });
 
-  if (problems.length) {
+  // Check official community phone
 
-    console.warn(
-      "Boliyapur Directory Validation:",
-      problems
-    );
-
-    return {
-      success: false,
-      problems: problems
-    };
-
+  if (DATA.phone !== CONTACT_PHONE) {
+    problems.push("Community phone number does not match");
   }
 
-  console.log(
-    "Boliyapur Directory data structure is valid."
+  if (DATA.whatsapp !== CONTACT_WHATSAPP) {
+    problems.push("Community WhatsApp number does not match");
+  }
+
+  // Check important contact number
+
+  const communityContact = DATA.contacts.find(
+    item => item.id === "CONTACT-001"
   );
 
+  if (!communityContact ||
+      communityContact.phone !== CONTACT_PHONE) {
+    problems.push("Community contact phone is incorrect");
+  }
+
+  if (DATA.footer.phone !== CONTACT_PHONE) {
+    problems.push("Footer phone number is incorrect");
+  }
+
+  if (problems.length) {
+    console.error(
+      "BOLIYAPUR DIRECTORY ERRORS:",
+      problems
+    );
+  } else {
+    console.log(
+      "Boliyapur Directory: No structural errors found."
+    );
+  }
+
+  if (warnings.length) {
+    console.warn(
+      "Boliyapur Directory warnings:",
+      warnings
+    );
+  }
+
   return {
-    success: true,
-    problems: []
+    success: problems.length === 0,
+    problems: problems,
+    warnings: warnings
   };
 
-};
+}
 
 
-// Run basic validation
+// ==========================================================
+// 24. GLOBAL EXPORTS
+// ==========================================================
 
-window.BOLIYAPUR_VALIDATE();
+window.BOLIYAPUR_DATA = DATA;
+window.BOLIYAPUR_HELPERS = HELPERS;
+window.BOLIYAPUR_VALIDATE = VALIDATE;
 
-// Connect all directory categories to the old services section
+// Run validation after all data and services are ready.
 
-window.BOLIYAPUR_DATA.services = [
+window.BOLIYAPUR_VALIDATION_RESULT = VALIDATE();
 
-  ...window.BOLIYAPUR_DATA.education,
-
-  ...window.BOLIYAPUR_DATA.health,
-
-  ...window.BOLIYAPUR_DATA.unionServices,
-
-  ...window.BOLIYAPUR_DATA.businesses
-
-];
-
+})();
