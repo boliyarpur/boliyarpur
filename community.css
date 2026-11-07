@@ -23,3 +23,5 @@
 .citizen-post-meta{font-size:.8rem;color:#718077;margin-bottom:8px}
 .citizen-empty{padding:24px;text-align:center;color:#68776e;background:#fff;border:1px dashed #dce6df;border-radius:12px}
 @media(max-width:760px){.citizen-grid{grid-template-columns:1fr}.citizen-panel{padding:17px}}
+
+.admin-nav-link{background:#0f5132;color:#fff!important;padding:8px 13px;border-radius:9px;font-weight:800}.citizen-kicker{display:inline-block;color:#198754;font-size:.76rem;font-weight:850;letter-spacing:.12em;margin-bottom:8px}.citizen-progress{height:9px;background:#e8eee9;border-radius:99px;overflow:hidden;margin-top:12px;display:none}.citizen-progress span{display:block;width:0;height:100%;background:#198754;transition:width .2s}.citizen-form input[type=file]{background:#f7faf8;border-style:dashed;padding:14px}
