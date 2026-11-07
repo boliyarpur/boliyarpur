@@ -3,7 +3,7 @@ service cloud.firestore {
   match /databases/{database}/documents {
     function isAdmin() {
       return request.auth != null
-        && request.auth.uid == "REPLACE_WITH_ADMIN_UID";
+        && request.auth.token.email == "mdtusher2345@gmail.com";
     }
 
     match /communityPosts/{postId} {
