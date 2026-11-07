@@ -61,7 +61,7 @@ if(!firebaseConfig.apiKey||firebaseConfig.apiKey.includes("PASTE_")||!firebaseCo
    if(!posts.length){$("pendingList").innerHTML="<p>এখন কোনো Pending পোস্ট নেই।</p>";return;}
    $("pendingList").innerHTML=posts.map(d=>{
     const p=d.data();
-    return '<article class="post"><h3>'+esc(p.title)+'</h3><p>'+esc(p.story)+'</p><p class="muted">জমাদানকারী: '+esc(p.authorName)+' · এলাকা: '+esc(p.area)+' · বিভাগ: '+esc(p.category)+'</p><button class="btn" data-approve="'+esc(d.id)+'">Approve / প্রকাশ</button><button class="btn danger" data-delete="'+esc(d.id)+'">Delete</button></article>';
+    return '<article class="post"><h3>'+esc(p.title)+'</h3><p>'+esc(p.story)+'</p><p class="muted">জমাদানকারী: '+esc(p.authorName)+' · এলাকা: '+esc(p.area)+' · বিভাগ: '+esc(p.category)+'</p><button class="btn" data-approve="'+esc(d.id)+'">Approve / প্রকাশ</button><button class="btn" data-edit="'"+esc(d.id)+"">Edit</button><button class="btn danger" data-delete="'+esc(d.id)+'">Delete</button></article>';
    }).join("");
   },err=>{
    $("pendingList").innerHTML='<p class="notice">পোস্ট লোড করা যাচ্ছে না: '+esc(err.message)+'<br>সম্ভবত Firestore Rules-এ এই Admin UID এখনো বসানো হয়নি।</p>';
