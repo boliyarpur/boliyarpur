@@ -6,31 +6,27 @@
 <script type="module">
 import {initializeApp} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
 import {getAuth,signInWithEmailAndPassword,onAuthStateChanged,signOut} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
-import {getFirestore,collection,query,where,orderBy,onSnapshot,updateDoc,deleteDoc,doc} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
+import {getFirestore,collection,query,where,onSnapshot,updateDoc,deleteDoc,doc} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
+import {getStorage,ref,getDownloadURL} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-storage.js";
 import {firebaseConfig} from "./firebase-config.js";
 const $=id=>document.getElementById(id);let stop=null;
-if(firebaseConfig.apiKey.includes("PASTE_"))$("loginStatus").textContent="প্রথমে firebase-config.js-এ Firebase Web App config বসান।";
-const app=initializeApp(firebaseConfig),auth=getAuth(app),db=getFirestore(app);
+const app=initializeApp(firebaseConfig),auth=getAuth(app),db=getFirestore(app),storage=getStorage(app);
 $("login").onclick=async()=>{try{await signInWithEmailAndPassword(auth,$("email").value,$("password").value);$("loginStatus").textContent="লগইন সফল";}catch(e){$("loginStatus").textContent="লগইন হয়নি: "+e.message;}};
 $("logout").onclick=()=>signOut(auth);
 onAuthStateChanged(auth,user=>{
  $("loginPanel").classList.toggle("hidden",!!user);$("dashboard").classList.toggle("hidden",!user);
- if(stop){stop();stop=null;}
- if(!user)return;
- $("adminStatus").textContent="লগইন UID: "+user.uid+" — Rules-এ এই UID-টি Admin UID হিসেবে সেট করুন।";
- const q=query(collection(db,"communityPosts"),where("status","==","pending"),orderBy("createdAt","desc"));
- stop=onSnapshot(q,snap=>{
-  $("pendingList").innerHTML=snap.empty?"<p>কোনো অপেক্ষমাণ পোস্ট নেই।</p>":snap.docs.map(d=>{
-   const p=d.data(),media=p.mediaUrl?(p.mediaType==="video"?'<video controls src="'+p.mediaUrl+'"></video>':'<img src="'+p.mediaUrl+'" alt="জমা দেওয়া ছবি">'):"";
+ if(stop){stop();stop=null;}if(!user)return;
+ $("adminStatus").textContent="লগইন UID: "+user.uid+" — Rules-এ Admin UID হিসেবে এই UID বসাতে হবে।";
+ const q=query(collection(db,"communityPosts"),where("status","==","pending"));
+ stop=onSnapshot(q,async snap=>{
+  const rows=await Promise.all(snap.docs.map(async d=>{
+   const p=d.data();let media="";
+   if(p.mediaPath){try{const url=await getDownloadURL(ref(storage,p.mediaPath));media=p.mediaType==="video"?'<video controls src="'+esc(url)+'"></video>':'<img src="'+esc(url)+'" alt="জমা দেওয়া ছবি">';}catch{media='<p class="muted">মিডিয়া পাওয়া যাচ্ছে না</p>';}}
    return '<article class="post"><h3>'+esc(p.title)+'</h3>'+media+'<p>'+esc(p.story)+'</p><p class="muted">নাম: '+esc(p.authorName)+' · এলাকা: '+esc(p.area)+' · বিভাগ: '+esc(p.category)+'</p><button class="btn" data-approve="'+d.id+'">Approve / প্রকাশ</button><button class="btn danger" data-delete="'+d.id+'">Delete</button></article>';
-  }).join("");
- });
+  }));
+  $("pendingList").innerHTML=rows.length?rows.join(""):"<p>কোনো অপেক্ষমাণ পোস্ট নেই।</p>";
+ },err=>{$("pendingList").textContent="পোস্ট পড়া যাচ্ছে না: "+err.message;});
 });
-$("pendingList").onclick=async e=>{
- const a=e.target.closest("[data-approve]"),d=e.target.closest("[data-delete]");
- try{if(a)await updateDoc(doc(db,"communityPosts",a.dataset.approve),{status:"approved",approvedAt:new Date()});
- if(d&&confirm("এই পোস্টটি স্থায়ীভাবে মুছে ফেলবেন?"))await deleteDoc(doc(db,"communityPosts",d.dataset.delete));}
- catch(err){alert("কাজটি করা যায়নি: "+err.message);}
-};
-function esc(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
+$("pendingList").onclick=async e=>{const a=e.target.closest("[data-approve]"),d=e.target.closest("[data-delete]");try{if(a)await updateDoc(doc(db,"communityPosts",a.dataset.approve),{status:"approved",approvedAt:new Date()});if(d&&confirm("এই পোস্টটি স্থায়ীভাবে মুছে ফেলবেন?"))await deleteDoc(doc(db,"communityPosts",d.dataset.delete));}catch(err){alert("কাজটি করা যায়নি: "+err.message);}};
+function esc(v){return String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
 </script></body></html>
