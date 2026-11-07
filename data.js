@@ -85,7 +85,7 @@ heroImage: "images/gallery/village-road.jpg.jpeg",
     {
       title: "বলিয়াপুরের দৃশ্য",
       category: "গ্রামের দৃশ্য",
-      image: "",
+      image: "images/gallery/village-road.jpg.jpeg",
       date: ""
     },
     {
