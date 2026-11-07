@@ -10,7 +10,7 @@ import {getFirestore,collection,query,where,onSnapshot,updateDoc,deleteDoc,doc} 
 import {getStorage,ref,getDownloadURL} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-storage.js";
 import {firebaseConfig} from "./firebase-config.js";
 const $=id=>document.getElementById(id);let stop=null;
-const app=initializeApp(firebaseConfig),auth=getAuth(app),db=getFirestore(app),storage=getStorage(app);
+const app=initializeApp(firebaseConfig),auth=getAuth(app),db=getFirestore(app);\nconst storageEnabled=!!firebaseConfig.storageBucket&&!firebaseConfig.storageBucket.includes("PASTE_");\nconst storage=storageEnabled?getStorage(app):null;
 $("login").onclick=async()=>{try{await signInWithEmailAndPassword(auth,$("email").value,$("password").value);$("loginStatus").textContent="লগইন সফল";}catch(e){$("loginStatus").textContent="লগইন হয়নি: "+e.message;}};
 $("logout").onclick=()=>signOut(auth);
 onAuthStateChanged(auth,user=>{
@@ -21,7 +21,7 @@ onAuthStateChanged(auth,user=>{
  stop=onSnapshot(q,async snap=>{
   const rows=await Promise.all(snap.docs.map(async d=>{
    const p=d.data();let media="";
-   if(p.mediaPath){try{const url=await getDownloadURL(ref(storage,p.mediaPath));media=p.mediaType==="video"?'<video controls src="'+esc(url)+'"></video>':'<img src="'+esc(url)+'" alt="জমা দেওয়া ছবি">';}catch{media='<p class="muted">মিডিয়া পাওয়া যাচ্ছে না</p>';}}
+   if(p.mediaPath&&storage){try{const url=await getDownloadURL(ref(storage,p.mediaPath));media=p.mediaType==="video"?'<video controls src="'+esc(url)+'"></video>':'<img src="'+esc(url)+'" alt="জমা দেওয়া ছবি">';}catch{media='<p class="muted">মিডিয়া পাওয়া যাচ্ছে না</p>';}}
    return '<article class="post"><h3>'+esc(p.title)+'</h3>'+media+'<p>'+esc(p.story)+'</p><p class="muted">নাম: '+esc(p.authorName)+' · এলাকা: '+esc(p.area)+' · বিভাগ: '+esc(p.category)+'</p><button class="btn" data-approve="'+d.id+'">Approve / প্রকাশ</button><button class="btn danger" data-delete="'+d.id+'">Delete</button></article>';
   }));
   $("pendingList").innerHTML=rows.length?rows.join(""):"<p>কোনো অপেক্ষমাণ পোস্ট নেই।</p>";
