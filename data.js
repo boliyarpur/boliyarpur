@@ -1,4 +1,4 @@
-
+```javascript
 /*
 ============================================================
        BOLIYAPUR COMMUNITY DIRECTORY
@@ -11,8 +11,8 @@ Boliyapur, Bongaon Union, Savar, Dhaka, Bangladesh
 Main file: data.js
 
 OFFICIAL COMMUNITY CONTACT:
-Phone: 01605150684
-WhatsApp: 8801605150684
+Phone: 01605150864
+WhatsApp: 8801605150864
 
 IMPORTANT:
 - Never invent institutional information.
@@ -29,8 +29,8 @@ IMPORTANT:
 // 01. WEBSITE SETTINGS
 // ==========================================================
 
-const CONTACT_PHONE = "01605150684";
-const CONTACT_WHATSAPP = "8801605150684";
+const CONTACT_PHONE = "01605150864";
+const CONTACT_WHATSAPP = "8801605150864";
 const CONTACT_EMAIL = "boliyarpursavar@gmail.com";
 
 const DATA = {
@@ -284,7 +284,6 @@ const DATA = {
 
   // ========================================================
   // 09. EDUCATION RESEARCH LEADS
-  // Not displayed as confirmed institutions
   // ========================================================
 
   educationResearch: [
@@ -743,9 +742,6 @@ const DATA = {
 // 21. BUILD COMBINED DIRECTORY
 // ==========================================================
 
-// All service categories are combined here.
-// This is created BEFORE validation to prevent errors.
-
 DATA.services = [
   ...DATA.education,
   ...DATA.health,
@@ -760,8 +756,6 @@ DATA.services = [
 
 const HELPERS = {
 
-  // Convert phone number to clickable telephone link
-
   getPhoneLink: function (phone) {
     if (!phone) return "";
 
@@ -770,15 +764,11 @@ const HELPERS = {
     return clean ? "tel:" + clean : "";
   },
 
-  // Convert email to mail link
-
   getEmailLink: function (email) {
     if (!email) return "";
 
     return "mailto:" + String(email).trim();
   },
-
-  // Generate WhatsApp link
 
   getWhatsAppLink: function (number) {
     if (!number) return "";
@@ -789,8 +779,6 @@ const HELPERS = {
       ? "https://wa.me/" + clean
       : "";
   },
-
-  // Google Maps link
 
   getMapLink: function (item) {
     if (!item) return "";
@@ -805,15 +793,11 @@ const HELPERS = {
     );
   },
 
-  // Get active education institutions
-
   getEducation: function () {
     return DATA.education.filter(
       item => item.status === "active"
     );
   },
-
-  // Get active services
 
   getActiveServices: function () {
     return DATA.services.filter(
@@ -821,23 +805,17 @@ const HELPERS = {
     );
   },
 
-  // Get active businesses
-
   getBusinesses: function () {
     return DATA.businesses.filter(
       item => item.status === "active"
     );
   },
 
-  // Get active health services
-
   getHealth: function () {
     return DATA.health.filter(
       item => item.status === "active"
     );
   },
-
-  // Search across the directory
 
   searchServices: function (keyword) {
 
@@ -876,8 +854,6 @@ const HELPERS = {
 
   },
 
-  // Search education institutions
-
   searchEducation: function (keyword) {
 
     const query = String(keyword || "").toLowerCase().trim();
@@ -902,8 +878,6 @@ const HELPERS = {
 
   },
 
-  // Find an institution by ID
-
   getById: function (id) {
 
     const all = [
@@ -916,8 +890,6 @@ const HELPERS = {
     return all.find(item => item.id === id) || null;
 
   },
-
-  // Get pending verification records
 
   getPendingVerification: function () {
 
@@ -936,23 +908,17 @@ const HELPERS = {
 
   },
 
-  // Get all published notices
-
   getActiveNotices: function () {
     return DATA.notices.filter(
       item => item.status === "active"
     );
   },
 
-  // Get published news
-
   getActiveNews: function () {
     return DATA.news.filter(
       item => item.status === "active"
     );
   },
-
-  // Directory statistics
 
   getStatistics: function () {
     return {
@@ -1102,3 +1068,4 @@ window.BOLIYAPUR_VALIDATE = VALIDATE;
 window.BOLIYAPUR_VALIDATION_RESULT = VALIDATE();
 
 })();
+```
