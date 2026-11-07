@@ -1,22 +1,55 @@
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
-    function isAdmin() { return request.auth != null && (request.auth.uid == "c364D7xHrZVEz8EnFWHu65Rjcd82" || request.auth.token.email == "mdtusher2345@gmail.com"); }
+    function isAdmin() {
+      return request.auth != null
+        && (request.auth.uid == "c364D7xHrZVEz8EnFWHu65Rjcd82"
+            || request.auth.token.email == "mdtusher2345@gmail.com");
+    }
+
     match /communityPosts/{postId} {
+      // Visitors can only read published posts; Admin can also read pending posts.
       allow read: if resource.data.status == "approved" || isAdmin();
+
+      // Every citizen submission starts as pending. Text-only posts are allowed;
+      // media fields are optional but must be complete when a file is attached.
       allow create: if request.auth != null
-        && request.resource.data.keys().hasOnly(["uid","authorName","area","category","title","story","mediaUrl","mediaType","mediaName","storagePath","status","createdAt"])
+        && request.resource.data.keys().hasOnly([
+          "uid", "authorName", "area", "category", "title", "story",
+          "mediaUrl", "mediaType", "mediaName", "storagePath", "status", "createdAt"
+        ])
+        && request.resource.data.keys().hasAll([
+          "uid", "authorName", "area", "category", "title", "story", "status", "createdAt"
+        ])
         && request.resource.data.uid == request.auth.uid
         && request.resource.data.status == "pending"
-        && request.resource.data.title is string && request.resource.data.title.size() >= 2 && request.resource.data.title.size() <= 120
-        && request.resource.data.story is string && request.resource.data.story.size() <= 2000
-        && request.resource.data.authorName is string && request.resource.data.authorName.size() > 0 && request.resource.data.authorName.size() <= 60
-        && request.resource.data.area is string && request.resource.data.area.size() <= 80
-        && request.resource.data.category is string && request.resource.data.category.size() <= 40
-        && request.resource.data.mediaUrl is string && request.resource.data.mediaType is string
-        && request.resource.data.mediaName is string && request.resource.data.storagePath is string
-        && request.resource.data.storagePath.matches('communityUploads/' + request.auth.uid + '/' + postId + '/.*')
-        && request.resource.data.createdAt == request.time;
+        && request.resource.data.title is string
+        && request.resource.data.title.size() >= 2
+        && request.resource.data.title.size() <= 120
+        && request.resource.data.story is string
+        && request.resource.data.story.size() >= 1
+        && request.resource.data.story.size() <= 2000
+        && request.resource.data.authorName is string
+        && request.resource.data.authorName.size() > 0
+        && request.resource.data.authorName.size() <= 60
+        && request.resource.data.area is string
+        && request.resource.data.area.size() <= 80
+        && request.resource.data.category is string
+        && request.resource.data.category.size() <= 40
+        && request.resource.data.createdAt == request.time
+        && (
+          !request.resource.data.keys().hasAny(["mediaUrl", "mediaType", "mediaName", "storagePath"])
+          || (
+            request.resource.data.keys().hasAll(["mediaUrl", "mediaType", "mediaName", "storagePath"])
+            && request.resource.data.mediaUrl is string
+            && request.resource.data.mediaType is string
+            && request.resource.data.mediaName is string
+            && request.resource.data.storagePath is string
+            && request.resource.data.storagePath.matches('communityUploads/' + request.auth.uid + '/' + postId + '/.*')
+          )
+        );
+
+      // Only Admin can edit, approve, or delete a submission.
       allow update, delete: if isAdmin();
     }
   }
