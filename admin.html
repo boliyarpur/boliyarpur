@@ -10,6 +10,9 @@ import {getFirestore,collection,query,where,onSnapshot,updateDoc,deleteDoc,doc} 
 import {getStorage,ref,getDownloadURL} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-storage.js";
 import {firebaseConfig} from "./firebase-config.js";
 const $=id=>document.getElementById(id);let stop=null;
+if(!firebaseConfig.apiKey||firebaseConfig.apiKey.includes("PASTE_")||!firebaseConfig.projectId||firebaseConfig.projectId.includes("PASTE_")){
+ $("loginStatus").textContent="Firebase Web App config এখনো বসানো হয়নি। আগে firebase-config.js সম্পূর্ণ করুন।";$("login").disabled=true;
+}else{
 const app=initializeApp(firebaseConfig),auth=getAuth(app),db=getFirestore(app);
 const storageEnabled=!!firebaseConfig.storageBucket&&!firebaseConfig.storageBucket.includes("PASTE_");
 const storage=storageEnabled?getStorage(app):null;
@@ -31,4 +34,5 @@ onAuthStateChanged(auth,user=>{
 });
 $("pendingList").onclick=async e=>{const a=e.target.closest("[data-approve]"),d=e.target.closest("[data-delete]");try{if(a)await updateDoc(doc(db,"communityPosts",a.dataset.approve),{status:"approved",approvedAt:new Date()});if(d&&confirm("এই পোস্টটি স্থায়ীভাবে মুছে ফেলবেন?"))await deleteDoc(doc(db,"communityPosts",d.dataset.delete));}catch(err){alert("কাজটি করা যায়নি: "+err.message);}};
 function esc(v){return String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
+}
 </script></body></html>
