@@ -7,33 +7,33 @@ service cloud.firestore {
     }
 
     match /communityPosts/{postId} {
+      // Public visitors can read approved posts. Only admin can read pending posts.
       allow read: if (resource.data.status == "approved") || isAdmin();
 
+      // Anonymous visitors can submit text posts only, always as pending.
       allow create: if request.auth != null
+        && request.resource.data.keys().hasOnly([
+          "uid", "authorName", "area", "category", "title", "story", "status", "createdAt"
+        ])
         && request.resource.data.uid == request.auth.uid
         && request.resource.data.status == "pending"
         && request.resource.data.title is string
         && request.resource.data.title.size() >= 3
         && request.resource.data.title.size() <= 120
         && request.resource.data.story is string
+        && request.resource.data.story.size() >= 1
         && request.resource.data.story.size() <= 3000
         && request.resource.data.authorName is string
         && request.resource.data.authorName.size() > 0
         && request.resource.data.authorName.size() <= 60
+        && request.resource.data.area is string
+        && request.resource.data.area.size() <= 80
         && request.resource.data.category is string
-        && request.resource.data.category.size() <= 40;
+        && request.resource.data.category.size() <= 40
+        && request.resource.data.createdAt == request.time;
 
-      // Submitter may attach a media path only to their own pending post.
-      allow update: if isAdmin() || (
-        request.auth != null
-        && resource.data.uid == request.auth.uid
-        && resource.data.status == "pending"
-        && request.resource.data.status == "pending"
-        && request.resource.data.diff(resource.data).affectedKeys()
-          .hasOnly(["mediaPath", "mediaType"])
-      );
-
-      allow delete: if isAdmin();
+      // Only the configured admin can approve, edit or delete.
+      allow update, delete: if isAdmin();
     }
   }
 }
