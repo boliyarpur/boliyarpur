@@ -1,58 +1,18 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
-import { getFirestore, collection, addDoc, query, where, onSnapshot, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
+import { getFirestore, collection, addDoc, query, where, onSnapshot, serverTimestamp, doc } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
 import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
+import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-storage.js";
 import { firebaseConfig } from "./firebase-config.js";
-
-const mount=document.createElement("section");
-mount.id="citizen-portal";mount.className="citizen-section";
-mount.innerHTML=`
- <div class="citizen-wrap">
-  <div class="citizen-head"><h2>নাগরিক পোর্টাল — আমাদের গল্প, আমাদের গর্ব</h2><p>আপনার এলাকার গল্প, স্মৃতি, ঐতিহ্য, ভালো উদ্যোগ ও মতামত লিখে জমা দিন। Admin অনুমোদনের পর সবার জন্য প্রকাশিত হবে।</p></div>
-  <div class="citizen-grid">
-   <div class="citizen-panel"><h3>আপনার পোস্ট জমা দিন</h3>
-    <form class="citizen-form" id="citizenForm">
-     <label for="citizenName">আপনার নাম *</label><input id="citizenName" maxlength="60" required placeholder="আপনার নাম">
-     <label for="citizenArea">এলাকা / গ্রাম</label><input id="citizenArea" maxlength="80" placeholder="যেমন: বলিয়াপুর">
-     <label for="citizenCategory">পোস্টের ধরন *</label><select id="citizenCategory" required><option value="">নির্বাচন করুন</option><option>এলাকার গল্প</option><option>আমাদের গর্ব / কৃতী ব্যক্তি</option><option>দর্শনীয় স্থান</option><option>ইতিহাস ও ঐতিহ্য</option><option>খাবার ও সংস্কৃতি</option><option>ভালো উদ্যোগ</option><option>নাগরিক মতামত</option><option>অন্যান্য</option></select>
-     <label for="citizenTitle">পোস্টের শিরোনাম *</label><input id="citizenTitle" maxlength="120" required placeholder="কী বিষয়ে পোস্ট করবেন?">
-     <label for="citizenStory">বিস্তারিত লিখুন *</label><textarea id="citizenStory" maxlength="3000" required placeholder="আপনার এলাকার গল্পটি লিখুন..."></textarea>
-     <p class="citizen-help">ফ্রি Firebase Spark সংস্করণে আপাতত লেখা ও তথ্য জমা দেওয়া যাবে; সরাসরি ছবি/ভিডিও আপলোড রাখা হয়নি।</p>
-     <button class="citizen-submit" id="citizenSubmit" type="submit">পোস্ট অনুমোদনের জন্য পাঠান</button><div class="citizen-status" id="citizenStatus" role="status"></div>
-    </form>
-   </div>
-   <div class="citizen-panel"><h3>অনুমোদিত নাগরিক পোস্ট</h3><div class="citizen-feed" id="citizenFeed"><div class="citizen-empty">পোস্ট লোড হচ্ছে...</div></div></div>
-  </div>
- </div>`;
-const contact=document.querySelector("#contact");
-if(contact)contact.parentNode.insertBefore(mount,contact);else document.body.appendChild(mount);
+const mount=document.createElement("section");mount.id="citizen-portal";mount.className="citizen-section";
+mount.innerHTML=`<div class="citizen-wrap"><div class="citizen-head"><span class="citizen-kicker">BOLIYAPUR COMMUNITY MEDIA</span><h2>ছবি ও ভিডিও আপলোড করুন</h2><p>বলিয়াপুর ও আশপাশের যেকোনো ছবি, ভিডিও, অনুষ্ঠান, স্থান, প্রতিষ্ঠান বা এলাকার স্মৃতি শেয়ার করুন। Admin অনুমোদনের পর প্রকাশিত হবে।</p></div><div class="citizen-grid"><div class="citizen-panel"><h3>আপনার ছবি / ভিডিও জমা দিন</h3><form class="citizen-form" id="citizenForm"><label for="citizenName">আপনার নাম *</label><input id="citizenName" maxlength="60" required placeholder="আপনার নাম"><label for="citizenArea">এলাকা / গ্রাম</label><input id="citizenArea" maxlength="80" placeholder="যেমন: বলিয়াপুর"><label for="citizenCategory">কী শেয়ার করছেন? *</label><select id="citizenCategory" required><option value="">নির্বাচন করুন</option><option>এলাকার ছবি</option><option>ভিডিও</option><option>অনুষ্ঠান</option><option>শিক্ষাপ্রতিষ্ঠান</option><option>প্রাকৃতিক দৃশ্য</option><option>মানুষ ও সংস্কৃতি</option><option>ভালো উদ্যোগ</option><option>অন্যান্য</option></select><label for="citizenTitle">শিরোনাম *</label><input id="citizenTitle" maxlength="120" required placeholder="ছবি বা ভিডিওর নাম"><label for="citizenStory">বর্ণনা (ঐচ্ছিক)</label><textarea id="citizenStory" maxlength="2000" placeholder="কোথায় বা কখন ধারণ করেছেন, সংক্ষেপে লিখুন..."></textarea><label for="citizenMedia">ছবি অথবা ভিডিও নির্বাচন করুন *</label><input id="citizenMedia" type="file" accept="image/jpeg,image/png,image/webp,image/gif,video/mp4,video/webm,video/quicktime" required><p class="citizen-help">ছবি সর্বোচ্চ ১৫ MB, ভিডিও সর্বোচ্চ ১০০ MB। JPG, PNG, WEBP, GIF, MP4, WEBM বা MOV ফাইল দিন।</p><div class="citizen-progress" id="citizenProgress"><span id="citizenProgressBar"></span></div><p class="citizen-help" id="citizenProgressText" aria-live="polite"></p><button class="citizen-submit" id="citizenSubmit" type="submit">আপলোড করে অনুমোদনের জন্য পাঠান</button><div class="citizen-status" id="citizenStatus" role="status"></div></form></div><div class="citizen-panel"><h3>অনুমোদিত ছবি ও ভিডিও</h3><p class="citizen-help">Admin অনুমোদন দিলেই এখানে স্বয়ংক্রিয়ভাবে দেখা যাবে।</p><div class="citizen-feed" id="citizenFeed"><div class="citizen-empty">মিডিয়া লোড হচ্ছে...</div></div></div></div></div>`;
+const contact=document.querySelector("#contact");if(contact)contact.parentNode.insertBefore(mount,contact);else document.body.appendChild(mount);
 const $=id=>document.getElementById(id),form=$("citizenForm"),submit=$("citizenSubmit"),feed=$("citizenFeed"),statusBox=$("citizenStatus");
 function status(msg,error=false){statusBox.textContent=msg;statusBox.style.display="block";statusBox.classList.toggle("error",error);}
-function esc(v){return String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
-function validConfig(){return firebaseConfig.apiKey&&!firebaseConfig.apiKey.includes("PASTE_")&&firebaseConfig.projectId&&!firebaseConfig.projectId.includes("PASTE_");}
-if(!validConfig()){status("Firebase সংযোগ বাকি। firebase-config.js-এ Firebase Web App-এর সঠিক config বসাতে হবে।",true);feed.innerHTML='<div class="citizen-empty">Firebase সংযুক্ত হলে অনুমোদিত পোস্ট এখানে দেখা যাবে।</div>';}
-else{
- try{
-  const app=initializeApp(firebaseConfig),db=getFirestore(app),auth=getAuth(app);
-  const session=signInAnonymously(auth);
-  const approved=query(collection(db,"communityPosts"),where("status","==","approved"));
-  onSnapshot(approved,snap=>{
-   const docs=snap.docs.sort((a,b)=>(b.data().createdAt?.seconds||0)-(a.data().createdAt?.seconds||0));
-   if(!docs.length){feed.innerHTML='<div class="citizen-empty">এখনো কোনো অনুমোদিত পোস্ট নেই। আপনিই প্রথম পোস্ট জমা দিতে পারেন!</div>';return;}
-   feed.innerHTML=docs.map(d=>{const p=d.data();return '<article class="citizen-post"><div class="citizen-post-body"><div class="citizen-post-meta">'+esc(p.category)+' · '+esc(p.area||"বলিয়াপুর")+' · '+esc(p.authorName)+' · প্রকাশ করেছেন: '+esc(p.approvedBy||'Boliyapur Admin')+'</div><h4>'+esc(p.title)+'</h4><p>'+esc(p.story)+'</p></div></article>';}).join("");
-  },err=>{feed.innerHTML='<div class="citizen-empty">পোস্ট লোড করা যায়নি। Firebase Rules ও Database পরীক্ষা করুন।</div>';});
-  form.addEventListener("submit",async e=>{
-   e.preventDefault();submit.disabled=true;submit.textContent="পাঠানো হচ্ছে...";
-   try{
-    await session;
-    if(!auth.currentUser)throw new Error("নাগরিক সেশন তৈরি হয়নি। আবার চেষ্টা করুন।");
-    await addDoc(collection(db,"communityPosts"),{
-     uid:auth.currentUser.uid,authorName:$("citizenName").value.trim(),area:$("citizenArea").value.trim()||"বলিয়াপুর",
-     category:$("citizenCategory").value,title:$("citizenTitle").value.trim(),story:$("citizenStory").value.trim(),
-     status:"pending",createdAt:serverTimestamp()
-    });
-    form.reset();status("ধন্যবাদ! আপনার পোস্ট Admin-এর অনুমোদনের অপেক্ষায় আছে। অনুমোদিত হলেই ওয়েবসাইটে দেখা যাবে।");
-   }catch(err){status("পোস্ট পাঠানো যায়নি: "+(err.message||"আবার চেষ্টা করুন।"),true);}
-   finally{submit.disabled=false;submit.textContent="পোস্ট অনুমোদনের জন্য পাঠান";}
-  });
- }catch(err){status("Firebase সংযোগে সমস্যা: "+err.message,true);}
-}
+function esc(v){return String(v??"").replace(/[&<>"\']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","\'":"&#39;"}[c]));}
+function mediaMarkup(p){const u=esc(p.mediaUrl||"");return (p.mediaType||"").startsWith("video/")?'<video controls playsinline preload="metadata" src="'+u+'"></video>':'<img loading="lazy" src="'+u+'" alt="'+esc(p.title)+'">';}
+if(!firebaseConfig.apiKey||!firebaseConfig.projectId){status("Firebase config অসম্পূর্ণ।",true);feed.innerHTML="<div class=\"citizen-empty\">Firebase সেটআপ প্রয়োজন।</div>";}else{try{
+const app=initializeApp(firebaseConfig),db=getFirestore(app),auth=getAuth(app),storage=getStorage(app),session=signInAnonymously(auth);
+onSnapshot(query(collection(db,"communityPosts"),where("status","==","approved")),snap=>{const docs=snap.docs.sort((a,b)=>(b.data().createdAt?.seconds||0)-(a.data().createdAt?.seconds||0));if(!docs.length){feed.innerHTML="<div class=\"citizen-empty\">এখনো কোনো অনুমোদিত ছবি বা ভিডিও নেই।</div>";return;}feed.innerHTML=docs.map(d=>{const p=d.data();return '<article class="citizen-post">'+(p.mediaUrl?mediaMarkup(p):"")+'<div class="citizen-post-body"><div class="citizen-post-meta">'+esc(p.category)+' · '+esc(p.area||"বলিয়াপুর")+' · '+esc(p.authorName)+' · প্রকাশ: '+esc(p.approvedBy||"Boliyapur Admin")+'</div><h4>'+esc(p.title)+'</h4><p>'+esc(p.story||"")+'</p></div></article>';}).join("");},()=>{feed.innerHTML="<div class=\"citizen-empty\">মিডিয়া লোড করা যায়নি। Firebase Rules পরীক্ষা করুন।</div>";});
+form.addEventListener("submit",async e=>{e.preventDefault();const file=$("citizenMedia").files[0];if(!file){status("একটি ছবি বা ভিডিও নির্বাচন করুন।",true);return;}const image=["image/jpeg","image/png","image/webp","image/gif"].includes(file.type),video=["video/mp4","video/webm","video/quicktime"].includes(file.type);if(!image&&!video){status("এই ফাইল ফরম্যাট সমর্থিত নয়।",true);return;}if(file.size>(image?15:100)*1024*1024){status(image?"ছবির সাইজ ১৫ MB-এর বেশি।":"ভিডিওর সাইজ ১০০ MB-এর বেশি।",true);return;}submit.disabled=true;submit.textContent="আপলোড হচ্ছে...";$("citizenProgress").style.display="block";
+try{await session;if(!auth.currentUser)throw new Error("নাগরিক সেশন তৈরি হয়নি।");const postRef=doc(collection(db,"communityPosts"));const safe=file.name.replace(/[^a-zA-Z0-9._-]/g,"_").slice(-90)||"media";const storagePath="communityUploads/"+auth.currentUser.uid+"/"+postRef.id+"/"+safe;const task=uploadBytesResumable(ref(storage,storagePath),file,{contentType:file.type});await new Promise((resolve,reject)=>task.on("state_changed",s=>{const n=Math.round(s.bytesTransferred/s.totalBytes*100);$("citizenProgressBar").style.width=n+"%";$("citizenProgressText").textContent="আপলোড হচ্ছে: "+n+"%";},reject,resolve));const mediaUrl=await getDownloadURL(task.snapshot.ref);await addDoc(collection(db,"communityPosts"),{uid:auth.currentUser.uid,authorName:$("citizenName").value.trim(),area:$("citizenArea").value.trim()||"বলিয়াপুর",category:$("citizenCategory").value,title:$("citizenTitle").value.trim(),story:$("citizenStory").value.trim(),mediaUrl,mediaType:file.type,mediaName:file.name,storagePath,status:"pending",createdAt:serverTimestamp()});form.reset();status("আপলোড সম্পন্ন! Admin অনুমোদন দিলেই ওয়েবসাইটে প্রকাশিত হবে।");$("citizenProgressText").textContent="আপলোড সম্পন্ন";}catch(err){status("আপলোড করা যায়নি: "+(err.message||"Firebase Storage সেটআপ পরীক্ষা করুন।"),true);}finally{submit.disabled=false;submit.textContent="আপলোড করে অনুমোদনের জন্য পাঠান";}});
+}catch(err){status("Firebase সংযোগে সমস্যা: "+err.message,true);}}
