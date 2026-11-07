@@ -54,8 +54,8 @@ window.BOLIYAPUR_DATA = {
 
   timezone: "Asia/Dhaka",
 
-  whatsapp: "8801605150684",
-  phone: "8801605150684",
+  whatsapp: "8801605150864",
+  phone: "8801605150864",
 
   email: "boliyarpursavar@gmail.com",
 
