@@ -33,7 +33,9 @@ function esc(v){return String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&l
 function validConfig(){return firebaseConfig.apiKey&&!firebaseConfig.apiKey.includes("PASTE_")&&firebaseConfig.projectId&&!firebaseConfig.projectId.includes("PASTE_");}
 if(!validConfig()){status("Firebase সংযোগ বাকি। firebase-config.js-এ Firebase Web App-এর সঠিক config বসাতে হবে।",true);feed.innerHTML='<div class="citizen-empty">Firebase সংযুক্ত হলে অনুমোদিত পোস্ট এখানে দেখা যাবে।</div>';}
 else{
- const app=initializeApp(firebaseConfig),db=getFirestore(app),auth=getAuth(app);\n const storageEnabled=!!firebaseConfig.storageBucket&&!firebaseConfig.storageBucket.includes("PASTE_");\n const storage=storageEnabled?getStorage(app):null;
+ const app=initializeApp(firebaseConfig),db=getFirestore(app),auth=getAuth(app);
+ const storageEnabled=!!firebaseConfig.storageBucket&&!firebaseConfig.storageBucket.includes("PASTE_");
+ const storage=storageEnabled?getStorage(app):null;
  const session=signInAnonymously(auth);
  const approved=query(collection(db,"communityPosts"),where("status","==","approved"));
  onSnapshot(approved,async snap=>{
@@ -52,7 +54,8 @@ else{
   try{
    await session; if(!auth.currentUser)throw new Error("নাগরিক সেশন তৈরি হয়নি। আবার চেষ্টা করুন।");
    const file=$("citizenMedia").files[0];
-   if(file&&!storage)throw new Error("ছবি/ভিডিও আপলোড চালু করতে Firebase Storage bucket ও Blaze billing প্রয়োজন। আপাতত ফাইল ছাড়া পোস্ট পাঠান।");\n   if(file&&file.size>100*1024*1024)throw new Error("ফাইল 100 MB-এর চেয়ে বড়।");
+   if(file&&!storage)throw new Error("ছবি/ভিডিও আপলোড চালু করতে Firebase Storage bucket ও Blaze billing প্রয়োজন। আপাতত ফাইল ছাড়া পোস্ট পাঠান।");
+   if(file&&file.size>100*1024*1024)throw new Error("ফাইল 100 MB-এর চেয়ে বড়।");
    if(file&&!file.type.startsWith("image/")&&!["video/mp4","video/webm","video/quicktime"].includes(file.type))throw new Error("শুধু ছবি, MP4, WebM বা MOV ভিডিও দেওয়া যাবে।");
    postRef=await addDoc(collection(db,"communityPosts"),{
     uid:auth.currentUser.uid,authorName:$("citizenName").value.trim(),area:$("citizenArea").value.trim()||"বলিয়াপুর",
