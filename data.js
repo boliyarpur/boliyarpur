@@ -13,7 +13,7 @@ window.BOLIYAPUR_DATA = {
   phone: "8801605150684",    // চাইলে কল করার নম্বর দিন, যেমন "8801605150684"
   email: "boliyarpursavar@gmail.com",    // চাইলে যোগাযোগের ইমেইল দিন
 
- heroImage: "images/gallery/village-road.jpg",
+heroImage: "images/gallery/village-road.jpg.jpeg",
 
   notices: [
     {
