@@ -10,7 +10,9 @@ import {getFirestore,collection,query,where,onSnapshot,updateDoc,deleteDoc,doc} 
 import {getStorage,ref,getDownloadURL} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-storage.js";
 import {firebaseConfig} from "./firebase-config.js";
 const $=id=>document.getElementById(id);let stop=null;
-const app=initializeApp(firebaseConfig),auth=getAuth(app),db=getFirestore(app);\nconst storageEnabled=!!firebaseConfig.storageBucket&&!firebaseConfig.storageBucket.includes("PASTE_");\nconst storage=storageEnabled?getStorage(app):null;
+const app=initializeApp(firebaseConfig),auth=getAuth(app),db=getFirestore(app);
+const storageEnabled=!!firebaseConfig.storageBucket&&!firebaseConfig.storageBucket.includes("PASTE_");
+const storage=storageEnabled?getStorage(app):null;
 $("login").onclick=async()=>{try{await signInWithEmailAndPassword(auth,$("email").value,$("password").value);$("loginStatus").textContent="লগইন সফল";}catch(e){$("loginStatus").textContent="লগইন হয়নি: "+e.message;}};
 $("logout").onclick=()=>signOut(auth);
 onAuthStateChanged(auth,user=>{
