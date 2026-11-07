@@ -1,11 +1,11 @@
-// Firebase Console > Project settings > General > Your apps > SDK setup and configuration
-// নিচের তিনটি placeholder-এর জায়গায় Firebase Console থেকে আসল মান বসাতে হবে।
+// Firebase Web App configuration for Boliyapur Community
+// Public client configuration; do not place passwords or service-account keys here.
 export const firebaseConfig = {
-  apiKey: "PASTE_REAL_API_KEY_HERE",
+  apiKey: "AIzaSyBl_c2_qPXsvciOtyyFiCNXDroZ8Nx3TBg",
   authDomain: "boliyapur-community.firebaseapp.com",
   projectId: "boliyapur-community",
   storageBucket: "boliyapur-community.firebasestorage.app",
-  messagingSenderId: "PASTE_REAL_MESSAGING_SENDER_ID_HERE",
-  appId: "PASTE_REAL_APP_ID_HERE",
-  measurementId: "G-YOUR_MEASUREMENT_ID"
+  messagingSenderId: "286333100401",
+  appId: "1:286333100401:web:c247e819f6ddd2807256d0",
+  measurementId: "G-41S1QD1FX3"
 };
