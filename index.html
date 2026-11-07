@@ -3,97 +3,226 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="বলিয়াপুর কমিউনিটি — এলাকার খবর, শিক্ষা, স্বাস্থ্য, স্থানীয় সেবা, ছবি ও মানুষের মতামত।">
-  <meta name="theme-color" content="#0d624f">
-  <title>বলিয়াপুর | আমাদের এলাকা, আমাদের বন্ধন</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <meta name="theme-color" content="#0f5132">
+  <meta name="description" content="বলিয়াপুর গ্রামের শিক্ষা প্রতিষ্ঠান, স্বাস্থ্যসেবা, স্থানীয় ব্যবসা, সংবাদ ও প্রয়োজনীয় তথ্যের কমিউনিটি ডিরেক্টরি।">
+  <title>বলিয়াপুর | Boliyapur Community</title>
+  <style>
+    :root{--green:#0f5132;--green2:#198754;--ink:#17251e;--muted:#64736b;--paper:#f5f8f6;--line:#e1e9e4;--white:#fff;--gold:#f4bd4f}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:system-ui,-apple-system,"Noto Sans Bengali","Segoe UI",sans-serif;color:var(--ink);background:var(--paper);line-height:1.65}
+    a{color:inherit;text-decoration:none}button,input{font:inherit}.container{width:min(1160px,92%);margin:auto}
+    header{position:sticky;top:0;z-index:20;background:#ffffffed;backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+    .nav{min-height:70px;display:flex;align-items:center;justify-content:space-between;gap:18px}.brand{display:flex;align-items:center;gap:11px;font-weight:800;color:var(--green);font-size:1.12rem}.brand-mark{width:42px;height:42px;border-radius:13px;background:var(--green);color:white;display:grid;place-items:center;font-size:1.35rem}
+    .navlinks{display:flex;gap:18px;align-items:center;flex-wrap:wrap;font-size:.92rem;color:#42534a}.navlinks a:hover{color:var(--green)}.menu-btn{display:none;border:1px solid var(--line);background:white;border-radius:10px;padding:8px 12px}
+    .hero{background:linear-gradient(115deg,#0b3926ed,#12623fe8),url("images/gallery/village-road.jpg.jpeg") center/cover;color:white;padding:78px 0 70px}
+    .hero-inner{max-width:760px}.eyebrow{color:#d6f5df;font-weight:700;letter-spacing:.04em}.hero h1{font-size:clamp(2.2rem,6vw,4.2rem);line-height:1.15;margin:12px 0}.hero p{font-size:1.1rem;color:#e4f2e9;max-width:650px}.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;border:0;border-radius:11px;padding:11px 18px;font-weight:750;cursor:pointer;background:var(--green2);color:white}.btn:hover{filter:brightness(.95)}.btn-light{background:white;color:var(--green)}.btn-outline{background:transparent;border:1px solid #ffffff8a;color:white}
+    .quick{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:-28px;position:relative}.quick-card{background:white;border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:0 8px 28px #173e2a0c}.quick-card strong{display:block;font-size:1.55rem;color:var(--green)}.quick-card span{font-size:.9rem;color:var(--muted)}
+    section{padding:62px 0}.section-head{display:flex;justify-content:space-between;align-items:end;gap:18px;margin-bottom:24px}.section-head h2{font-size:clamp(1.55rem,3vw,2.2rem);margin:0;color:var(--green)}.section-head p{margin:5px 0 0;color:var(--muted)}
+    .about-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:26px;align-items:center}.about-panel,.info-panel{background:white;border:1px solid var(--line);border-radius:18px;padding:26px}.about-panel p{color:#4d5e54}.info-panel{background:#eaf4ee}.info-panel h3{margin-top:0;color:var(--green)}
+    .searchbar{display:flex;gap:10px;margin:0 0 18px}.searchbar input{flex:1;min-width:0;border:1px solid var(--line);border-radius:12px;padding:13px 15px;background:white;outline-color:var(--green2)}
+    .filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px}.filter{border:1px solid var(--line);background:white;color:#43564b;border-radius:999px;padding:8px 14px;cursor:pointer}.filter.active{background:var(--green);border-color:var(--green);color:white}
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}.card{background:white;border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;min-width:0}.card-img{height:155px;background:linear-gradient(135deg,#dceee3,#f1f7f3);display:grid;place-items:center;color:var(--green);font-size:2.4rem;overflow:hidden}.card-img img{width:100%;height:100%;object-fit:cover}.card-body{padding:17px;display:flex;flex-direction:column;flex:1}.card h3{font-size:1.08rem;line-height:1.45;margin:0 0 7px}.card p{margin:0 0 10px;color:var(--muted);font-size:.92rem}.meta{font-size:.84rem;color:#68776e;margin:0 0 12px}.tag{display:inline-block;font-size:.76rem;background:#eaf4ee;color:var(--green);padding:4px 9px;border-radius:999px;margin-bottom:9px;align-self:flex-start}.status{font-size:.74rem;color:#6b5a20;background:#fff4d6;padding:3px 8px;border-radius:999px;margin-left:5px}.card-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:auto}.small-btn{font-size:.83rem;padding:7px 11px;border-radius:8px;background:#eaf4ee;color:var(--green);font-weight:700}.small-btn.disabled{opacity:.45;pointer-events:none}
+    .notice-list{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.notice{padding:18px;background:white;border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:13px}.notice h3{margin:0 0 5px;font-size:1.05rem}.notice p{margin:0;color:var(--muted)}
+    .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.gallery-item{height:190px;border-radius:15px;overflow:hidden;background:#e4eee7;position:relative}.gallery-item img{width:100%;height:100%;object-fit:cover}.gallery-item span{position:absolute;bottom:0;left:0;right:0;padding:28px 13px 12px;color:white;font-weight:700;background:linear-gradient(transparent,#0009)}
+    .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.contact-box{background:white;border:1px solid var(--line);border-radius:16px;padding:22px}.contact-box h3{margin-top:0;color:var(--green)}.contact-line{margin:8px 0;color:#506157}.empty{grid-column:1/-1;text-align:center;padding:35px;color:var(--muted);background:white;border:1px dashed var(--line);border-radius:14px}
+    footer{background:#102f21;color:#e6f1e9;padding:34px 0}.footer-inner{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}.footer-inner p{margin:5px 0;color:#c4d7ca;font-size:.9rem}
+    .disclaimer{font-size:.83rem;color:var(--muted);margin-top:18px}.hidden{display:none!important}
+    @media(max-width:850px){.navlinks{display:none;position:absolute;top:70px;left:0;right:0;background:white;padding:16px 4%;border-bottom:1px solid var(--line);flex-direction:column;align-items:flex-start}.navlinks.open{display:flex}.menu-btn{display:block}.quick{grid-template-columns:repeat(2,1fr)}.cards{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:600px){.hero{padding:60px 0}.about-grid,.contact-grid{grid-template-columns:1fr}.cards,.gallery{grid-template-columns:1fr}.notice-list{grid-template-columns:1fr}.gallery-item{height:220px}.section-head{align-items:flex-start;flex-direction:column}.quick-card{padding:14px}.searchbar{flex-direction:column}}
+  </style>
 </head>
 <body>
-  <div class="topline"><div class="wrap topline-inner"><span>একসাথে গড়ি সুন্দর বলিয়াপুর</span><span>COMMUNITY • CONNECTION • PROGRESS</span></div></div>
-  <header class="header">
-    <div class="wrap nav">
-      <a class="brand" href="#home"><span class="brand-logo">B</span><span><b id="brandName">বলিয়াপুর</b><small>আমাদের এলাকা, আমাদের বন্ধন</small></span></a>
-      <button class="menu-btn" id="menuBtn" aria-label="মেনু খুলুন" aria-expanded="false">☰</button>
-      <nav id="navLinks">
-        <a href="#home">হোম</a><a href="#updates">খবর</a><a href="#services">সেবা</a><a href="#schools">শিক্ষাপ্রতিষ্ঠান</a><a href="#gallery">গ্যালারি</a><a href="#complaint" class="nav-highlight">অভিযোগ / মতামত</a>
-      </nav>
+<header>
+  <div class="container nav">
+    <a class="brand" href="#home"><span class="brand-mark">ব</span><span>বলিয়াপুর কমিউনিটি</span></a>
+    <button class="menu-btn" id="menuBtn" aria-label="মেনু খুলুন">☰</button>
+    <nav class="navlinks" id="navLinks">
+      <a href="#home">হোম</a><a href="#about">আমাদের গ্রাম</a><a href="#directory">সকল সেবা</a><a href="#notices">নোটিশ</a><a href="#gallery">গ্যালারি</a><a href="#contact">যোগাযোগ</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="home">
+    <div class="container hero-inner">
+      <div class="eyebrow">৯ নং বনগাঁও ইউনিয়ন · সাভার · ঢাকা</div>
+      <h1>আমাদের গ্রাম,<br>আমাদের পরিচয়</h1>
+      <p>বলিয়াপুর গ্রামের শিক্ষা প্রতিষ্ঠান, স্বাস্থ্যসেবা, স্থানীয় ব্যবসা, প্রয়োজনীয় যোগাযোগ ও কমিউনিটি তথ্য—সব এক জায়গায়।</p>
+      <div class="hero-actions">
+        <a class="btn btn-light" href="#directory">সকল সেবা দেখতে এখানে ক্লিক করুন</a>
+        <a class="btn btn-outline" href="#contribute">তথ্য যোগ করুন</a>
+      </div>
     </div>
-  </header>
+  </section>
 
-  <main>
-    <section class="hero" id="home">
-      <div class="wrap hero-layout">
-        <div class="hero-copy">
-          <span class="eyebrow"><i></i> WELCOME TO BOLIYAPUR</span>
-          <h1>আমাদের বলিয়াপুর,<br><em>আমাদের ভালোবাসা।</em></h1>
-          <p>এলাকার খবর, স্কুলের অনুষ্ঠান, প্রয়োজনীয় সেবা, মানুষের গল্প ও অভিযোগ জানানোর সহজ জায়গা—সব এক ওয়েবসাইটে।</p>
-          <div class="hero-actions"><a class="btn btn-white" href="#updates">সর্বশেষ খবর <span>↗</span></a><a class="btn btn-glass" href="#services">সেবা খুঁজুন</a></div>
-          <div class="hero-note"><span>✦</span><div><b>সবার অংশগ্রহণে কমিউনিটি</b><small>তথ্য দিন, ছবি দিন, এলাকার পাশে থাকুন</small></div></div>
-        </div>
-        <div class="hero-card">
-          <div class="hero-photo" id="heroPhoto"><div class="photo-placeholder"><span>বলিয়াপুর</span><b>আমাদের প্রাণের এলাকা</b><small>আপনার এলাকার ছবি যোগ করুন data.js-এ</small></div></div>
-          <div class="hero-card-foot"><span>📍 বলিয়াপুর, সাভার, ঢাকা</span><span>♥ আমাদের কমিউনিটি</span></div>
+  <div class="container quick" aria-label="ডিরেক্টরি সারাংশ">
+    <div class="quick-card"><strong id="countEducation">০</strong><span>শিক্ষাপ্রতিষ্ঠান</span></div>
+    <div class="quick-card"><strong id="countHealth">০</strong><span>স্বাস্থ্যসেবা</span></div>
+    <div class="quick-card"><strong id="countUnion">০</strong><span>ইউনিয়ন সেবা</span></div>
+    <div class="quick-card"><strong id="countBusiness">০</strong><span>স্থানীয় ব্যবসা</span></div>
+  </div>
+
+  <section id="about">
+    <div class="container about-grid">
+      <div class="about-panel">
+        <div class="section-head"><div><h2>বলিয়াপুর সম্পর্কে</h2><p>আমাদের এলাকার তথ্যভিত্তিক কমিউনিটি প্ল্যাটফর্ম</p></div></div>
+        <p>বলিয়াপুর, ৯ নম্বর বনগাঁও ইউনিয়ন, সাভার, ঢাকা—এই গ্রামের মানুষের প্রয়োজনীয় তথ্য সহজে খুঁজে পাওয়ার জন্য এই ডিরেক্টরি তৈরি করা হয়েছে। স্থানীয় শিক্ষা প্রতিষ্ঠান, স্বাস্থ্যসেবা, ব্যবসা ও গুরুত্বপূর্ণ যোগাযোগের তথ্য এখানে সাজানো থাকবে।</p>
+        <p>তথ্য পরিবর্তন হতে পারে। কোনো প্রতিষ্ঠানে যাওয়ার আগে প্রকাশিত ফোন নম্বর বা যোগাযোগের মাধ্যমে তথ্য নিশ্চিত করে নিন।</p>
+      </div>
+      <aside class="info-panel">
+        <h3>এলাকার পরিচিতি</h3>
+        <p>📍 গ্রাম: বলিয়াপুর</p><p>🏛️ ইউনিয়ন: ৯ নং বনগাঁও</p><p>📌 উপজেলা: সাভার</p><p>🌐 জেলা: ঢাকা, বাংলাদেশ</p>
+        <a class="small-btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Boliyapur%2C+Bongaon%2C+Savar%2C+Dhaka">Google Maps-এ খুঁজুন ↗</a>
+      </aside>
+    </div>
+  </section>
+
+  <section id="directory">
+    <div class="container">
+      <div class="section-head"><div><h2>বলিয়াপুরের সকল সেবা ও প্রতিষ্ঠান</h2><p>নাম, ক্যাটাগরি বা ঠিকানা লিখে প্রয়োজনীয় তথ্য খুঁজুন</p></div></div>
+      <div class="searchbar"><input id="searchInput" type="search" placeholder="যেমন: স্কুল, মাদ্রাসা, ক্লিনিক, ইউনিয়ন পরিষদ..." aria-label="সেবা খুঁজুন"><button class="btn" id="clearSearch">মুছুন</button></div>
+      <div class="filters" id="filters">
+        <button class="filter active" data-filter="all">সব</button>
+        <button class="filter" data-filter="education">শিক্ষাপ্রতিষ্ঠান</button>
+        <button class="filter" data-filter="health">স্বাস্থ্যসেবা</button>
+        <button class="filter" data-filter="union">ইউনিয়ন সরকারি সেবা</button>
+        <button class="filter" data-filter="business">ব্যবসা প্রতিষ্ঠান</button>
+      </div>
+      <div class="cards" id="directoryCards"></div>
+      <p class="disclaimer">তথ্য যাচাইয়ের অবস্থা কার্ডে দেখানো হয়েছে। “পুনরায় যাচাই প্রয়োজন” লেখা থাকলে তথ্যকে চূড়ান্ত বা অফিসিয়াল ধরে নেবেন না।</p>
+    </div>
+  </section>
+
+  <section id="notices">
+    <div class="container">
+      <div class="section-head"><div><h2>নোটিশ ও ঘোষণা</h2><p>গুরুত্বপূর্ণ কমিউনিটি আপডেট</p></div></div>
+      <div class="notice-list" id="noticeList"></div>
+    </div>
+  </section>
+
+  <section id="gallery">
+    <div class="container">
+      <div class="section-head"><div><h2>ছবি গ্যালারি</h2><p>বলিয়াপুরের ছবি এখানে দেখা যাবে</p></div></div>
+      <div class="gallery" id="galleryGrid"></div>
+    </div>
+  </section>
+
+  <section id="contribute">
+    <div class="container">
+      <div class="section-head"><div><h2>বলিয়াপুরের তথ্য যোগ করুন</h2><p>নতুন প্রতিষ্ঠান বা ভুল তথ্য সংশোধনে সহযোগিতা করুন</p></div></div>
+      <div class="contact-box">
+        <p>আপনার জানা কোনো স্কুল, মাদ্রাসা, স্বাস্থ্যকেন্দ্র, দোকান বা গুরুত্বপূর্ণ সেবার তথ্য পাঠান। যাচাই করার পর ডিরেক্টরিতে যুক্ত করা হবে।</p>
+        <div class="hero-actions">
+          <a class="btn" id="contributeWhatsApp" target="_blank" rel="noopener">WhatsApp-এ তথ্য পাঠান</a>
+          <a class="btn" id="contributeEmail">ইমেইল করুন</a>
         </div>
       </div>
-      <div class="hero-wave"></div>
-    </section>
+    </div>
+  </section>
 
-    <section class="intro section">
-      <div class="wrap intro-grid"><div><span class="tag">ABOUT OUR COMMUNITY</span><h2>এলাকার খবর জানি,<br><span>এলাকার মানুষকে চিনি।</span></h2></div><div><p>এই ওয়েবসাইট বলিয়াপুরের মানুষের জন্য একটি স্থানীয় তথ্য ও যোগাযোগের প্ল্যাটফর্ম। এখানে স্কুল-কলেজের খবর, অনুষ্ঠান, স্থানীয় সেবা, জরুরি তথ্য, ছবি এবং গঠনমূলক অভিযোগ বা পরামর্শ তুলে ধরা যাবে।</p><p class="muted">প্রকাশের আগে তথ্যের সত্যতা যাচাই করুন। কারও ব্যক্তিগত তথ্য বা অনুমতি ছাড়া ছবি প্রকাশ করবেন না।</p></div></div>
-    </section>
-
-    <section class="section soft" id="updates"><div class="wrap">
-      <div class="section-head"><div><span class="tag">COMMUNITY UPDATES</span><h2>এলাকার <span>খবর ও নোটিশ</span></h2></div><p>গুরুত্বপূর্ণ তথ্য এক নজরে</p></div>
-      <div class="notice"><span class="notice-mark">!</span><div><b>কমিউনিটি নোটিশ</b><p>এলাকার যাচাই করা ঘোষণা, অনুষ্ঠান ও জনসচেতনতামূলক খবর এখানে প্রকাশ করুন।</p></div></div>
-      <div class="cards" id="newsGrid"></div>
-    </div></section>
-
-    <section class="section" id="services"><div class="wrap">
-      <div class="section-head"><div><span class="tag">LOCAL DIRECTORY</span><h2>স্থানীয় <span>তথ্য ও সেবা</span></h2></div><p>প্রয়োজনীয় প্রতিষ্ঠান ও যোগাযোগ খুঁজুন</p></div>
-      <div class="toolbar"><input id="serviceSearch" type="search" placeholder="প্রতিষ্ঠান, সেবা বা এলাকার নাম লিখুন..." aria-label="সেবা খুঁজুন"><select id="serviceFilter" aria-label="সেবার ধরন"><option value="সব">সব ধরনের সেবা</option><option>স্বাস্থ্যসেবা</option><option>শিক্ষাপ্রতিষ্ঠান</option><option>স্থানীয় ব্যবসা</option><option>জরুরি সেবা</option><option>অন্যান্য</option></select></div>
-      <div class="service-grid" id="serviceGrid"></div>
-      <p class="empty" id="serviceEmpty" hidden>কোনো তথ্য পাওয়া যায়নি। নতুন তথ্য জানাতে অভিযোগ / মতামত ফর্ম ব্যবহার করুন।</p>
-    </div></section>
-
-    <section class="section soft" id="schools"><div class="wrap">
-      <div class="section-head"><div><span class="tag">SCHOOL & EDUCATION</span><h2>শিক্ষা ও <span>স্কুলের আয়োজন</span></h2></div><p>শিক্ষাপ্রতিষ্ঠান ও শিক্ষার্থীদের খবর</p></div>
-      <div class="cards" id="schoolGrid"></div>
-    </div></section>
-
-    <section class="section" id="gallery"><div class="wrap">
-      <div class="section-head"><div><span class="tag">PHOTO STORIES</span><h2>আমাদের <span>ছবির গ্যালারি</span></h2></div><p>অনুষ্ঠান, প্রকৃতি ও মানুষের মুহূর্ত</p></div>
-      <div class="gallery-filters" id="galleryFilters"></div>
-      <div class="gallery-grid" id="galleryGrid"></div>
-      <p class="gallery-tip">ছবি যোগ করতে GitHub-এর <b>images/gallery</b> ফোল্ডারে ছবি আপলোড করুন, তারপর <b>data.js</b>-এর gallery তালিকায় ছবির নাম লিখুন।</p>
-    </div></section>
-
-    <section class="callout"><div class="wrap callout-inner"><div><span class="tag">YOUR VOICE MATTERS</span><h2>এলাকার কোনো সমস্যা,<br>অভিযোগ বা পরামর্শ আছে?</h2><p>আপনার কথা সরাসরি কমিউনিটি কর্তৃপক্ষের কাছে পাঠানোর জন্য ফর্ম ব্যবহার করুন।</p></div><a class="btn btn-white" href="#complaint">এখনই জানান <span>↗</span></a></div></section>
-
-    <section class="section complaint-section" id="complaint"><div class="wrap complaint-layout">
-      <div><span class="tag">CONTACT & FEEDBACK</span><h2>আপনার কথা <span>আমাদের জানান</span></h2><p>স্কুল, রাস্তা, পরিচ্ছন্নতা, পানি, বিদ্যুৎ, সামাজিক সমস্যা, ভুল তথ্য সংশোধন, নতুন সেবা বা যেকোনো গঠনমূলক পরামর্শ পাঠাতে পারেন।</p>
-        <div class="contact-points"><div><b>🔒 গোপনীয়তা</b><small>প্রয়োজন ছাড়া জাতীয় পরিচয়পত্র, ব্যাংক তথ্য বা ব্যক্তিগত গোপন তথ্য দেবেন না।</small></div><div><b>📌 সঠিক তথ্য</b><small>সমস্যার স্থান ও বিবরণ পরিষ্কারভাবে লিখুন। জরুরি বিপদে সংশ্লিষ্ট সরকারি জরুরি নম্বরে যোগাযোগ করুন।</small></div></div>
-        <div class="contact-direct" id="directContact"></div>
+  <section id="contact">
+    <div class="container">
+      <div class="section-head"><div><h2>যোগাযোগ</h2><p>ওয়েবসাইটের তথ্য সংশোধন ও কমিউনিটি যোগাযোগ</p></div></div>
+      <div class="contact-grid">
+        <div class="contact-box"><h3>Boliyapur Community</h3><p class="contact-line">📞 <a id="phoneLink"></a></p><p class="contact-line">✉️ <a id="emailLink"></a></p><p class="contact-line">📍 Boliyapur, Bongaon Union, Savar, Dhaka</p></div>
+        <div class="contact-box"><h3>জরুরি যোগাযোগ</h3><p class="contact-line">🚨 জাতীয় জরুরি সেবা: <a href="tel:999">999</a></p><p class="contact-line">🔥 ফায়ার সার্ভিস: <a href="tel:102">102</a></p><p class="contact-line">🏥 জাতীয় স্বাস্থ্য বাতায়ন: <a href="tel:16263">16263</a></p></div>
       </div>
-      <form class="complaint-form" id="complaintForm">
-        <h3>অভিযোগ / মতামত পাঠান</h3>
-        <label>আপনার নাম<input name="name" required maxlength="80" placeholder="নাম লিখুন"></label>
-        <label>আপনার ফোন নম্বর (ঐচ্ছিক)<input name="phone" inputmode="tel" maxlength="30" placeholder="01XXXXXXXXX"></label>
-        <label>বিষয়ের ধরন<select name="type" required><option value="">নির্বাচন করুন</option><option>স্কুল / শিক্ষা</option><option>রাস্তা / যোগাযোগ</option><option>পরিচ্ছন্নতা / বর্জ্য</option><option>পানি / বিদ্যুৎ</option><option>স্বাস্থ্য / পরিবেশ</option><option>সামাজিক সমস্যা</option><option>নতুন সেবা / তথ্য যোগ</option><option>প্রশংসা / পরামর্শ</option><option>অন্যান্য</option></select></label>
-        <label>সমস্যার স্থান<input name="location" maxlength="140" placeholder="যেমন: স্কুলের সামনে / বাজারের পাশে"></label>
-        <label>বিস্তারিত লিখুন<textarea name="message" required rows="5" maxlength="2000" placeholder="কী সমস্যা বা পরামর্শ, বিস্তারিত লিখুন..."></textarea></label>
-        <button class="btn btn-primary full" type="submit">WhatsApp-এ পাঠান <span>↗</span></button>
-        <p class="form-note" id="formNote">পাঠানোর আগে WhatsApp-এ বার্তাটি দেখে Send চাপুন। ওয়েবসাইট নিজে থেকে আপনার তথ্য সংরক্ষণ করে না।</p>
-      </form>
-    </div></section>
-  </main>
+    </div>
+  </section>
+</main>
 
-  <footer class="footer"><div class="wrap footer-main"><a class="brand footer-brand" href="#home"><span class="brand-logo">B</span><span><b>বলিয়াপুর</b><small>আমাদের এলাকা, আমাদের বন্ধন</small></span></a><p>সচেতন, সুন্দর ও সহযোগিতামূলক বলিয়াপুর গড়ার একটি কমিউনিটি উদ্যোগ।</p><div class="footer-links"><a href="#updates">খবর</a><a href="#services">সেবা</a><a href="#gallery">গ্যালারি</a><a href="#complaint">যোগাযোগ</a></div></div><div class="wrap footer-bottom"><span>© <span id="year"></span> Boliyapur Community</span><span>Made with care for our community</span></div></footer>
+<footer><div class="container footer-inner"><div><strong>Boliyapur Community Directory</strong><p>আমাদের গ্রাম, আমাদের পরিচয়</p></div><div><p>© 2026 Boliyapur Community. All Rights Reserved.</p><p>তথ্য সংশোধন বা নতুন তথ্য যোগ করতে যোগাযোগ করুন।</p></div></div></footer>
 
-  <div class="lightbox" id="lightbox" aria-hidden="true"><button class="lightbox-close" id="lightboxClose" aria-label="বন্ধ করুন">×</button><button class="lightbox-prev" id="lightboxPrev" aria-label="আগের ছবি">‹</button><img id="lightboxImage" alt=""><button class="lightbox-next" id="lightboxNext" aria-label="পরের ছবি">›</button><p id="lightboxCaption"></p></div>
-  <script src="data.js"></script>
-  <script src="app.js"></script>
+<script>
+/* =========================================================
+   BOLIYAPUR DATA
+   এখানে নিজের তথ্য ও ছবি যোগ/পরিবর্তন করতে পারবে।
+   ছবি রাখবে images/ ফোল্ডারের ভেতরে।
+========================================================= */
+const DATA = {
+  contact: { phone: "01605150684", whatsapp: "8801605150684", email: "boliyarpursavar@gmail.com" },
+  education: [
+    { name:"বলিয়ারপুর সরকারি প্রাথমিক বিদ্যালয়", english:"Baliarpur Government Primary School", category:"সরকারি প্রাথমিক বিদ্যালয়", description:"বলিয়াপুর এলাকার সরকারি প্রাথমিক বিদ্যালয়।", headTeacher:"কামরুন নেছা", phone:"01719107451", email:"boliarpurgovtps@gmail.com", address:"বলিয়ারপুর, বনগাঁও ইউনিয়ন, সাভার, ঢাকা", image:"images/schools/boliarpur-government-primary-school.jpg", map:"https://www.google.com/maps/search/?api=1&query=Baliarpur+Government+Primary+School+Savar+Dhaka", verification:"উৎসে তালিকাভুক্ত · যোগাযোগ পুনরায় যাচাই প্রয়োজন" },
+    { name:"জামি'আ ইসলামিয়া আরাবিয়া বলিয়ারপুর মাদ্রাসা", english:"Jamia Islamia Arabia Baliarpur Madrasa", category:"মাদ্রাসা", description:"বলিয়াপুর এলাকার ইসলামি শিক্ষা প্রতিষ্ঠান।", headTeacher:"মুফতী আব্দুর রাজ্জাক কাসেমী", phone:"01712019451", email:"", address:"বলিয়ারপুর, বনগাঁও ইউনিয়ন, সাভার, ঢাকা", image:"images/schools/jamia-boliarpur.jpg", map:"https://www.google.com/maps/search/?api=1&query=Jamia+Islamia+Arabia+Baliarpur+Savar", verification:"উৎসে তালিকাভুক্ত · যোগাযোগ পুনরায় যাচাই প্রয়োজন" }
+  ],
+  health: [
+    { name:"বলিয়ারপুর কমিউনিটি ক্লিনিক", category:"কমিউনিটি ক্লিনিক", description:"বলিয়াপুর এলাকার প্রাথমিক স্বাস্থ্যসেবা কেন্দ্র হিসেবে তথ্য দেওয়া হয়েছে; সঠিক অবস্থান ও কার্যক্রম পুনরায় যাচাই প্রয়োজন।", phone:"", email:"", address:"বলিয়ারপুর, বনগাঁও ইউনিয়ন, সাভার, ঢাকা", image:"", map:"https://www.google.com/maps/search/?api=1&query=Boliyapur+Community+Clinic+Savar", verification:"পুনরায় যাচাই প্রয়োজন" }
+  ],
+  union: [
+    { name:"৯ নম্বর বনগাঁও ইউনিয়ন পরিষদ", category:"সরকারি প্রতিষ্ঠান", description:"নাগরিক সনদ, জন্ম ও মৃত্যু নিবন্ধনসহ ইউনিয়ন পর্যায়ের নাগরিক সেবা।", phone:"", email:"bangaounup9@gmail.com", address:"নগরকোন্ডা, বনগাঁও ইউনিয়ন, সাভার, ঢাকা", image:"images/services/bongaon-union-parishad.jpg", map:"https://www.google.com/maps/search/?api=1&query=Bongaon+Union+Parishad+Savar", website:"https://bongaonup.dhaka.gov.bd/", verification:"পুনরায় যাচাই প্রয়োজন", serviceArea:"পুরো বনগাঁও ইউনিয়ন" },
+    { name:"বনগাঁও ইউনিয়ন তথ্য ও সেবা কেন্দ্র", category:"সরকারি ডিজিটাল সেবা", description:"ইউনিয়নের নাগরিকদের তথ্য ও ডিজিটাল সেবা গ্রহণের কেন্দ্র।", phone:"", email:"", address:"বনগাঁও ইউনিয়ন পরিষদ কার্যালয়, নগরকোন্ডা", image:"", map:"https://www.google.com/maps/search/?api=1&query=Bongaon+Union+Information+Service+Center+Savar", website:"https://bongaonup.dhaka.gov.bd/", verification:"পুনরায় যাচাই প্রয়োজন", serviceArea:"পুরো বনগাঁও ইউনিয়ন" },
+    { name:"বনগাঁও ইউনিয়ন ভূমি অফিস", category:"ভূমি সেবা", description:"ভূমি সংক্রান্ত সরকারি সেবা ও তথ্যের জন্য।", phone:"", email:"", address:"বনগাঁও ইউনিয়ন, সাভার, ঢাকা", image:"", map:"https://www.google.com/maps/search/?api=1&query=Bongaon+Union+Land+Office+Savar", website:"", verification:"পুনরায় যাচাই প্রয়োজন", serviceArea:"পুরো বনগাঁও ইউনিয়ন" },
+    { name:"বনগাঁও ইউনিয়ন সমাজসেবা অফিস", category:"সমাজসেবা", description:"সামাজিক নিরাপত্তা ও সমাজসেবা সংক্রান্ত সরকারি তথ্য ও সেবা।", phone:"", email:"", address:"বনগাঁও ইউনিয়ন, সাভার, ঢাকা", image:"", map:"https://www.google.com/maps/search/?api=1&query=Bongaon+Union+Social+Service+Office+Savar", website:"", verification:"পুনরায় যাচাই প্রয়োজন", serviceArea:"পুরো বনগাঁও ইউনিয়ন" },
+    { name:"বনগাঁও ইউনিয়ন স্বাস্থ্য ও পরিবার কল্যাণ কেন্দ্র", category:"স্বাস্থ্যসেবা", description:"ইউনিয়নের প্রাথমিক স্বাস্থ্য ও পরিবার পরিকল্পনা সেবা সম্পর্কে তথ্য।", phone:"", email:"", address:"বনগাঁও ইউনিয়ন, সাভার, ঢাকা", image:"", map:"https://www.google.com/maps/search/?api=1&query=Bongaon+Union+Health+Family+Welfare+Center", website:"https://bongaonup.dhaka.gov.bd/", verification:"পুনরায় যাচাই প্রয়োজন", serviceArea:"পুরো বনগাঁও ইউনিয়ন" }
+  ],
+  businesses: [],
+  notices: [
+    { title:"বলিয়াপুর কমিউনিটি নোটিশ", category:"সাধারণ ঘোষণা", text:"বলিয়াপুর গ্রামের নাগরিকদের জন্য গুরুত্বপূর্ণ ঘোষণা এখানে প্রকাশ করা হবে।" },
+    { title:"শিক্ষাপ্রতিষ্ঠানের ভর্তি বিজ্ঞপ্তি", category:"শিক্ষা", text:"স্থানীয় শিক্ষাপ্রতিষ্ঠানের যাচাইকৃত ভর্তি বিজ্ঞপ্তি এখানে প্রকাশ করা হবে।" }
+  ],
+  gallery: [
+    { title:"বলিয়াপুর গ্রামের রাস্তা", image:"images/gallery/village-road.jpg.jpeg" },
+    { title:"বলিয়ারপুর সরকারি প্রাথমিক বিদ্যালয়", image:"images/schools/boliarpur-government-primary-school.jpg" },
+    { title:"বলিয়ারপুর মাদ্রাসা", image:"images/schools/jamia-boliarpur.jpg" },
+    { title:"বনগাঁও ইউনিয়ন পরিষদ", image:"images/services/bongaon-union-parishad.jpg" },
+    { title:"বলিয়াপুর গ্রামের সামাজিক অনুষ্ঠান", image:"images/gallery/community-event.jpg" },
+    { title:"বলিয়াপুরের প্রাকৃতিক সৌন্দর্য", image:"images/gallery/village-nature.jpg" }
+  ]
+};
+
+const categoryLabels = { education:"শিক্ষাপ্রতিষ্ঠান", health:"স্বাস্থ্যসেবা", union:"ইউনিয়ন সরকারি সেবা", business:"ব্যবসা প্রতিষ্ঠান" };
+let currentFilter = "all";
+const allRecords = () => [
+  ...DATA.education.map(x=>({...x,kind:"education"})),
+  ...DATA.health.map(x=>({...x,kind:"health"})),
+  ...DATA.union.map(x=>({...x,kind:"union"})),
+  ...DATA.businesses.map(x=>({...x,kind:"business"}))
+];
+const esc = s => String(s ?? "").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+function renderDirectory(){
+  const q = document.getElementById("searchInput").value.trim().toLowerCase();
+  const records = allRecords().filter(x=>{
+    const categoryOK = currentFilter==="all" || x.kind===currentFilter;
+    const hay = [x.name,x.english,x.category,x.description,x.address,x.serviceArea].join(" ").toLowerCase();
+    return categoryOK && (!q || hay.includes(q));
+  });
+  const host=document.getElementById("directoryCards");
+  if(!records.length){host.innerHTML='<div class="empty">কোনো তথ্য পাওয়া যায়নি। অন্য নামে খুঁজে দেখুন।</div>';return;}
+  host.innerHTML=records.map(x=>{
+    const phone=x.phone ? `<a class="small-btn" href="tel:${esc(x.phone.replace(/[^0-9+]/g,''))}">কল করুন</a>` : "";
+    const email=x.email ? `<a class="small-btn" href="mailto:${esc(x.email)}">ইমেইল</a>` : "";
+    const map=x.map || (x.address ? "https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(x.address) : "");
+    const mapLink=map ? `<a class="small-btn" href="${esc(map)}" target="_blank" rel="noopener">ম্যাপ</a>` : "";
+    const website=x.website ? `<a class="small-btn" href="${esc(x.website)}" target="_blank" rel="noopener">ওয়েবসাইট</a>` : "";
+    const img=x.image ? `<img src="${esc(x.image)}" alt="${esc(x.name)}" onerror="this.parentElement.textContent='⌂'">` : "⌂";
+    return `<article class="card"><div class="card-img">${img}</div><div class="card-body"><span class="tag">${esc(categoryLabels[x.kind])}</span><h3>${esc(x.name)}</h3><p>${esc(x.description)}</p><div class="meta">${x.address?`📍 ${esc(x.address)}<br>`:""}${x.headTeacher?`প্রধান শিক্ষক: ${esc(x.headTeacher)}<br>`:""}${x.serviceArea?`সেবার এলাকা: ${esc(x.serviceArea)}<br>`:""}<span class="status">${esc(x.verification||"যাচাই প্রয়োজন")}</span></div><div class="card-actions">${phone}${email}${mapLink}${website}</div></div></article>`;
+  }).join("");
+}
+function renderNotices(){
+  document.getElementById("noticeList").innerHTML=DATA.notices.map(n=>`<article class="notice"><span class="tag">${esc(n.category)}</span><h3>${esc(n.title)}</h3><p>${esc(n.text)}</p></article>`).join("");
+}
+function renderGallery(){
+  document.getElementById("galleryGrid").innerHTML=DATA.gallery.map(g=>`<div class="gallery-item"><img src="${esc(g.image)}" alt="${esc(g.title)}" onerror="this.style.display='none'"><span>${esc(g.title)}</span></div>`).join("");
+}
+function setContact(){
+  const p=DATA.contact.phone, e=DATA.contact.email, w=DATA.contact.whatsapp;
+  const pl=document.getElementById("phoneLink");pl.href="tel:"+p.replace(/[^0-9+]/g,"");pl.textContent=p;
+  const el=document.getElementById("emailLink");el.href="mailto:"+e;el.textContent=e;
+  document.getElementById("contributeWhatsApp").href="https://wa.me/"+w+"?text="+encodeURIComponent("আসসালামু আলাইকুম, বলিয়াপুর ডিরেক্টরিতে একটি তথ্য যোগ/সংশোধন করতে চাই।");
+  document.getElementById("contributeEmail").href="mailto:"+e+"?subject="+encodeURIComponent("Boliyapur Directory - তথ্য যোগ/সংশোধন");
+}
+function updateCounts(){
+  document.getElementById("countEducation").textContent=DATA.education.length;
+  document.getElementById("countHealth").textContent=DATA.health.length;
+  document.getElementById("countUnion").textContent=DATA.union.length;
+  document.getElementById("countBusiness").textContent=DATA.businesses.length;
+}
+document.getElementById("searchInput").addEventListener("input",renderDirectory);
+document.getElementById("clearSearch").addEventListener("click",()=>{document.getElementById("searchInput").value="";currentFilter="all";document.querySelectorAll(".filter").forEach(b=>b.classList.toggle("active",b.dataset.filter==="all"));renderDirectory();});
+document.getElementById("filters").addEventListener("click",e=>{const b=e.target.closest("[data-filter]");if(!b)return;currentFilter=b.dataset.filter;document.querySelectorAll(".filter").forEach(x=>x.classList.toggle("active",x===b));renderDirectory();});
+document.getElementById("menuBtn").addEventListener("click",()=>document.getElementById("navLinks").classList.toggle("open"));
+document.querySelectorAll("#navLinks a").forEach(a=>a.addEventListener("click",()=>document.getElementById("navLinks").classList.remove("open")));
+renderDirectory();renderNotices();renderGallery();setContact();updateCounts();
+</script>
 </body>
 </html>
