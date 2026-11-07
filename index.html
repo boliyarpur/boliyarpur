@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="bn">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="বলিয়াপুর কমিউনিটি — এলাকার খবর, শিক্ষা, স্বাস্থ্য, স্থানীয় সেবা, ছবি ও মানুষের মতামত।">
+  <meta name="theme-color" content="#0d624f">
+  <title>বলিয়াপুর | আমাদের এলাকা, আমাদের বন্ধন</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="topline"><div class="wrap topline-inner"><span>একসাথে গড়ি সুন্দর বলিয়াপুর</span><span>COMMUNITY • CONNECTION • PROGRESS</span></div></div>
+  <header class="header">
+    <div class="wrap nav">
+      <a class="brand" href="#home"><span class="brand-logo">B</span><span><b id="brandName">বলিয়াপুর</b><small>আমাদের এলাকা, আমাদের বন্ধন</small></span></a>
+      <button class="menu-btn" id="menuBtn" aria-label="মেনু খুলুন" aria-expanded="false">☰</button>
+      <nav id="navLinks">
+        <a href="#home">হোম</a><a href="#updates">খবর</a><a href="#services">সেবা</a><a href="#schools">শিক্ষাপ্রতিষ্ঠান</a><a href="#gallery">গ্যালারি</a><a href="#complaint" class="nav-highlight">অভিযোগ / মতামত</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="wrap hero-layout">
+        <div class="hero-copy">
+          <span class="eyebrow"><i></i> WELCOME TO BOLIYAPUR</span>
+          <h1>আমাদের বলিয়াপুর,<br><em>আমাদের ভালোবাসা।</em></h1>
+          <p>এলাকার খবর, স্কুলের অনুষ্ঠান, প্রয়োজনীয় সেবা, মানুষের গল্প ও অভিযোগ জানানোর সহজ জায়গা—সব এক ওয়েবসাইটে।</p>
+          <div class="hero-actions"><a class="btn btn-white" href="#updates">সর্বশেষ খবর <span>↗</span></a><a class="btn btn-glass" href="#services">সেবা খুঁজুন</a></div>
+          <div class="hero-note"><span>✦</span><div><b>সবার অংশগ্রহণে কমিউনিটি</b><small>তথ্য দিন, ছবি দিন, এলাকার পাশে থাকুন</small></div></div>
+        </div>
+        <div class="hero-card">
+          <div class="hero-photo" id="heroPhoto"><div class="photo-placeholder"><span>বলিয়াপুর</span><b>আমাদের প্রাণের এলাকা</b><small>আপনার এলাকার ছবি যোগ করুন data.js-এ</small></div></div>
+          <div class="hero-card-foot"><span>📍 বলিয়াপুর, সাভার, ঢাকা</span><span>♥ আমাদের কমিউনিটি</span></div>
+        </div>
+      </div>
+      <div class="hero-wave"></div>
+    </section>
+
+    <section class="intro section">
+      <div class="wrap intro-grid"><div><span class="tag">ABOUT OUR COMMUNITY</span><h2>এলাকার খবর জানি,<br><span>এলাকার মানুষকে চিনি।</span></h2></div><div><p>এই ওয়েবসাইট বলিয়াপুরের মানুষের জন্য একটি স্থানীয় তথ্য ও যোগাযোগের প্ল্যাটফর্ম। এখানে স্কুল-কলেজের খবর, অনুষ্ঠান, স্থানীয় সেবা, জরুরি তথ্য, ছবি এবং গঠনমূলক অভিযোগ বা পরামর্শ তুলে ধরা যাবে।</p><p class="muted">প্রকাশের আগে তথ্যের সত্যতা যাচাই করুন। কারও ব্যক্তিগত তথ্য বা অনুমতি ছাড়া ছবি প্রকাশ করবেন না।</p></div></div>
+    </section>
+
+    <section class="section soft" id="updates"><div class="wrap">
+      <div class="section-head"><div><span class="tag">COMMUNITY UPDATES</span><h2>এলাকার <span>খবর ও নোটিশ</span></h2></div><p>গুরুত্বপূর্ণ তথ্য এক নজরে</p></div>
+      <div class="notice"><span class="notice-mark">!</span><div><b>কমিউনিটি নোটিশ</b><p>এলাকার যাচাই করা ঘোষণা, অনুষ্ঠান ও জনসচেতনতামূলক খবর এখানে প্রকাশ করুন।</p></div></div>
+      <div class="cards" id="newsGrid"></div>
+    </div></section>
+
+    <section class="section" id="services"><div class="wrap">
+      <div class="section-head"><div><span class="tag">LOCAL DIRECTORY</span><h2>স্থানীয় <span>তথ্য ও সেবা</span></h2></div><p>প্রয়োজনীয় প্রতিষ্ঠান ও যোগাযোগ খুঁজুন</p></div>
+      <div class="toolbar"><input id="serviceSearch" type="search" placeholder="প্রতিষ্ঠান, সেবা বা এলাকার নাম লিখুন..." aria-label="সেবা খুঁজুন"><select id="serviceFilter" aria-label="সেবার ধরন"><option value="সব">সব ধরনের সেবা</option><option>স্বাস্থ্যসেবা</option><option>শিক্ষাপ্রতিষ্ঠান</option><option>স্থানীয় ব্যবসা</option><option>জরুরি সেবা</option><option>অন্যান্য</option></select></div>
+      <div class="service-grid" id="serviceGrid"></div>
+      <p class="empty" id="serviceEmpty" hidden>কোনো তথ্য পাওয়া যায়নি। নতুন তথ্য জানাতে অভিযোগ / মতামত ফর্ম ব্যবহার করুন।</p>
+    </div></section>
+
+    <section class="section soft" id="schools"><div class="wrap">
+      <div class="section-head"><div><span class="tag">SCHOOL & EDUCATION</span><h2>শিক্ষা ও <span>স্কুলের আয়োজন</span></h2></div><p>শিক্ষাপ্রতিষ্ঠান ও শিক্ষার্থীদের খবর</p></div>
+      <div class="cards" id="schoolGrid"></div>
+    </div></section>
+
+    <section class="section" id="gallery"><div class="wrap">
+      <div class="section-head"><div><span class="tag">PHOTO STORIES</span><h2>আমাদের <span>ছবির গ্যালারি</span></h2></div><p>অনুষ্ঠান, প্রকৃতি ও মানুষের মুহূর্ত</p></div>
+      <div class="gallery-filters" id="galleryFilters"></div>
+      <div class="gallery-grid" id="galleryGrid"></div>
+      <p class="gallery-tip">ছবি যোগ করতে GitHub-এর <b>images/gallery</b> ফোল্ডারে ছবি আপলোড করুন, তারপর <b>data.js</b>-এর gallery তালিকায় ছবির নাম লিখুন।</p>
+    </div></section>
+
+    <section class="callout"><div class="wrap callout-inner"><div><span class="tag">YOUR VOICE MATTERS</span><h2>এলাকার কোনো সমস্যা,<br>অভিযোগ বা পরামর্শ আছে?</h2><p>আপনার কথা সরাসরি কমিউনিটি কর্তৃপক্ষের কাছে পাঠানোর জন্য ফর্ম ব্যবহার করুন।</p></div><a class="btn btn-white" href="#complaint">এখনই জানান <span>↗</span></a></div></section>
+
+    <section class="section complaint-section" id="complaint"><div class="wrap complaint-layout">
+      <div><span class="tag">CONTACT & FEEDBACK</span><h2>আপনার কথা <span>আমাদের জানান</span></h2><p>স্কুল, রাস্তা, পরিচ্ছন্নতা, পানি, বিদ্যুৎ, সামাজিক সমস্যা, ভুল তথ্য সংশোধন, নতুন সেবা বা যেকোনো গঠনমূলক পরামর্শ পাঠাতে পারেন।</p>
+        <div class="contact-points"><div><b>🔒 গোপনীয়তা</b><small>প্রয়োজন ছাড়া জাতীয় পরিচয়পত্র, ব্যাংক তথ্য বা ব্যক্তিগত গোপন তথ্য দেবেন না।</small></div><div><b>📌 সঠিক তথ্য</b><small>সমস্যার স্থান ও বিবরণ পরিষ্কারভাবে লিখুন। জরুরি বিপদে সংশ্লিষ্ট সরকারি জরুরি নম্বরে যোগাযোগ করুন।</small></div></div>
+        <div class="contact-direct" id="directContact"></div>
+      </div>
+      <form class="complaint-form" id="complaintForm">
+        <h3>অভিযোগ / মতামত পাঠান</h3>
+        <label>আপনার নাম<input name="name" required maxlength="80" placeholder="নাম লিখুন"></label>
+        <label>আপনার ফোন নম্বর (ঐচ্ছিক)<input name="phone" inputmode="tel" maxlength="30" placeholder="01XXXXXXXXX"></label>
+        <label>বিষয়ের ধরন<select name="type" required><option value="">নির্বাচন করুন</option><option>স্কুল / শিক্ষা</option><option>রাস্তা / যোগাযোগ</option><option>পরিচ্ছন্নতা / বর্জ্য</option><option>পানি / বিদ্যুৎ</option><option>স্বাস্থ্য / পরিবেশ</option><option>সামাজিক সমস্যা</option><option>নতুন সেবা / তথ্য যোগ</option><option>প্রশংসা / পরামর্শ</option><option>অন্যান্য</option></select></label>
+        <label>সমস্যার স্থান<input name="location" maxlength="140" placeholder="যেমন: স্কুলের সামনে / বাজারের পাশে"></label>
+        <label>বিস্তারিত লিখুন<textarea name="message" required rows="5" maxlength="2000" placeholder="কী সমস্যা বা পরামর্শ, বিস্তারিত লিখুন..."></textarea></label>
+        <button class="btn btn-primary full" type="submit">WhatsApp-এ পাঠান <span>↗</span></button>
+        <p class="form-note" id="formNote">পাঠানোর আগে WhatsApp-এ বার্তাটি দেখে Send চাপুন। ওয়েবসাইট নিজে থেকে আপনার তথ্য সংরক্ষণ করে না।</p>
+      </form>
+    </div></section>
+  </main>
+
+  <footer class="footer"><div class="wrap footer-main"><a class="brand footer-brand" href="#home"><span class="brand-logo">B</span><span><b>বলিয়াপুর</b><small>আমাদের এলাকা, আমাদের বন্ধন</small></span></a><p>সচেতন, সুন্দর ও সহযোগিতামূলক বলিয়াপুর গড়ার একটি কমিউনিটি উদ্যোগ।</p><div class="footer-links"><a href="#updates">খবর</a><a href="#services">সেবা</a><a href="#gallery">গ্যালারি</a><a href="#complaint">যোগাযোগ</a></div></div><div class="wrap footer-bottom"><span>© <span id="year"></span> Boliyapur Community</span><span>Made with care for our community</span></div></footer>
+
+  <div class="lightbox" id="lightbox" aria-hidden="true"><button class="lightbox-close" id="lightboxClose" aria-label="বন্ধ করুন">×</button><button class="lightbox-prev" id="lightboxPrev" aria-label="আগের ছবি">‹</button><img id="lightboxImage" alt=""><button class="lightbox-next" id="lightboxNext" aria-label="পরের ছবি">›</button><p id="lightboxCaption"></p></div>
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
