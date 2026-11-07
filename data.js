@@ -9,8 +9,8 @@
 */
 window.BOLIYAPUR_DATA = {
   siteName: "বলিয়াপুর",
-  whatsapp: "", // এখানে আপনার WhatsApp নম্বর লিখুন, যেমন "8801XXXXXXXXX"
-  phone: "",    // চাইলে কল করার নম্বর দিন, যেমন "8801XXXXXXXXX"
+  whatsapp: "", // এখানে আপনার WhatsApp নম্বর লিখুন, যেমন "8801720001911"
+  phone: "",    // চাইলে কল করার নম্বর দিন, যেমন "8801720001911"
   email: "",    // চাইলে যোগাযোগের ইমেইল দিন
 
   heroImage: "", // যেমন "images/gallery/boliyapur-view.jpg"
