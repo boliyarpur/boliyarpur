@@ -26,7 +26,7 @@
     .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.gallery-item{height:190px;border-radius:15px;overflow:hidden;background:#e4eee7;position:relative}.gallery-item img{width:100%;height:100%;object-fit:cover}.gallery-item span{position:absolute;bottom:0;left:0;right:0;padding:28px 13px 12px;color:white;font-weight:700;background:linear-gradient(transparent,#0009)}
     .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.contact-box{background:white;border:1px solid var(--line);border-radius:16px;padding:22px}.contact-box h3{margin-top:0;color:var(--green)}.contact-line{margin:8px 0;color:#506157}.empty{grid-column:1/-1;text-align:center;padding:35px;color:var(--muted);background:white;border:1px dashed var(--line);border-radius:14px}
     footer{background:#102f21;color:#e6f1e9;padding:34px 0}.footer-inner{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}.footer-inner p{margin:5px 0;color:#c4d7ca;font-size:.9rem}
-    .disclaimer{font-size:.83rem;color:var(--muted);margin-top:18px}.hidden{display:none!important}
+    .nature-section{background:linear-gradient(145deg,#eaf4ee,#f7faf8);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.nature-intro{max-width:940px;margin:auto;text-align:center}.nature-kicker{display:inline-block;color:var(--green2);font-weight:800;letter-spacing:.08em;font-size:.85rem}.nature-intro h2{font-size:clamp(1.8rem,4vw,2.7rem);line-height:1.25;color:var(--green);margin:10px 0 14px}.nature-lead{max-width:760px;margin:0 auto;color:#52675b;font-size:1.08rem}.nature-highlights{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:30px 0 22px;text-align:left}.nature-highlights article{background:#fff;border:1px solid #dce9e0;border-radius:17px;padding:22px;box-shadow:0 8px 24px #173e2a0a}.nature-highlights article>span{font-size:1.8rem}.nature-highlights h3{color:var(--green);margin:8px 0 5px}.nature-highlights p{margin:0;color:var(--muted);font-size:.93rem}.nature-note{background:#fff;border-left:4px solid var(--green2);border-radius:10px;padding:15px 18px;text-align:left;color:#58685e;font-size:.9rem}.nature-link{margin-top:8px}@media(max-width:600px){.nature-highlights{grid-template-columns:1fr}.nature-highlights article{padding:18px}}\n    .disclaimer{font-size:.83rem;color:var(--muted);margin-top:18px}.hidden{display:none!important}
     @media(max-width:850px){.navlinks{display:none;position:absolute;top:70px;left:0;right:0;background:white;padding:16px 4%;border-bottom:1px solid var(--line);flex-direction:column;align-items:flex-start}.navlinks.open{display:flex}.menu-btn{display:block}.quick{grid-template-columns:repeat(2,1fr)}.cards{grid-template-columns:repeat(2,1fr)}}
     @media(max-width:600px){.hero{padding:60px 0}.about-grid,.contact-grid{grid-template-columns:1fr}.cards,.gallery{grid-template-columns:1fr}.notice-list{grid-template-columns:1fr}.gallery-item{height:220px}.section-head{align-items:flex-start;flex-direction:column}.quick-card{padding:14px}.searchbar{flex-direction:column}}
   </style>
@@ -104,6 +104,23 @@
     <div class="container">
       <div class="section-head"><div><h2>ছবি গ্যালারি</h2><p>বলিয়াপুরের ছবি এখানে দেখা যাবে</p></div></div>
       <div class="gallery" id="galleryGrid"></div>
+    </div>
+  </section>
+
+  <section id="nature" class="nature-section">
+    <div class="container">
+      <div class="nature-intro">
+        <span class="nature-kicker">সবুজের ছোঁয়ায়, মাটির টানে</span>
+        <h2>প্রকৃতির কোলে আমাদের বলিয়াপুর</h2>
+        <p class="nature-lead">নদীর জল, সবুজের বিস্তার, গ্রামের শান্ত পথ আর খোলা আকাশ—এলাকার চেনা দৃশ্যগুলোতেই মিশে আছে আমাদের শেকড়, স্মৃতি আর ভালোবাসা।</p>
+        <div class="nature-highlights">
+          <article><span>🌿</span><h3>সবুজের প্রশান্তি</h3><p>গ্রামবাংলার পরিচিত সবুজ পরিবেশ আর খোলা প্রান্তর মনকে এনে দেয় স্বস্তি।</p></article>
+          <article><span>🌊</span><h3>নদী ও জলপথ</h3><p>সাভার ও আশপাশের নদী-খাল এলাকার প্রকৃতি ও জনজীবনের সঙ্গে জড়িয়ে আছে।</p></article>
+          <article><span>🌅</span><h3>চেনা পথ, চেনা মানুষ</h3><p>গ্রামের পথঘাট, সেতু আর মানুষের দৈনন্দিন জীবনই আমাদের এলাকার নিজস্ব পরিচয়।</p></article>
+        </div>
+        <p class="nature-note">কোন্ডা–বেরাইদ ব্রিজসহ আশপাশের দর্শনীয় জায়গাগুলোর ছবি ও তথ্য স্থানীয়ভাবে যাচাই করে ধাপে ধাপে এই ওয়েবসাইটে যুক্ত করা হবে। সাভার এলাকার অন্য স্থানের ছবিকে বলিয়াপুরের নির্দিষ্ট ছবি হিসেবে দেখানো হচ্ছে না।</p>
+        <a class="btn nature-link" href="#gallery">ছবি গ্যালারি দেখুন</a>
+      </div>
     </div>
   </section>
 
