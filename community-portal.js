@@ -38,7 +38,7 @@ mount.innerHTML = `
         <p class="citizen-help">শুধু লেখা জমা দেওয়া যাবে। ছবি সর্বোচ্চ ১৫ MB, ভিডিও সর্বোচ্চ ১০০ MB। JPG, PNG, WEBP, GIF, MP4, WEBM বা MOV।</p>
         <div class="citizen-progress" id="citizenProgress"><span id="citizenProgressBar"></span></div>
         <p class="citizen-help" id="citizenProgressText" aria-live="polite"></p>
-        <button class="citizen-submit" id="citizenSubmit" type="submit">অনুমোদনের জন্য জমা দিন</button>
+        <button class="citizen-submit" id="citizenSubmit" type="submit"><span>অনুমোদনের জন্য জমা দিন</span><small>WhatsApp: 01605150864</small></button><p class="citizen-help citizen-whatsapp-note">পোস্ট জমা সফল হলে আপনার WhatsApp-এ পোস্টের তথ্য পাঠানোর বার্তা খুলবে।</p>
         <div class="citizen-status" id="citizenStatus" role="status"></div>
       </form>
     </div>
@@ -58,6 +58,7 @@ const form = $("citizenForm");
 const submit = $("citizenSubmit");
 const feed = $("citizenFeed");
 const statusBox = $("citizenStatus");
+const ADMIN_WHATSAPP = "8801605150864";
 
 function showStatus(message, error = false) {
   statusBox.textContent = message;
@@ -121,6 +122,8 @@ if (!firebaseConfig.apiKey || !firebaseConfig.projectId ||
 
     form.addEventListener("submit", async event => {
       event.preventDefault();
+      // Open a tab during the user gesture so mobile browsers do not block WhatsApp later.
+      const whatsappTab = window.open("about:blank", "_blank");
       const file = $("citizenMedia").files[0] || null;
       const imageTypes = ["image/jpeg", "image/png", "image/webp", "image/gif"];
       const videoTypes = ["video/mp4", "video/webm", "video/quicktime"];
@@ -187,10 +190,25 @@ if (!firebaseConfig.apiKey || !firebaseConfig.projectId ||
           await addDoc(collection(db, "communityPosts"), post);
         }
 
+        const whatsappMessage = [
+          "Boliyapur Community — নতুন নাগরিক পোস্ট জমা পড়েছে",
+          "প্রেরকের নাম: " + post.authorName,
+          "এলাকা: " + post.area,
+          "বিভাগ: " + post.category,
+          "শিরোনাম: " + post.title,
+          "বিস্তারিত: " + post.story,
+          post.mediaUrl ? "ছবি/ভিডিও: " + post.mediaUrl : "মিডিয়া: সংযুক্ত করা হয়নি",
+          "অবস্থা: Admin অনুমোদনের অপেক্ষায় (Pending)",
+          "Admin Dashboard: https://boliyarpur.github.io/boliyarpur/admin.html"
+        ].join("\\n");
+        const whatsappUrl = "https://wa.me/" + ADMIN_WHATSAPP + "?text=" + encodeURIComponent(whatsappMessage);
+        if (whatsappTab) { whatsappTab.location.href = whatsappUrl; }
+        else { statusBox.innerHTML = "পোস্ট জমা হয়েছে। <a href=\"" + whatsappUrl + "\" target=\"_blank\" rel=\"noopener noreferrer\">WhatsApp-এ Admin-কে পোস্টের তথ্য পাঠান (01605150864)</a>"; }
         form.reset();
-        showStatus("আপনার পোস্ট জমা হয়েছে। Admin অনুমোদন করার পরই ওয়েবসাইটে প্রকাশ হবে।");
+        showStatus("আপনার পোস্ট জমা হয়েছে। Admin অনুমোদন করার পরই ওয়েবসাইটে প্রকাশ হবে। WhatsApp-এ পোস্টের তথ্য পাঠানোর ব্যবস্থা করা হয়েছে।");
         $("citizenProgressText").textContent = file ? "ফাইল আপলোড সম্পন্ন। পোস্ট Pending তালিকায় পাঠানো হয়েছে।" : "লেখা সফলভাবে জমা হয়েছে।";
       } catch (error) {
+        if (whatsappTab) whatsappTab.close();
         console.error("Submission error:", error);
         showStatus("জমা দেওয়া যায়নি: " + (error.message || "Firebase সেটআপ পরীক্ষা করুন।"), true);
       } finally {
