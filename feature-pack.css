@@ -1,10 +1,10 @@
 /* Free native feature pack for GitHub Pages — no WordPress plugins required */
 :root{--bp-feature-shadow:0 12px 34px rgba(7,45,28,.18)}
 .bp-tools{position:fixed;right:16px;bottom:18px;z-index:80;display:flex;flex-direction:column;gap:9px;align-items:flex-end}
-.bp-tool{min-height:43px;border:1px solid rgba(255,255,255,.2);border-radius:999px;padding:10px 15px;background:#0b4937;color:#fff;font:700 .88rem/1.2 inherit;box-shadow:var(--bp-feature-shadow);cursor:pointer;display:flex;align-items:center;gap:8px}
+.bp-tool{min-height:43px;border:1px solid rgba(255,255,255,.2);border-radius:999px;padding:10px 15px;background:#0b4937;color:#fff;font:700 .88rem/1.2 system-ui,sans-serif;box-shadow:var(--bp-feature-shadow);cursor:pointer;display:flex;align-items:center;gap:8px}
 .bp-tool:hover{background:#176448;transform:translateY(-1px)}
 .bp-tool.bp-tool-secondary{background:#fff;color:#164b35;border:1px solid #dce9e0}
-.bp-voice{border:1px solid #dce9e0;background:#edf5ef;color:#145b40;border-radius:10px;padding:0 14px;font:700 .9rem inherit;cursor:pointer;min-height:48px}
+.bp-voice{border:1px solid #dce9e0;background:#edf5ef;color:#145b40;border-radius:10px;padding:0 14px;font:700 .9rem system-ui,sans-serif;cursor:pointer;min-height:48px}
 .bp-voice.listening{background:#fff0ed;color:#a83225;border-color:#f2c3bb}
 .bp-voice:disabled{opacity:.6;cursor:not-allowed}
 .bp-map-section{padding:60px 0;background:#f0f6f1}
