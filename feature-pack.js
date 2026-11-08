@@ -15,7 +15,7 @@ function initTools(){
  var top=el("button",{class:"bp-tool bp-tool-secondary",type:"button"},"↑ উপরে");
  dock.append(share,print,dark,wa,call,top);
  top.addEventListener("click",function(){window.scrollTo({top:0,behavior:"smooth"});});document.body.appendChild(dock);
- if(safeStoreGet("bp-dark-mode")==="on")document.body.classList.add("bp-dark");
+ if(safeStoreGet("bp-dark-mode")==="on"){document.body.classList.add("bp-dark");dark.textContent="☀️ লাইট মোড";}
  function updateDark(){var on=document.body.classList.toggle("bp-dark");safeStoreSet("bp-dark-mode",on?"on":"off");dark.textContent=on?"☀️ লাইট মোড":"◐ ডার্ক মোড";}
  dark.addEventListener("click",updateDark);
  print.addEventListener("click",function(){window.print();});
