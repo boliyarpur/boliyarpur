@@ -10,7 +10,7 @@
       const value=id=>document.getElementById(id).value.trim();
       const type=value("requestType"),name=value("requestName"),area=value("requestArea"),phone=value("requestPhone"),details=value("requestDetails");
       if(!type||!name||!details){alert("অনুগ্রহ করে প্রয়োজনীয় তথ্য পূরণ করুন।");return;}
-      const message=["Boliyapur Community — নাগরিক সহায়তা অনুরোধ","বিষয়: "+type,"নাম: "+name,"এলাকা: "+(area||"উল্লেখ নেই"),"যোগাযোগ: "+(phone||"উল্লেখ নেই"),"বিস্তারিত: "+details,"অনুগ্রহ করে তথ্য যাচাই করে প্রয়োজনীয় ব্যবস্থা নিন।"].join("\\n");
+      const message=["Boliyapur Community — নাগরিক সহায়তা অনুরোধ","বিষয়: "+type,"নাম: "+name,"এলাকা: "+(area||"উল্লেখ নেই"),"যোগাযোগ: "+(phone||"উল্লেখ নেই"),"বিস্তারিত: "+details,"অনুগ্রহ করে তথ্য যাচাই করে প্রয়োজনীয় ব্যবস্থা নিন।"].join("\n");
       window.open("https://wa.me/"+WA+"?text="+encodeURIComponent(message),"_blank","noopener,noreferrer");
     });
   }
