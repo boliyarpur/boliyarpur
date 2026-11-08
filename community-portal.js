@@ -49,8 +49,10 @@ mount.innerHTML = `
     </div>
   </div>
 </div>`;
+const target = document.querySelector("#citizen-portal");
 const contact = document.querySelector("#contact");
-if (contact) contact.parentNode.insertBefore(mount, contact);
+if (target) target.replaceWith(mount);
+else if (contact) contact.parentNode.insertBefore(mount, contact);
 else document.body.appendChild(mount);
 
 const $ = id => document.getElementById(id);
