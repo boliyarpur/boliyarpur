@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
-import { getFirestore, collection, addDoc, query, where, onSnapshot, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
+import { getFirestore, collection, addDoc, setDoc, doc, query, where, onSnapshot, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
 import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-storage.js";
 import { firebaseConfig } from "./firebase-config.js";
@@ -181,8 +181,7 @@ if (!firebaseConfig.apiKey || !firebaseConfig.projectId ||
           post.mediaType = file.type;
           post.mediaName = file.name;
           post.storagePath = storagePath;
-          await import("https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js")
-            .then(({ setDoc }) => setDoc(postRef, post));
+          await setDoc(postRef, post);
         } else {
           const { addDoc } = await import("https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js");
           await addDoc(collection(db, "communityPosts"), post);
