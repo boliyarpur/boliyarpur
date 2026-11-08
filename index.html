@@ -166,7 +166,9 @@ const DATA = {
     { title:"বলিয়ারপুর মাদ্রাসা", image:"images/schools/jamia-boliarpur.jpg" },
     { title:"বনগাঁও ইউনিয়ন পরিষদ", image:"images/services/bongaon-union-parishad.jpg" },
     { title:"বলিয়াপুর গ্রামের সামাজিক অনুষ্ঠান", image:"images/gallery/community-event.jpg" },
-    { title:"বলিয়াপুরের প্রাকৃতিক সৌন্দর্য", image:"images/gallery/village-nature.jpg" }
+    { title:"বলিয়াপুরের প্রাকৃতিক সৌন্দর্য", image:"images/gallery/village-nature.jpg" },
+    { title:"বংশী নদীর সেতু — সাভার নামা বাজার এলাকা", image:"https://upload.wikimedia.org/wikipedia/commons/a/ac/Bridge_on_the_river_of_Bangshi_adjacent_to_Savar_Nama_Bazar.jpg", source:"https://commons.wikimedia.org/wiki/File:Bridge_on_the_river_of_Bangshi_adjacent_to_Savar_Nama_Bazar.jpg", credit:"আদিব এহসান · Wikimedia Commons · CC BY-SA 4.0", regional:true },
+    { title:"কর্ণতলী নদী — সাভার", image:"https://upload.wikimedia.org/wikipedia/commons/1/1e/Karnatali_rivar_%E0%A6%95%E0%A6%B0%E0%A7%8D%E0%A6%A3%E0%A6%A4%E0%A6%B2%E0%A7%80_%E0%A6%A8%E0%A6%A6%E0%A7%80%2C_%E0%A6%B8%E0%A6%BE%E0%A6%AD%E0%A6%BE%E0%A6%B0.jpg", source:"https://commons.wikimedia.org/wiki/File:Karnatali_rivar_%E0%A6%95%E0%A6%B0%E0%A7%8D%E0%A6%A3%E0%A6%A4%E0%A6%B2%E0%A7%80_%E0%A6%A8%E0%A6%A6%E0%A7%80,_%E0%A6%B8%E0%A6%BE%E0%A6%AD%E0%A6%BE%E0%A6%B0.jpg", credit:"আদিব এহসান · Wikimedia Commons · CC BY-SA 4.0", regional:true }
   ]
 };
 
@@ -202,7 +204,7 @@ function renderNotices(){
   document.getElementById("noticeList").innerHTML=DATA.notices.map(n=>`<article class="notice"><span class="tag">${esc(n.category)}</span><h3>${esc(n.title)}</h3><p>${esc(n.text)}</p></article>`).join("");
 }
 function renderGallery(){
-  document.getElementById("galleryGrid").innerHTML=DATA.gallery.map(g=>`<div class="gallery-item"><img src="${esc(g.image)}" alt="${esc(g.title)}" onerror="this.style.display='none'"><span>${esc(g.title)}</span></div>`).join("");
+  document.getElementById("galleryGrid").innerHTML=DATA.gallery.map(g=>`<div class="gallery-item"><img src="${esc(g.image)}" alt="${esc(g.title)}" onerror="this.style.display='none'"><span>${esc(g.title)}${g.regional?' · সাভার এলাকার ছবি, বলিয়াপুরের নির্দিষ্ট স্থান নয়':''}${g.source?`<br><a href="${esc(g.source)}" target="_blank" rel="noopener" style="color:#fff;text-decoration:underline;font-size:.75rem">ছবির উৎস ও স্বত্ব ${esc(g.credit||'')}</a>`:''}</span></div>`).join("");
 }
 function setContact(){
   const p=DATA.contact.phone, e=DATA.contact.email, w=DATA.contact.whatsapp;
@@ -232,7 +234,7 @@ renderDirectory();renderNotices();renderGallery();setContact();updateCounts();
 const pics={school:"https://objectstorage.ap-dcc-gazipur-1.oraclecloud15.com/n/axvjbnqprylg/b/V2Ministry/o/office-dhalaparaup-tangail/2024/12/d6a63f3e8bcf46759568f4b1b7eb5fae.jpg",madrasa:"https://latifpuralimmadrasah.edu.bd/public/carousel/IMG_20230911_160155.jpg",clinic:"https://blogs.worldbank.org/content/dam/sites/blogs/img/detail/mgr/picture1bangladesh.jpg",union:"https://objectstorage.ap-dcc-gazipur-1.oraclecloud15.com/n/axvjbnqprylg/b/V2Ministry/o/office-kaliaup-tangail/2024/12/0d75f47c16434843a9ec30144783cc3e.png",pharmacy:"https://media.prothomalo.com/prothomalo-english%2F2022-04%2Fd289c586-746a-4d79-9e1e-10930f178a39%2Fprothomalo_bangla_2022_04_fa5938d5_9b30_46bd_90f7_6c9974394e33_medicine.jpg?ar=16%3A9&auto=format%2Ccompress&mode=crop&ogImage=true&overlay=&overlay_position=bottom&overlay_width_pct=1&rect=0%2C250%2C2400%2C1350&w=1200",shop:"https://thefe-bd.sgp1.cdn.digitaloceanspaces.com/posts/31758/essential-ramadan.jpg"};
 function choose(t){if(/মাদ্রাসা|madrasa/i.test(t))return pics.madrasa;if(/ফার্মেসি|pharmacy/i.test(t))return pics.pharmacy;if(/স্বাস্থ্য|ক্লিনিক|হাসপাতাল|ডায়াগ/i.test(t))return pics.clinic;if(/ইউনিয়ন|সরকারি|ভূমি|সমাজসেবা|পরিষদ/i.test(t))return pics.union;if(/দোকান|ব্যবসা|রেস্টুরেন্ট|চায়ের/i.test(t))return pics.shop;return pics.school;}
 document.querySelectorAll("#directoryCards .card").forEach(function(card){const box=card.querySelector(".card-img");if(!box)return;const title=(card.innerText||"");const url=choose(title);let img=box.querySelector("img");if(!img){img=document.createElement("img");img.alt="প্রতিষ্ঠানের নমুনা ছবি";box.replaceChildren(img);}img.onerror=function(){this.onerror=null;this.src=url;};if(!img.getAttribute("src")||!img.getAttribute("src").startsWith("http"))img.src=url;const tag=document.createElement("small");tag.className="sample-label";tag.textContent="নমুনা ছবি";box.appendChild(tag);});
-document.querySelectorAll("#galleryGrid .gallery-item").forEach(function(box){const img=box.querySelector("img");if(!img)return;const url=choose(box.innerText||"");img.onerror=function(){this.onerror=null;this.src=url;};const tag=document.createElement("small");tag.className="gallery-sample";tag.textContent="নমুনা ছবি";box.appendChild(tag);});
+/* Gallery photos are shown with their actual location/source labels; no unrelated fallback photos are substituted. */
 })();
 </script>
 </body>
