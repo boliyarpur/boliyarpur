@@ -123,7 +123,6 @@ if (!firebaseConfig.apiKey || !firebaseConfig.projectId ||
     form.addEventListener("submit", async event => {
       event.preventDefault();
       // Open a tab during the user gesture so mobile browsers do not block WhatsApp later.
-      const whatsappTab = window.open("about:blank", "_blank");
       const file = $("citizenMedia").files[0] || null;
       const imageTypes = ["image/jpeg", "image/png", "image/webp", "image/gif"];
       const videoTypes = ["video/mp4", "video/webm", "video/quicktime"];
@@ -141,6 +140,7 @@ if (!firebaseConfig.apiKey || !firebaseConfig.projectId ||
         }
       }
 
+      const whatsappTab = window.open("about:blank", "_blank");
       submit.disabled = true;
       submit.textContent = "জমা হচ্ছে...";
       $("citizenProgress").style.display = file ? "block" : "none";
@@ -200,12 +200,12 @@ if (!firebaseConfig.apiKey || !firebaseConfig.projectId ||
           post.mediaUrl ? "ছবি/ভিডিও: " + post.mediaUrl : "মিডিয়া: সংযুক্ত করা হয়নি",
           "অবস্থা: Admin অনুমোদনের অপেক্ষায় (Pending)",
           "Admin Dashboard: https://boliyarpur.github.io/boliyarpur/admin.html"
-        ].join("\\n");
+        ].join("\n");
         const whatsappUrl = "https://wa.me/" + ADMIN_WHATSAPP + "?text=" + encodeURIComponent(whatsappMessage);
-        if (whatsappTab) { whatsappTab.location.href = whatsappUrl; }
-        else { statusBox.innerHTML = "পোস্ট জমা হয়েছে। <a href=\"" + whatsappUrl + "\" target=\"_blank\" rel=\"noopener noreferrer\">WhatsApp-এ Admin-কে পোস্টের তথ্য পাঠান (01605150864)</a>"; }
         form.reset();
         showStatus("আপনার পোস্ট জমা হয়েছে। Admin অনুমোদন করার পরই ওয়েবসাইটে প্রকাশ হবে। WhatsApp-এ পোস্টের তথ্য পাঠানোর ব্যবস্থা করা হয়েছে।");
+        if (whatsappTab) { whatsappTab.location.href = whatsappUrl; }
+        else { statusBox.insertAdjacentHTML("beforeend", '<p><a href="' + whatsappUrl + '" target="_blank" rel="noopener noreferrer">WhatsApp-এ Admin-কে পোস্টের তথ্য পাঠান (01605150864)</a></p>'); }
         $("citizenProgressText").textContent = file ? "ফাইল আপলোড সম্পন্ন। পোস্ট Pending তালিকায় পাঠানো হয়েছে।" : "লেখা সফলভাবে জমা হয়েছে।";
       } catch (error) {
         if (whatsappTab) whatsappTab.close();
@@ -213,7 +213,7 @@ if (!firebaseConfig.apiKey || !firebaseConfig.projectId ||
         showStatus("জমা দেওয়া যায়নি: " + (error.message || "Firebase সেটআপ পরীক্ষা করুন।"), true);
       } finally {
         submit.disabled = false;
-        submit.textContent = "অনুমোদনের জন্য জমা দিন";
+        submit.innerHTML = '<span>অনুমোদনের জন্য জমা দিন</span><small>WhatsApp: 01605150864</small>';
       }
     });
   } catch (error) {
