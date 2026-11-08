@@ -29,7 +29,45 @@
     .nature-section{background:linear-gradient(145deg,#eaf4ee,#f7faf8);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.nature-intro{max-width:940px;margin:auto;text-align:center}.nature-kicker{display:inline-block;color:var(--green2);font-weight:800;letter-spacing:.08em;font-size:.85rem}.nature-intro h2{font-size:clamp(1.8rem,4vw,2.7rem);line-height:1.25;color:var(--green);margin:10px 0 14px}.nature-lead{max-width:760px;margin:0 auto;color:#52675b;font-size:1.08rem}.nature-highlights{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:30px 0 22px;text-align:left}.nature-highlights article{background:#fff;border:1px solid #dce9e0;border-radius:17px;padding:22px;box-shadow:0 8px 24px #173e2a0a}.nature-highlights article>span{font-size:1.8rem}.nature-highlights h3{color:var(--green);margin:8px 0 5px}.nature-highlights p{margin:0;color:var(--muted);font-size:.93rem}.nature-note{background:#fff;border-left:4px solid var(--green2);border-radius:10px;padding:15px 18px;text-align:left;color:#58685e;font-size:.9rem}.nature-link{margin-top:8px}@media(max-width:600px){.nature-highlights{grid-template-columns:1fr}.nature-highlights article{padding:18px}}\n    .disclaimer{font-size:.83rem;color:var(--muted);margin-top:18px}.hidden{display:none!important}
     @media(max-width:850px){.navlinks{display:none;position:absolute;top:70px;left:0;right:0;background:white;padding:16px 4%;border-bottom:1px solid var(--line);flex-direction:column;align-items:flex-start}.navlinks.open{display:flex}.menu-btn{display:block}.quick{grid-template-columns:repeat(2,1fr)}.cards{grid-template-columns:repeat(2,1fr)}}
     @media(max-width:600px){.hero{padding:60px 0}.about-grid,.contact-grid{grid-template-columns:1fr}.cards,.gallery{grid-template-columns:1fr}.notice-list{grid-template-columns:1fr}.gallery-item{height:220px}.section-head{align-items:flex-start;flex-direction:column}.quick-card{padding:14px}.searchbar{flex-direction:column}}
-  </style>
+
+    /* Expanded editorial nature feature */
+    .nature-section{padding:82px 0;background:#f3f7f3;overflow:hidden}
+    .nature-intro{max-width:850px;margin:0 auto 34px;text-align:center}
+    .nature-kicker{letter-spacing:.16em;font-size:.76rem}
+    .nature-intro h2{font-size:clamp(2rem,4.8vw,3.15rem);font-weight:850;letter-spacing:-.035em}
+    .nature-lead{font-size:1.08rem;line-height:1.9}
+    .nature-cover{height:clamp(340px,48vw,570px);position:relative;overflow:hidden;border-radius:26px;background:linear-gradient(120deg,#174b31,#739b77);box-shadow:0 24px 65px #173e2a22}
+    .nature-cover>img{width:100%;height:100%;object-fit:cover;display:block}
+    .nature-cover-shade{position:absolute;inset:0;background:linear-gradient(90deg,#071e13d9 0%,#0c281b99 47%,#102b1b12 100%)}
+    .nature-cover-copy{position:absolute;left:clamp(22px,6vw,70px);bottom:clamp(25px,6vw,68px);max-width:570px;color:#fff}
+    .nature-cover-copy>span,.nature-story-copy>span,.nature-community-cta>div>span{font-size:.75rem;letter-spacing:.13em;font-weight:850;color:#d5f0dc}
+    .nature-cover-copy h3{font-size:clamp(2rem,5vw,3.8rem);line-height:1.15;margin:12px 0}
+    .nature-cover-copy p{max-width:500px;color:#e7f1e9;font-size:1.02rem}
+    .nature-story-grid{display:grid;grid-template-columns:1.35fr 1fr 1fr;gap:17px;margin:22px 0}
+    .nature-story{background:white;border:1px solid #e0e9e2;border-radius:19px;overflow:hidden;box-shadow:0 10px 32px #173e2a0b}
+    .nature-story-image{height:205px;background:linear-gradient(135deg,#dcebe0,#b8d1bf);overflow:hidden}
+    .nature-story-large .nature-story-image{height:250px}
+    .nature-story-image img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s}
+    .nature-story:hover .nature-story-image img{transform:scale(1.045)}
+    .nature-story-copy{padding:19px 20px 22px}
+    .nature-story-copy>span{color:#47815b;font-size:.7rem}
+    .nature-story-copy h3{color:#174b31;margin:7px 0;font-size:1.17rem}
+    .nature-story-copy p{margin:0;color:#64736b;font-size:.91rem;line-height:1.8}
+    .photo-missing{display:none!important}
+    .nature-values{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:26px 0}
+    .nature-values>div{padding:20px 16px;background:#e7f0e9;border-radius:15px;text-align:center}
+    .nature-values strong{font-size:1.7rem}
+    .nature-values h3{margin:7px 0 3px;color:#174b31;font-size:1rem}
+    .nature-values p{margin:0;color:#627269;font-size:.84rem}
+    .nature-community-cta{display:flex;align-items:center;justify-content:space-between;gap:22px;padding:28px 32px;border-radius:20px;background:#123e2a;color:white;margin-top:28px}
+    .nature-community-cta>div{max-width:700px}
+    .nature-community-cta>div>span{color:#b9e4c7}
+    .nature-community-cta h3{font-size:clamp(1.4rem,3vw,2rem);margin:7px 0}
+    .nature-community-cta p{margin:0;color:#d6e7da}
+    .nature-integrity{text-align:center;color:#718077;font-size:.82rem;margin:17px auto 0;max-width:800px}
+    @media(max-width:850px){.nature-story-grid{grid-template-columns:1fr 1fr}.nature-story-large{grid-column:1/-1}.nature-values{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:600px){.nature-section{padding:58px 0}.nature-cover{height:430px;border-radius:18px}.nature-cover-shade{background:linear-gradient(0deg,#071e13e8 0%,#0c281b55 70%,#102b1b10 100%)}.nature-story-grid{grid-template-columns:1fr}.nature-story-large{grid-column:auto}.nature-story-image,.nature-story-large .nature-story-image{height:220px}.nature-community-cta{align-items:flex-start;flex-direction:column;padding:23px}.nature-values{gap:9px}.nature-values>div{padding:16px 10px}}
+\n  </style>
 </head>
 <body>
 <header>
@@ -110,17 +148,49 @@
   <section id="nature" class="nature-section">
     <div class="container">
       <div class="nature-intro">
-        <span class="nature-kicker">সবুজের ছোঁয়ায়, মাটির টানে</span>
+        <span class="nature-kicker">OUR HOME · OUR ROOTS</span>
         <h2>প্রকৃতির কোলে আমাদের বলিয়াপুর</h2>
-        <p class="nature-lead">নদীর জল, সবুজের বিস্তার, গ্রামের শান্ত পথ আর খোলা আকাশ—এলাকার চেনা দৃশ্যগুলোতেই মিশে আছে আমাদের শেকড়, স্মৃতি আর ভালোবাসা।</p>
-        <div class="nature-highlights">
-          <article><span>🌿</span><h3>সবুজের প্রশান্তি</h3><p>গ্রামবাংলার পরিচিত সবুজ পরিবেশ আর খোলা প্রান্তর মনকে এনে দেয় স্বস্তি।</p></article>
-          <article><span>🌊</span><h3>নদী ও জলপথ</h3><p>সাভার ও আশপাশের নদী-খাল এলাকার প্রকৃতি ও জনজীবনের সঙ্গে জড়িয়ে আছে।</p></article>
-          <article><span>🌅</span><h3>চেনা পথ, চেনা মানুষ</h3><p>গ্রামের পথঘাট, সেতু আর মানুষের দৈনন্দিন জীবনই আমাদের এলাকার নিজস্ব পরিচয়।</p></article>
-        </div>
-        <p class="nature-note">কোন্ডা–বেরাইদ ব্রিজসহ আশপাশের দর্শনীয় জায়গাগুলোর ছবি ও তথ্য স্থানীয়ভাবে যাচাই করে ধাপে ধাপে এই ওয়েবসাইটে যুক্ত করা হবে। সাভার এলাকার অন্য স্থানের ছবিকে বলিয়াপুরের নির্দিষ্ট ছবি হিসেবে দেখানো হচ্ছে না।</p>
-        <a class="btn nature-link" href="#gallery">ছবি গ্যালারি দেখুন</a>
+        <p class="nature-lead">একটি গ্রামের সৌন্দর্য শুধু তার মাঠ-ঘাটে নয়—তার পথ, মানুষ, স্মৃতি, শিক্ষা, সংস্কৃতি আর প্রতিদিনের জীবনে। বলিয়াপুরের সেই চেনা গল্পগুলোকে যত্ন করে তুলে ধরার আমাদের ছোট্ট প্রয়াস।</p>
       </div>
+
+      <div class="nature-cover">
+        <img src="images/gallery/village-road.jpg.jpeg" alt="বলিয়াপুর গ্রামের পথের দৃশ্য" loading="lazy" onerror="this.parentElement.classList.add('photo-missing');this.remove()">
+        <div class="nature-cover-shade"></div>
+        <div class="nature-cover-copy">
+          <span>আমাদের মাটি · আমাদের ভালোবাসা</span>
+          <h3>চেনা পথেই<br>ফিরে আসে শেকড়ের টান</h3>
+          <p>বলিয়াপুরের প্রকৃতি, জনজীবন ও স্মৃতির ছবি—স্থানীয় মানুষের চোখে, স্থানীয় মানুষের অংশগ্রহণে।</p>
+          <a class="btn btn-light" href="#gallery">ছবির গল্প দেখুন</a>
+        </div>
+      </div>
+
+      <div class="nature-story-grid">
+        <article class="nature-story nature-story-large">
+          <div class="nature-story-image"><img src="images/gallery/village-nature.jpg" alt="বলিয়াপুরের সবুজ প্রকৃতি" loading="lazy" onerror="this.parentElement.classList.add('photo-missing');this.remove()"></div>
+          <div class="nature-story-copy"><span>০১ · প্রকৃতি</span><h3>সবুজের মাঝে আমাদের ঠিকানা</h3><p>ঋতু বদলের সঙ্গে বদলে যায় গ্রামের রং। বর্ষার সজীবতা, শীতের নরম আলো, আর সবুজের শান্ত দৃশ্য—আপনার তোলা আসল ছবিতে এই গল্প আরও সুন্দর হবে।</p></div>
+        </article>
+        <article class="nature-story">
+          <div class="nature-story-image"><img src="images/gallery/community-event.jpg" alt="বলিয়াপুরের সামাজিক আয়োজন" loading="lazy" onerror="this.parentElement.classList.add('photo-missing');this.remove()"></div>
+          <div class="nature-story-copy"><span>০২ · মানুষ ও সংস্কৃতি</span><h3>মানুষের বন্ধন, উৎসবের আনন্দ</h3><p>এলাকার সামাজিক আয়োজন, খেলাধুলা ও মিলনমেলার স্মৃতি।</p></div>
+        </article>
+        <article class="nature-story">
+          <div class="nature-story-image"><img src="images/schools/boliarpur-government-primary-school.jpg" alt="বলিয়ারপুর সরকারি প্রাথমিক বিদ্যালয়" loading="lazy" onerror="this.parentElement.classList.add('photo-missing');this.remove()"></div>
+          <div class="nature-story-copy"><span>০৩ · শিক্ষা</span><h3>আগামীর স্বপ্নের ঠিকানা</h3><p>আমাদের শিক্ষাপ্রতিষ্ঠান ও নতুন প্রজন্মের এগিয়ে চলার গল্প।</p></div>
+        </article>
+      </div>
+
+      <div class="nature-values">
+        <div><strong>🌾</strong><h3>গ্রামের প্রকৃতি</h3><p>মাঠ, গাছপালা, পুকুর ও ঋতুর রূপ</p></div>
+        <div><strong>🏡</strong><h3>গ্রামের জীবন</h3><p>পথঘাট, পাড়া-প্রতিবেশী ও দৈনন্দিন গল্প</p></div>
+        <div><strong>🤝</strong><h3>আমাদের ঐক্য</h3><p>মানুষ, ঐতিহ্য, আয়োজন ও ভালো উদ্যোগ</p></div>
+        <div><strong>📷</strong><h3>সবার অংশগ্রহণ</h3><p>আপনার তোলা ছবি-ভিডিওতেই পূর্ণ হবে এই আর্কাইভ</p></div>
+      </div>
+
+      <div class="nature-community-cta">
+        <div><span>YOUR PHOTO. OUR VILLAGE STORY.</span><h3>আপনার চোখে বলিয়াপুর কেমন?</h3><p>গ্রামের আসল ছবি বা ভিডিও জমা দিন। যাচাই শেষে অনুমোদিত হলে আপনার নামসহ কমিউনিটি গ্যালারিতে প্রকাশ করা হবে।</p></div>
+        <a class="btn" href="#citizen-portal">ছবি / ভিডিও জমা দিন</a>
+      </div>
+      <p class="nature-integrity">ছবির সত্যতা ও সঠিক স্থান-পরিচয় আমাদের কাছে গুরুত্বপূর্ণ। কোনো ছবি স্থানীয়ভাবে নিশ্চিত না হলে সেটিকে বলিয়াপুরের ছবি বলে প্রকাশ করা হবে না।</p>
     </div>
   </section>
 
