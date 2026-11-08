@@ -25,3 +25,4 @@
 @media(max-width:760px){.citizen-grid{grid-template-columns:1fr}.citizen-panel{padding:17px}}
 
 .admin-nav-link{background:#0f5132;color:#fff!important;padding:8px 13px;border-radius:9px;font-weight:800}.citizen-kicker{display:inline-block;color:#198754;font-size:.76rem;font-weight:850;letter-spacing:.12em;margin-bottom:8px}.citizen-progress{height:9px;background:#e8eee9;border-radius:99px;overflow:hidden;margin-top:12px;display:none}.citizen-progress span{display:block;width:0;height:100%;background:#198754;transition:width .2s}.citizen-form input[type=file]{background:#f7faf8;border-style:dashed;padding:14px}
+.citizen-submit{display:flex;flex-direction:column;align-items:center;gap:3px;min-width:min(100%,280px);padding:13px 20px}.citizen-submit span{font-size:1rem}.citizen-submit small{font-size:.78rem;font-weight:650;opacity:.96}.citizen-whatsapp-note{color:#168454;font-weight:650;margin-top:8px}
