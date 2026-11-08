@@ -1,0 +1,28 @@
+/* Free native feature pack for GitHub Pages — no WordPress plugins required */
+:root{--bp-feature-shadow:0 12px 34px rgba(7,45,28,.18)}
+.bp-tools{position:fixed;right:16px;bottom:18px;z-index:80;display:flex;flex-direction:column;gap:9px;align-items:flex-end}
+.bp-tool{min-height:43px;border:1px solid rgba(255,255,255,.2);border-radius:999px;padding:10px 15px;background:#0b4937;color:#fff;font:700 .88rem/1.2 inherit;box-shadow:var(--bp-feature-shadow);cursor:pointer;display:flex;align-items:center;gap:8px}
+.bp-tool:hover{background:#176448;transform:translateY(-1px)}
+.bp-tool.bp-tool-secondary{background:#fff;color:#164b35;border:1px solid #dce9e0}
+.bp-voice{border:1px solid #dce9e0;background:#edf5ef;color:#145b40;border-radius:10px;padding:0 14px;font:700 .9rem inherit;cursor:pointer;min-height:48px}
+.bp-voice.listening{background:#fff0ed;color:#a83225;border-color:#f2c3bb}
+.bp-voice:disabled{opacity:.6;cursor:not-allowed}
+.bp-map-section{padding:60px 0;background:#f0f6f1}
+.bp-map-wrap{width:min(1200px,92%);margin:auto}
+.bp-map-frame{height:390px;border:0;border-radius:20px;width:100%;background:#e5eee7;box-shadow:0 12px 30px rgba(14,55,38,.08)}
+.bp-map-note{font-size:.86rem;color:#66766d;margin-top:10px}
+.bp-lightbox{position:fixed;inset:0;z-index:120;background:rgba(4,18,12,.92);display:none;align-items:center;justify-content:center;padding:24px}
+.bp-lightbox.open{display:flex}
+.bp-lightbox img{max-width:min(1100px,94vw);max-height:82vh;object-fit:contain;border-radius:10px;box-shadow:0 15px 50px #0008}
+.bp-lightbox-caption{position:absolute;bottom:20px;left:20px;right:20px;color:white;text-align:center;font-weight:700}
+.bp-lightbox-close{position:absolute;right:18px;top:14px;border:1px solid #ffffff70;background:#ffffff18;color:#fff;border-radius:50%;width:44px;height:44px;font-size:1.5rem;cursor:pointer}
+body.bp-dark{--ink:#e6eee8;--muted:#a8b8ad;--paper:#111b16;background:#111b16;color:#e6eee8}
+body.bp-dark header,body.bp-dark .quick-card,body.bp-dark .about-panel,body.bp-dark .card,body.bp-dark .notice,body.bp-dark .contact-box,body.bp-dark .citizen-panel,body.bp-dark .nature-story,body.bp-dark .future-card,body.bp-dark .future-form,body.bp-dark .empty{background:#1b2a21!important;color:#e6eee8!important;border-color:#34483b!important}
+body.bp-dark .info-panel,body.bp-dark .nature-section,body.bp-dark .future-section,body.bp-dark .citizen-section,body.bp-dark .bp-map-section{background:#142119!important}
+body.bp-dark h1,body.bp-dark h2,body.bp-dark h3,body.bp-dark h4,body.bp-dark p,body.bp-dark label,body.bp-dark .meta,body.bp-dark .card p,body.bp-dark .nature-story-copy p{color:inherit}
+body.bp-dark input,body.bp-dark textarea,body.bp-dark select{background:#132018!important;color:#fff!important;border-color:#405647!important}
+body.bp-dark .filter,body.bp-dark .small-btn{background:#243a2d;color:#e6eee8;border-color:#405647}
+body.bp-dark .filter.active{background:#167451}
+body.bp-dark footer{background:#09130d}
+@media(max-width:600px){.bp-tools{right:10px;bottom:12px;gap:7px}.bp-tool{min-height:40px;padding:9px 12px;font-size:.8rem}.bp-map-frame{height:310px}.bp-voice{min-height:44px}}
+@media print{.bp-tools,.bp-map-section,header,.hero-actions,#contribute,#community-services,#citizen-portal,footer,.install-app-btn,.menu-btn{display:none!important}body{background:#fff!important;color:#000!important}.container{width:100%!important}.card,.notice,.contact-box{break-inside:avoid;box-shadow:none!important}}
