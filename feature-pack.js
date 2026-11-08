@@ -12,7 +12,9 @@ function initTools(){
  var dark=el("button",{class:"bp-tool bp-tool-secondary",type:"button"},"◐ ডার্ক মোড");
  var wa=el("a",{class:"bp-tool",href:"https://wa.me/"+CONTACT_WA+"?text="+encodeURIComponent("আসসালামু আলাইকুম, বলিয়াপুর কমিউনিটি ওয়েবসাইট থেকে যোগাযোগ করছি।"),target:"_blank",rel:"noopener"},"☏ WhatsApp");
  var call=el("a",{class:"bp-tool bp-tool-secondary",href:"tel:01605150864"},"📞 কল করুন");
- dock.append(share,print,dark,wa,call);document.body.appendChild(dock);
+ var top=el("button",{class:"bp-tool bp-tool-secondary",type:"button"},"↑ উপরে");
+ dock.append(share,print,dark,wa,call,top);
+ top.addEventListener("click",function(){window.scrollTo({top:0,behavior:"smooth"});});document.body.appendChild(dock);
  if(safeStoreGet("bp-dark-mode")==="on")document.body.classList.add("bp-dark");
  function updateDark(){var on=document.body.classList.toggle("bp-dark");safeStoreSet("bp-dark-mode",on?"on":"off");dark.textContent=on?"☀️ লাইট মোড":"◐ ডার্ক মোড";}
  dark.addEventListener("click",updateDark);
