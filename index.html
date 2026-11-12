@@ -12,7 +12,7 @@
     a{color:inherit;text-decoration:none}button,input{font:inherit}.container{width:min(1160px,92%);margin:auto}
     header{position:sticky;top:0;z-index:20;background:#ffffffed;backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
     .nav{min-height:70px;display:flex;align-items:center;justify-content:space-between;gap:18px}.brand{display:flex;align-items:center;gap:11px;font-weight:800;color:var(--green);font-size:1.12rem}.brand-mark{width:42px;height:42px;border-radius:13px;background:var(--green);color:white;display:grid;place-items:center;font-size:1.35rem}
-    .navlinks{display:flex;gap:18px;align-items:center;flex-wrap:wrap;font-size:.92rem;color:#42534a}.navlinks a:hover{color:var(--green)}.menu-btn{display:none;border:1px solid var(--line);background:white;border-radius:10px;padding:8px 12px}
+    .navlinks{display:flex;gap:18px;align-items:center;flex-wrap:wrap;font-size:.92rem;color:#42534a}.navlinks a:hover{color:var(--green)}
     .hero{background:linear-gradient(115deg,#0b3926ed,#12623fe8),url("images/gallery/village-road.jpg.jpeg") center/cover;color:white;padding:78px 0 70px}
     .hero-inner{max-width:760px}.eyebrow{color:#d6f5df;font-weight:700;letter-spacing:.04em}.hero h1{font-size:clamp(2.2rem,6vw,4.2rem);line-height:1.15;margin:12px 0}.hero p{font-size:1.1rem;color:#e4f2e9;max-width:650px}.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
     .btn{display:inline-flex;align-items:center;justify-content:center;border:0;border-radius:11px;padding:11px 18px;font-weight:750;cursor:pointer;background:var(--green2);color:white}.btn:hover{filter:brightness(.95)}.btn-light{background:white;color:var(--green)}.btn-outline{background:transparent;border:1px solid #ffffff8a;color:white}
@@ -27,7 +27,7 @@
     .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.contact-box{background:white;border:1px solid var(--line);border-radius:16px;padding:22px}.contact-box h3{margin-top:0;color:var(--green)}.contact-line{margin:8px 0;color:#506157}.empty{grid-column:1/-1;text-align:center;padding:35px;color:var(--muted);background:white;border:1px dashed var(--line);border-radius:14px}
     footer{background:#102f21;color:#e6f1e9;padding:34px 0}.footer-inner{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}.footer-inner p{margin:5px 0;color:#c4d7ca;font-size:.9rem}
     .nature-section{background:linear-gradient(145deg,#eaf4ee,#f7faf8);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.nature-intro{max-width:940px;margin:auto;text-align:center}.nature-kicker{display:inline-block;color:var(--green2);font-weight:800;letter-spacing:.08em;font-size:.85rem}.nature-intro h2{font-size:clamp(1.8rem,4vw,2.7rem);line-height:1.25;color:var(--green);margin:10px 0 14px}.nature-lead{max-width:760px;margin:0 auto;color:#52675b;font-size:1.08rem}.nature-highlights{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:30px 0 22px;text-align:left}.nature-highlights article{background:#fff;border:1px solid #dce9e0;border-radius:17px;padding:22px;box-shadow:0 8px 24px #173e2a0a}.nature-highlights article>span{font-size:1.8rem}.nature-highlights h3{color:var(--green);margin:8px 0 5px}.nature-highlights p{margin:0;color:var(--muted);font-size:.93rem}.nature-note{background:#fff;border-left:4px solid var(--green2);border-radius:10px;padding:15px 18px;text-align:left;color:#58685e;font-size:.9rem}.nature-link{margin-top:8px}@media(max-width:600px){.nature-highlights{grid-template-columns:1fr}.nature-highlights article{padding:18px}}\n    .disclaimer{font-size:.83rem;color:var(--muted);margin-top:18px}.hidden{display:none!important}
-    @media(max-width:850px){.navlinks{display:none;position:absolute;top:70px;left:0;right:0;background:white;padding:16px 4%;border-bottom:1px solid var(--line);flex-direction:column;align-items:flex-start}.navlinks.open{display:flex}.menu-btn{display:block}.quick{grid-template-columns:repeat(2,1fr)}.cards{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:850px){.cards{grid-template-columns:repeat(2,1fr)}}
     @media(max-width:600px){.hero{padding:60px 0}.about-grid,.contact-grid{grid-template-columns:1fr}.cards,.gallery{grid-template-columns:1fr}.notice-list{grid-template-columns:1fr}.gallery-item{height:220px}.section-head{align-items:flex-start;flex-direction:column}.quick-card{padding:14px}.searchbar{flex-direction:column}}
 
     /* Expanded editorial nature feature */
@@ -89,6 +89,21 @@
 .tile-arrow{position:absolute;right:15px;bottom:13px;color:#7a9b86;font-size:18px}
 @media(max-width:850px){.quick-links-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(max-width:560px){.quick-links-section{padding:28px 0 40px}.quick-links-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}.quick-link-tile{border-radius:15px;padding:13px}.quick-link-icon{width:42px;height:42px;font-size:22px}.quick-link-tile small{font-size:11px}.more-menu>summary{min-width:45px;padding:7px 10px}}
+
+/* Clean nested portal layout */
+header .nav{min-height:76px;gap:12px}header .brand{font-size:1.08rem;line-height:1.25}
+.more-menu{position:relative;margin-left:auto;z-index:80;flex:0 0 auto}
+.more-menu>summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:8px;padding:10px 14px;min-height:46px;border:1px solid var(--line);border-radius:13px;background:#fff;color:var(--green);font-weight:800;box-shadow:0 4px 14px #123b2410}
+.more-menu>summary::-webkit-details-marker,.menu-group>summary::-webkit-details-marker,.home-group>summary::-webkit-details-marker{display:none}
+.more-menu .dots{font-size:22px;letter-spacing:2px;line-height:1;transform:translateY(-3px)}
+.more-menu-panel{position:absolute;right:0;top:calc(100% + 9px);width:min(310px,88vw);max-height:75vh;overflow:auto;padding:10px;background:#fff;border:1px solid var(--line);border-radius:17px;box-shadow:0 18px 48px #102e1d25;display:grid;gap:5px}
+.more-menu-panel>a,.menu-group>summary,.menu-group a{display:flex;align-items:center;min-height:43px;padding:9px 12px;border-radius:10px;color:#234536;font-size:14px;font-weight:680}
+.more-menu-panel>a:hover,.menu-group a:hover,.more-menu-panel>a[aria-current=page]{background:#edf6f0;color:#0b6848}
+.menu-group{border:1px solid #edf1ed;border-radius:12px;overflow:hidden;background:#fbfdfb}.menu-group>summary{cursor:pointer;list-style:none;justify-content:space-between}.menu-group>summary:after{content:'＋';color:#64816e}.menu-group[open]>summary:after{content:'−'}.menu-group a{margin:0 6px 5px 14px;padding-left:15px;background:#f1f7f2;font-weight:550}
+.quick-links-section{padding:34px 0 44px}.quick-links-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.quick-link-tile{aspect-ratio:1.35/1;min-height:132px;padding:18px;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:8px;border-radius:17px;background:#fff;border:1px solid var(--line);box-shadow:0 6px 20px #173e2a08}.quick-link-tile:hover{transform:translateY(-3px);box-shadow:0 13px 28px #173e2a12}.quick-link-icon{width:42px;height:42px;border-radius:13px;background:#edf6f0;display:grid;place-items:center;font-size:22px}.quick-link-tile strong{color:var(--green);font-size:15px;line-height:1.4}.quick-link-tile small{color:var(--muted);font-size:12px;line-height:1.5}
+.home-group{margin:14px auto;max-width:1160px;background:#fff;border:1px solid var(--line);border-radius:17px;overflow:hidden;box-shadow:0 6px 22px #173e2a07}.home-group>summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:1fr auto;align-items:center;gap:3px 14px;padding:17px 20px}.home-group-title{font-weight:800;color:var(--green);font-size:17px}.home-group-desc{font-size:12px;color:var(--muted)}.home-group-chevron{grid-column:2;grid-row:1/3;font-size:22px;color:var(--green);transition:transform .2s}.home-group[open]>summary{background:#f5faf6;border-bottom:1px solid var(--line)}.home-group[open] .home-group-chevron{transform:rotate(180deg)}.home-group-content>section{padding:30px 0}.home-group-content>section>.container{width:min(1120px,92%)}
+@media(max-width:760px){header .nav{min-height:68px}.quick-links-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.quick-link-tile{min-height:118px;padding:14px}.home-group{margin:10px auto}.home-group>summary{padding:14px}.home-group-title{font-size:15px}.home-group-desc{font-size:11px}}
 </style>
   <link rel="stylesheet" href="./feature-pack.css?v=20261108">\n  <link rel="stylesheet" href="./site-refresh.css?v=20261112">
 </head>
@@ -97,7 +112,13 @@
   <div class="container nav">
     <a class="brand" href="./index.html"><span class="brand-mark">ব</span><span>বলিয়াপুর কমিউনিটি</span></a>
     <button class="menu-btn" id="menuBtn" aria-label="মেনু খুলুন">☰</button>
-    <details class="more-menu"><summary aria-label="আরও পেজ ও সেবা" title="আরও পেজ ও সেবা"><span class="dots">•••</span><span class="menu-word">মেনু</span></summary><nav class="more-menu-panel" aria-label="ওয়েবসাইট মেনু"><a href="./index.html" aria-current="page">হোম</a><a href="./village.html">আমাদের গ্রাম</a><a href="./directory.html">সেবা ও প্রতিষ্ঠান</a><a href="./attractions.html">দর্শনীয় স্থান</a><a href="./gallery.html">ছবি ও গল্প</a><a href="./contribute.html">নাগরিক পোস্ট</a><a href="./admin.html">Admin Portal</a></nav></details>
+    <details class="more-menu"><summary aria-label="ওয়েবসাইটের সব বিভাগ"><span class="dots">•••</span><span class="menu-word">মেনু</span></summary><nav class="more-menu-panel" aria-label="প্রধান মেনু">
+<a href="./index.html" aria-current="page">হোম</a>
+<details class="menu-group"><summary>এলাকা পরিচিতি</summary><a href="./village.html">আমাদের গ্রাম</a><a href="./attractions.html">দর্শনীয় স্থান</a></details>
+<details class="menu-group"><summary>সেবা ও তথ্য</summary><a href="./directory.html">সেবা ও প্রতিষ্ঠান</a><a href="./gallery.html">ছবি ও গল্প</a></details>
+<details class="menu-group"><summary>কমিউনিটি</summary><a href="./contribute.html">নাগরিক পোস্ট জমা</a></details>
+<details class="menu-group"><summary>প্রশাসন</summary><a href="./admin.html">Admin Portal</a></details>
+</nav></details>
   </div>
 </header>
 
@@ -114,15 +135,14 @@
     </div>
   </section>
 
-  <div class="container quick" aria-label="ডিরেক্টরি সারাংশ">
-    <div class="quick-card"><strong id="countEducation">০</strong><span>শিক্ষাপ্রতিষ্ঠান</span></div>
-    <div class="quick-card"><strong id="countHealth">০</strong><span>স্বাস্থ্যসেবা</span></div>
-    <div class="quick-card"><strong id="countUnion">০</strong><span>ইউনিয়ন সেবা</span></div>
-    <div class="quick-card"><strong id="countBusiness">০</strong><span>স্থানীয় ব্যবসা</span></div>
-  </div>
+  <section class="quick-links-section" aria-labelledby="quickLinksTitle"><div class="container"><div class="section-head"><div><h2 id="quickLinksTitle">দ্রুত প্রবেশ</h2><p>প্রয়োজনীয় প্রধান বিভাগ বেছে নিন</p></div></div><div class="quick-links-grid">
+<a class="quick-link-tile" href="./attractions.html"><span class="quick-link-icon">📍</span><strong>দর্শনীয় স্থান</strong><small>ঘুরে দেখার জায়গা</small></a>
+<a class="quick-link-tile" href="./directory.html"><span class="quick-link-icon">🏫</span><strong>সেবা ও প্রতিষ্ঠান</strong><small>শিক্ষা, স্বাস্থ্য ও সরকারি সেবা</small></a>
+<a class="quick-link-tile" href="./gallery.html"><span class="quick-link-icon">📷</span><strong>ছবি ও গল্প</strong><small>এলাকার ছবি ও স্মৃতি</small></a>
+<a class="quick-link-tile" href="./contribute.html"><span class="quick-link-icon">✍️</span><strong>তথ্য জমা দিন</strong><small>আপনার গল্প ও ছবি পাঠান</small></a>
+</div></div></section>
 
-  <section class="quick-links-section" aria-labelledby="quickLinksTitle"><div class="container"><div class="section-head"><div><h2 id="quickLinksTitle">এক নজরে সব বিভাগ</h2><p>আপনার প্রয়োজনীয় বিভাগে সরাসরি প্রবেশ করুন</p></div></div><div class="quick-links-grid"><a class="quick-link-tile" href="./attractions.html"><span class="quick-link-icon" aria-hidden="true">📍</span><strong>দর্শনীয় স্থান</strong><small>ঘুরে দেখার মতো জায়গা</small><span class="tile-arrow" aria-hidden="true">↗</span></a><a class="quick-link-tile" href="./directory.html"><span class="quick-link-icon" aria-hidden="true">🏫</span><strong>শিক্ষা প্রতিষ্ঠান</strong><small>স্কুল, কলেজ ও মাদ্রাসা</small><span class="tile-arrow" aria-hidden="true">↗</span></a><a class="quick-link-tile" href="./directory.html"><span class="quick-link-icon" aria-hidden="true">🩺</span><strong>স্বাস্থ্যসেবা</strong><small>চিকিৎসা ও স্বাস্থ্য তথ্য</small><span class="tile-arrow" aria-hidden="true">↗</span></a><a class="quick-link-tile" href="./directory.html"><span class="quick-link-icon" aria-hidden="true">🏛️</span><strong>সরকারি সেবা</strong><small>ইউনিয়ন পর্যায়ের সেবা</small><span class="tile-arrow" aria-hidden="true">↗</span></a><a class="quick-link-tile" href="./directory.html"><span class="quick-link-icon" aria-hidden="true">🛍️</span><strong>স্থানীয় ব্যবসা</strong><small>দোকান ও প্রয়োজনীয় সেবা</small><span class="tile-arrow" aria-hidden="true">↗</span></a><a class="quick-link-tile" href="./gallery.html"><span class="quick-link-icon" aria-hidden="true">📷</span><strong>ছবি ও গল্প</strong><small>এলাকার ছবি ও স্মৃতি</small><span class="tile-arrow" aria-hidden="true">↗</span></a><a class="quick-link-tile" href="./village.html"><span class="quick-link-icon" aria-hidden="true">🌿</span><strong>আমাদের গ্রাম</strong><small>বলিয়াপুরের পরিচিতি</small><span class="tile-arrow" aria-hidden="true">↗</span></a><a class="quick-link-tile" href="./contribute.html"><span class="quick-link-icon" aria-hidden="true">✍️</span><strong>তথ্য জমা দিন</strong><small>ছবি, ভিডিও ও তথ্য পাঠান</small><span class="tile-arrow" aria-hidden="true">↗</span></a></div></div></section>
-
+  <details class="home-group"><summary><span class="home-group-title">🌿 এলাকার পরিচিতি</span><span class="home-group-desc">বলিয়াপুরের পরিচয়, অবস্থান ও প্রকৃতি</span><span class="home-group-chevron">⌄</span></summary><div class="home-group-content">
   <section id="about">
     <div class="container about-grid">
       <div class="about-panel">
@@ -138,6 +158,9 @@
     </div>
   </section>
 
+  </div></details>
+
+  <details class="home-group"><summary><span class="home-group-title">🏫 সেবা ও প্রতিষ্ঠান</span><span class="home-group-desc">শিক্ষা, স্বাস্থ্য, সরকারি সেবা ও স্থানীয় ব্যবসা</span><span class="home-group-chevron">⌄</span></summary><div class="home-group-content">
   <section id="directory">
     <div class="container">
       <div class="section-head"><div><h2>বলিয়াপুরের সকল সেবা ও প্রতিষ্ঠান</h2><p>নাম, ক্যাটাগরি বা ঠিকানা লিখে প্রয়োজনীয় তথ্য খুঁজুন</p></div></div>
@@ -154,6 +177,9 @@
     </div>
   </section>
 
+  </div></details>
+
+  <details class="home-group"><summary><span class="home-group-title">📰 খবর ও ছবি</span><span class="home-group-desc">নোটিশ, ঘোষণা ও কমিউনিটি গ্যালারি</span><span class="home-group-chevron">⌄</span></summary><div class="home-group-content">
   <section id="notices">
     <div class="container">
       <div class="section-head"><div><h2>নোটিশ ও ঘোষণা</h2><p>গুরুত্বপূর্ণ কমিউনিটি আপডেট</p></div></div>
@@ -168,6 +194,9 @@
     </div>
   </section>
 
+  </div></details>
+
+  <details class="home-group"><summary><span class="home-group-title">🌳 প্রকৃতি ও স্থানীয় উদ্যোগ</span><span class="home-group-desc">এলাকার সৌন্দর্য ও প্রয়োজনীয় সেবার পরিচিতি</span><span class="home-group-chevron">⌄</span></summary><div class="home-group-content">
   <section id="nature" class="nature-section">
     <div class="container">
       <div class="nature-intro">
@@ -248,6 +277,9 @@
     </div>
   </section>
 
+  </div></details>
+
+  <details class="home-group"><summary><span class="home-group-title">✉️ যোগাযোগ ও অংশগ্রহণ</span><span class="home-group-desc">নতুন তথ্য জমা দিন ও যোগাযোগ করুন</span><span class="home-group-chevron">⌄</span></summary><div class="home-group-content">
   <section id="contribute">
     <div class="container">
       <div class="section-head"><div><h2>বলিয়াপুরের তথ্য যোগ করুন</h2><p>নতুন প্রতিষ্ঠান বা ভুল তথ্য সংশোধনে সহযোগিতা করুন</p></div></div>
@@ -270,6 +302,8 @@
       </div>
     </div>
   </section>
+  </div></details>
+
 </main>
 
 <footer><div class="container footer-inner"><div><strong>Boliyapur Community Directory</strong><p>আমাদের গ্রাম, আমাদের পরিচয়</p></div><div><p>© 2026 Boliyapur Community. All Rights Reserved.</p><p>তথ্য সংশোধন বা নতুন তথ্য যোগ করতে যোগাযোগ করুন।</p></div></div></footer>
@@ -363,9 +397,7 @@ function updateCounts(){
 document.getElementById("searchInput").addEventListener("input",renderDirectory);
 document.getElementById("clearSearch").addEventListener("click",()=>{document.getElementById("searchInput").value="";currentFilter="all";document.querySelectorAll(".filter").forEach(b=>b.classList.toggle("active",b.dataset.filter==="all"));renderDirectory();});
 document.getElementById("filters").addEventListener("click",e=>{const b=e.target.closest("[data-filter]");if(!b)return;currentFilter=b.dataset.filter;document.querySelectorAll(".filter").forEach(x=>x.classList.toggle("active",x===b));renderDirectory();});
-document.getElementById("menuBtn").addEventListener("click",()=>document.getElementById("navLinks").classList.toggle("open"));
-document.querySelectorAll("#navLinks a").forEach(a=>a.addEventListener("click",()=>document.getElementById("navLinks").classList.remove("open")));
-renderDirectory();renderNotices();renderGallery();setContact();updateCounts();
+renderDirectory();renderNotices();renderGallery();setContact();
 </script>
 <link rel="stylesheet" href="community.css">\n<link rel="stylesheet" href="./future.css">
 <link rel="stylesheet" href="./professional.css?v=20261108">
