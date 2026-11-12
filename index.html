@@ -104,6 +104,14 @@ header .nav{min-height:76px;gap:12px}header .brand{font-size:1.08rem;line-height
 .quick-link-tile{aspect-ratio:1.35/1;min-height:132px;padding:18px;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:8px;border-radius:17px;background:#fff;border:1px solid var(--line);box-shadow:0 6px 20px #173e2a08}.quick-link-tile:hover{transform:translateY(-3px);box-shadow:0 13px 28px #173e2a12}.quick-link-icon{width:42px;height:42px;border-radius:13px;background:#edf6f0;display:grid;place-items:center;font-size:22px}.quick-link-tile strong{color:var(--green);font-size:15px;line-height:1.4}.quick-link-tile small{color:var(--muted);font-size:12px;line-height:1.5}
 .home-group{margin:14px auto;max-width:1160px;background:#fff;border:1px solid var(--line);border-radius:17px;overflow:hidden;box-shadow:0 6px 22px #173e2a07}.home-group>summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:1fr auto;align-items:center;gap:3px 14px;padding:17px 20px}.home-group-title{font-weight:800;color:var(--green);font-size:17px}.home-group-desc{font-size:12px;color:var(--muted)}.home-group-chevron{grid-column:2;grid-row:1/3;font-size:22px;color:var(--green);transition:transform .2s}.home-group[open]>summary{background:#f5faf6;border-bottom:1px solid var(--line)}.home-group[open] .home-group-chevron{transform:rotate(180deg)}.home-group-content>section{padding:30px 0}.home-group-content>section>.container{width:min(1120px,92%)}
 @media(max-width:760px){header .nav{min-height:68px}.quick-links-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.quick-link-tile{min-height:118px;padding:14px}.home-group{margin:10px auto}.home-group>summary{padding:14px}.home-group-title{font-size:15px}.home-group-desc{font-size:11px}}
+
+/* Final navigation: the three-dot menu is the only site navigation control. */
+.menu,.menu-btn,.hamburger,.nav-links,.navlinks,.links{display:none!important}
+header .nav,header.site-head .nav{display:flex;align-items:center;justify-content:space-between;gap:12px}
+header .brand{margin-right:auto}
+.quick-links-section{display:none!important}
+.hero .hero-actions{display:none!important}
+.more-menu{display:block!important;margin-left:auto}
 </style>
   <link rel="stylesheet" href="./feature-pack.css?v=20261108">\n  <link rel="stylesheet" href="./site-refresh.css?v=20261112">
 </head>
@@ -127,19 +135,8 @@ header .nav{min-height:76px;gap:12px}header .brand{font-size:1.08rem;line-height
       <div class="eyebrow">৯ নং বনগাঁও ইউনিয়ন · সাভার · ঢাকা</div>
       <h1>আমাদের গ্রাম,<br>আমাদের পরিচয়</h1>
       <p>বলিয়াপুর গ্রামের শিক্ষা প্রতিষ্ঠান, স্বাস্থ্যসেবা, স্থানীয় ব্যবসা, প্রয়োজনীয় যোগাযোগ ও কমিউনিটি তথ্য—সব এক জায়গায়।</p>
-      <div class="hero-actions">
-        <a class="btn btn-light" href="#directory">সকল সেবা দেখতে এখানে ক্লিক করুন</a>
-        <a class="btn btn-outline" href="#contribute">তথ্য যোগ করুন</a>
-      </div>
     </div>
   </section>
-
-  <section class="quick-links-section" aria-labelledby="quickLinksTitle"><div class="container"><div class="section-head"><div><h2 id="quickLinksTitle">দ্রুত প্রবেশ</h2><p>প্রয়োজনীয় প্রধান বিভাগ বেছে নিন</p></div></div><div class="quick-links-grid">
-<a class="quick-link-tile" href="./attractions.html"><span class="quick-link-icon">📍</span><strong>দর্শনীয় স্থান</strong><small>ঘুরে দেখার জায়গা</small></a>
-<a class="quick-link-tile" href="./directory.html"><span class="quick-link-icon">🏫</span><strong>সেবা ও প্রতিষ্ঠান</strong><small>শিক্ষা, স্বাস্থ্য ও সরকারি সেবা</small></a>
-<a class="quick-link-tile" href="./gallery.html"><span class="quick-link-icon">📷</span><strong>ছবি ও গল্প</strong><small>এলাকার ছবি ও স্মৃতি</small></a>
-<a class="quick-link-tile" href="./contribute.html"><span class="quick-link-icon">✍️</span><strong>তথ্য জমা দিন</strong><small>আপনার গল্প ও ছবি পাঠান</small></a>
-</div></div></section>
 
   <details class="home-group"><summary><span class="home-group-title">🌿 এলাকার পরিচিতি</span><span class="home-group-desc">বলিয়াপুরের পরিচয়, অবস্থান ও প্রকৃতি</span><span class="home-group-chevron">⌄</span></summary><div class="home-group-content">
   <section id="about">
@@ -398,12 +395,12 @@ document.getElementById("clearSearch").addEventListener("click",()=>{document.ge
 document.getElementById("filters").addEventListener("click",e=>{const b=e.target.closest("[data-filter]");if(!b)return;currentFilter=b.dataset.filter;document.querySelectorAll(".filter").forEach(x=>x.classList.toggle("active",x===b));renderDirectory();});
 renderDirectory();renderNotices();renderGallery();setContact();
 </script>
-<link rel="stylesheet" href="community.css">\n<link rel="stylesheet" href="./future.css">
-<link rel="stylesheet" href="./professional.css?v=20261108">
-<script type="module" src="community-portal.js"></script>
+<link rel="stylesheet" href="community.css?v=20261112-menufinal">\n<link rel="stylesheet" href="./future.css?v=20261112-menufinal">
+<link rel="stylesheet" href="./professional.css?v=20261112-menufinal">
+<script type="module" src="community-portal.js?v=20261112-menufinal"></script>
 <style>.card-img{position:relative}.sample-label,.gallery-sample{position:absolute;right:8px;bottom:8px;background:#102f21d9;color:#fff;padding:3px 8px;border-radius:7px;font-size:11px;z-index:2}.gallery-item{position:relative}.gallery-sample{top:8px;bottom:auto}</style>
 
-  <script src="./future.js" defer></script>
-  <script src="./feature-pack.js?v=20261108" defer></script>
+  <script src="./future.js?v=20261112-menufinal" defer></script>
+  <script src="./feature-pack.js?v=20261112-menufinal" defer></script>
 </body>
 </html>
