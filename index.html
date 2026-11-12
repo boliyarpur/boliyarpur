@@ -114,8 +114,27 @@ header .brand{margin-right:auto}
 .more-menu{display:block!important;margin-left:auto}
 </style>
   <link rel="stylesheet" href="./feature-pack.css?v=20261108">\n  <link rel="stylesheet" href="./site-refresh.css?v=20261112">
+<style>
+/* Boliyapur cinematic monsoon mode */
+#bcStormCanvas{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:9;opacity:.78;mix-blend-mode:screen}
+#bcStormTint{position:fixed;inset:0;pointer-events:none;z-index:8;background:linear-gradient(180deg,#07172918,#061b2c20 55%,#071a2a35);opacity:1;transition:opacity .5s}
+#bcLightning{position:fixed;inset:0;z-index:10;pointer-events:none;background:#eaf7ff;opacity:0;mix-blend-mode:screen}
+body.bc-storm-on{background-color:#102333}
+body.bc-storm-on main,body.bc-storm-on footer{position:relative}
+body.bc-storm-on .hero{filter:saturate(.88);box-shadow:inset 0 0 100px #06152566}
+body.bc-storm-on .card,body.bc-storm-on .quick-card,body.bc-storm-on .about-panel,body.bc-storm-on .info-panel,body.bc-storm-on .contact-box,body.bc-storm-on .notice{box-shadow:0 14px 36px #06152525,0 2px 8px #fff8;backdrop-filter:blur(7px)}
+.bc-storm-controls{display:grid;gap:7px;padding:8px;border-top:1px solid #e4ece6;margin-top:5px}
+.bc-storm-controls button{width:100%;border:1px solid #dce8df;background:#f3f8f4;color:#164832;border-radius:10px;padding:10px 12px;text-align:left;font-weight:750;cursor:pointer}
+.bc-storm-controls button:hover{background:#e4f1e8}
+.bc-storm-controls button[aria-pressed=true]{background:#dcefe3;border-color:#8bb99b}
+.bc-storm-hint{font-size:11px;color:#718077;padding:0 4px}
+@media(prefers-reduced-motion:reduce){#bcStormCanvas{display:none}}
+</style>
 </head>
 <body>
+
+<canvas id="bcStormCanvas" aria-hidden="true"></canvas><div id="bcStormTint" aria-hidden="true"></div><div id="bcLightning" aria-hidden="true"></div>
+
 <header>
   <div class="container nav">
     <a class="brand" href="./index.html"><span class="brand-mark">ব</span><span>বলিয়াপুর কমিউনিটি</span></a>
@@ -402,5 +421,101 @@ renderDirectory();renderNotices();renderGallery();setContact();
 
   <script src="./future.js?v=20261112-menufinal" defer></script>
   <script src="./feature-pack.js?v=20261112-menufinal" defer></script>
+
+<script>
+(()=> {
+  const canvas=document.getElementById('bcStormCanvas');
+  const flash=document.getElementById('bcLightning');
+  if(!canvas||!flash)return;
+  const ctx=canvas.getContext('2d',{alpha:true});
+  const reduced=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let w=0,h=0,drops=[],raf=0,last=0,enabled=true,soundOn=false,audio=null,thunderTimer=0;
+  const isMobile=()=>window.innerWidth<700;
+  function resize(){
+    const dpr=Math.min(window.devicePixelRatio||1,1.6);
+    w=window.innerWidth;h=window.innerHeight;
+    canvas.width=Math.round(w*dpr);canvas.height=Math.round(h*dpr);
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    const count=Math.min(isMobile()?105:230,Math.round(w*h/(isMobile()?6500:5200)));
+    drops=Array.from({length:count},()=>makeDrop(true));
+  }
+  function makeDrop(initial){
+    const depth=Math.random();
+    return {x:Math.random()*w,y:initial?Math.random()*h:-20,len:7+depth*20,speed:7+depth*15,wind:1.2+depth*2.7,alpha:.13+depth*.42,width:.45+depth*.85};
+  }
+  function draw(t){
+    if(!enabled||document.hidden){raf=0;return}
+    const dt=Math.min((t-last||16)/16,2);last=t;
+    ctx.clearRect(0,0,w,h);
+    for(const p of drops){
+      ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(p.x-p.wind*p.len*.24,p.y+p.len);
+      ctx.strokeStyle='rgba(205,232,255,'+p.alpha+')';ctx.lineWidth=p.width;ctx.stroke();
+      p.x-=p.wind*dt;p.y+=p.speed*dt;
+      if(p.y>h+30||p.x<-30){p.x=Math.random()*(w+50);p.y=-25-Math.random()*100}
+    }
+    raf=requestAnimationFrame(draw);
+  }
+  function start(){if(!reduced&&!raf&&enabled){last=0;raf=requestAnimationFrame(draw)}}
+  function stop(){if(raf){cancelAnimationFrame(raf);raf=0}ctx.clearRect(0,0,w,h)}
+  function lightning(){
+    if(!enabled)return;
+    const wait=8500+Math.random()*14500;
+    thunderTimer=setTimeout(()=>{
+      if(!enabled)return;
+      flash.style.opacity='.72';
+      setTimeout(()=>flash.style.opacity='.12',75);
+      setTimeout(()=>flash.style.opacity='.48',125);
+      setTimeout(()=>flash.style.opacity='0',230);
+      if(soundOn)playThunder();
+      lightning();
+    },wait);
+  }
+  function ensureAudio(){
+    const AC=window.AudioContext||window.webkitAudioContext;
+    if(!AC)return null;
+    if(!audio)audio=new AC();
+    if(audio.state==='suspended')audio.resume();
+    return audio;
+  }
+  function playThunder(){
+    const a=ensureAudio();if(!a)return;
+    const now=a.currentTime;
+    const duration=2.7;
+    const buffer=a.createBuffer(1,Math.floor(a.sampleRate*duration),a.sampleRate);
+    const data=buffer.getChannelData(0);
+    for(let i=0;i<data.length;i++)data[i]=(Math.random()*2-1)*(1-i/data.length);
+    const noise=a.createBufferSource();noise.buffer=buffer;
+    const filter=a.createBiquadFilter();filter.type='lowpass';filter.frequency.setValueAtTime(170,now);filter.frequency.exponentialRampToValueAtTime(55,now+2.5);
+    const gain=a.createGain();gain.gain.setValueAtTime(.0001,now);gain.gain.exponentialRampToValueAtTime(.19,now+.06);gain.gain.exponentialRampToValueAtTime(.0001,now+2.7);
+    noise.connect(filter);filter.connect(gain);gain.connect(a.destination);noise.start(now);noise.stop(now+duration);
+    const rumble=a.createOscillator(),rg=a.createGain();rumble.type='sine';rumble.frequency.setValueAtTime(48,now);rumble.frequency.exponentialRampToValueAtTime(27,now+2.3);rg.gain.setValueAtTime(.0001,now);rg.gain.linearRampToValueAtTime(.12,now+.08);rg.gain.exponentialRampToValueAtTime(.0001,now+2.4);rumble.connect(rg);rg.connect(a.destination);rumble.start(now);rumble.stop(now+2.5);
+  }
+  function setEnabled(v){
+    enabled=v;document.body.classList.toggle('bc-storm-on',v);
+    canvas.style.display=v?'block':'none';document.getElementById('bcStormTint').style.opacity=v?'1':'0';
+    if(v){start();lightning()}else{stop();clearTimeout(thunderTimer);flash.style.opacity='0'}
+    const b=document.getElementById('bcStormToggle');if(b){b.setAttribute('aria-pressed',String(v));b.textContent=v?'🌧️ বৃষ্টি ও 3D ঝড়: চালু':'🌤️ বৃষ্টি ও 3D ঝড়: বন্ধ'}
+  }
+  function setSound(v){
+    soundOn=v;if(v)ensureAudio();
+    const b=document.getElementById('bcSoundToggle');if(b){b.setAttribute('aria-pressed',String(v));b.textContent=v?'🔊 বজ্রপাতের শব্দ: চালু':'🔇 বজ্রপাতের শব্দ: বন্ধ'}
+  }
+  window.addEventListener('resize',resize,{passive:true});
+  document.addEventListener('visibilitychange',()=>{if(document.hidden)stop();else start()});
+  document.addEventListener('click',e=>{
+    const b=e.target.closest('#bcStormToggle,#bcSoundToggle');if(!b)return;
+    if(b.id==='bcStormToggle')setEnabled(!enabled);
+    else setSound(!soundOn);
+  });
+  resize();setEnabled(true);
+  const menu=document.querySelector('.more-menu-panel');
+  if(menu){
+    const controls=document.createElement('div');controls.className='bc-storm-controls';
+    controls.innerHTML='<button id="bcStormToggle" type="button" aria-pressed="true">🌧️ বৃষ্টি ও 3D ঝড়: চালু</button><button id="bcSoundToggle" type="button" aria-pressed="false">🔇 বজ্রপাতের শব্দ: বন্ধ</button><span class="bc-storm-hint">শব্দ চালু করতে একবার ট্যাপ করুন। বজ্রপাতের শব্দ ব্রাউজারের অনুমতির পর বাজবে।</span>';
+    menu.appendChild(controls);
+  }
+})();
+</script>
+
 </body>
 </html>
