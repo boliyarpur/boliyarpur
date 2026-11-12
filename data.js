@@ -200,7 +200,8 @@ const DATA = {
       image: "",
       source: "The Daily Star, ১২ নভেম্বর ২০২৬",
       link: "https://www.thedailystar.net/news/bangladesh/news/rmg-unrest-continues-savar-ashulia-4321521",
-      status: "published",
+      status: "published"
+    },
     {
       id: "NEWS-005",
       title: "পরিচ্ছন্ন বলিয়াপুর গড়তে প্লাস্টিক বর্জ্য কমানোর ৫টি সহজ অভ্যাস",
