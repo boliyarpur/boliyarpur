@@ -1,0 +1,44 @@
+/* Boliyapur Community — November 2026 visual refresh */
+:root{--bp-deep:#0b4937;--bp-leaf:#167451;--bp-soft:#edf5ef;--bp-gold:#d8b56d}
+html{scroll-padding-top:100px}
+body{font-feature-settings:"kern";-webkit-font-smoothing:antialiased}
+header{border-bottom:1px solid #e4ece6}
+.navlinks a{padding:8px 2px;transition:color .18s ease,background .18s ease}
+.navlinks a:focus-visible,.btn:focus-visible,.small-btn:focus-visible,.filter:focus-visible{outline:3px solid var(--bp-gold);outline-offset:3px}
+.navlinks .admin-nav-link{padding:9px 13px;border-radius:10px;background:#edf5ef;color:#145b40}
+.hero{background-position:center 48%;isolation:isolate}
+.hero:after{content:"";position:absolute;inset:auto 0 0;height:110px;background:linear-gradient(transparent,rgba(5,37,25,.18));pointer-events:none}
+.hero-inner{position:relative;z-index:1}
+.hero h1{text-wrap:balance;text-shadow:0 3px 24px #001c12aa}
+.hero p{line-height:1.9}
+.btn{min-height:46px;transition:transform .2s ease,box-shadow .2s ease,filter .2s ease}
+.quick-card{min-height:112px;display:flex;flex-direction:column;justify-content:center}
+section[id]{scroll-margin-top:96px}
+.section-head{max-width:900px}
+.card,.notice,.contact-box,.about-panel,.info-panel{box-shadow:0 10px 28px rgba(14,55,38,.045)}
+.card{transition:transform .22s ease,box-shadow .22s ease}
+.card:hover{transform:translateY(-4px);box-shadow:0 17px 36px rgba(14,55,38,.10)}
+.card-img img,.gallery-item img{transition:transform .45s ease}
+.card:hover .card-img img{transform:scale(1.035)}
+.searchbar input:focus,.future-form input:focus,.future-form textarea:focus,.future-form select:focus{outline:3px solid #16745124;border-color:var(--bp-leaf)}
+.notice{border-left-width:4px}
+footer a{color:#e5f3e9}
+footer a:hover{text-decoration:underline;text-underline-offset:3px}
+.bp-tools{bottom:max(14px,env(safe-area-inset-bottom))}
+@media(max-width:850px){
+ .navlinks{box-shadow:0 16px 28px rgba(10,45,29,.10)}
+ .navlinks a{width:100%;padding:9px 2px}
+ .navlinks .admin-nav-link{width:auto}
+}
+@media(max-width:600px){
+ html{scroll-padding-top:78px}
+ .hero{background-position:58% center}
+ .hero-inner{max-width:100%}
+ .hero-actions{gap:10px}
+ .quick-card{min-height:98px}
+ .section-head{gap:8px}
+ .nature-community-cta .btn{width:100%}
+}
+@media(prefers-reduced-motion:reduce){
+ *,*::before,*::after{scroll-behavior:auto!important;transition:none!important;animation:none!important}
+}
