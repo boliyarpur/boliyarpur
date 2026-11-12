@@ -53,6 +53,56 @@ const games=[
 {id:"oddone",name:"Odd One Out",icon:"👀",desc:"ভিন্নটি খুঁজুন",about:"ভিন্নটি খুঁজুন — ব্রাউজারেই খেলুন।"},
 {id:"sequence",name:"Number Sequence",icon:"🔣",desc:"পরের সংখ্যা অনুমান করুন",about:"পরের সংখ্যা অনুমান করুন — ব্রাউজারেই খেলুন।"},
 {id:"speedmath",name:"Speed Math",icon:"⏱️",desc:"সময় ধরে অঙ্ক করুন",about:"সময় ধরে অঙ্ক করুন — ব্রাউজারেই খেলুন।"},
+{id:"solitaire",name:"সোলিটেয়ার",icon:"🃏",desc:"কার্ড সাজিয়ে খেলুন",about:"কার্ড সাজিয়ে খেলুন — ব্রাউজারে খেলুন।"},
+{id:"checkers",name:"চেকার্স",icon:"🔴",desc:"প্রতিপক্ষের গুটি ধরুন",about:"প্রতিপক্ষের গুটি ধরুন — ব্রাউজারে খেলুন।"},
+{id:"backgammon",name:"ব্যাকগ্যামন",icon:"🎲",desc:"কৌশলে গুটি চালুন",about:"কৌশলে গুটি চালুন — ব্রাউজারে খেলুন।"},
+{id:"domino",name:"ডমিনো",icon:"🁣",desc:"মিলিয়ে ডমিনো বসান",about:"মিলিয়ে ডমিনো বসান — ব্রাউজারে খেলুন।"},
+{id:"gomoku",name:"গোমোকু",icon:"⚫",desc:"পাঁচটি গুটি এক লাইনে আনুন",about:"পাঁচটি গুটি এক লাইনে আনুন — ব্রাউজারে খেলুন।"},
+{id:"reversi",name:"রিভার্সি",icon:"⚪",desc:"প্রতিপক্ষের গুটি নিজের রঙে আনুন",about:"প্রতিপক্ষের গুটি নিজের রঙে আনুন — ব্রাউজারে খেলুন।"},
+{id:"wordsearch",name:"Word Search",icon:"🔎",desc:"অক্ষরের ভিড়ে শব্দ খুঁজুন",about:"অক্ষরের ভিড়ে শব্দ খুঁজুন — ব্রাউজারে খেলুন।"},
+{id:"crossword",name:"Mini Crossword",icon:"📝",desc:"শব্দের ধাঁধা সমাধান করুন",about:"শব্দের ধাঁধা সমাধান করুন — ব্রাউজারে খেলুন।"},
+{id:"anagram",name:"Anagram",icon:"🔠",desc:"অক্ষর সাজিয়ে শব্দ বানান",about:"অক্ষর সাজিয়ে শব্দ বানান — ব্রাউজারে খেলুন।"},
+{id:"simon",name:"Simon Says",icon:"🌈",desc:"রঙের ক্রম মনে রাখুন",about:"রঙের ক্রম মনে রাখুন — ব্রাউজারে খেলুন।"},
+{id:"simon2",name:"Sound Pattern",icon:"🎵",desc:"শব্দের ক্রম মনে রাখুন",about:"শব্দের ক্রম মনে রাখুন — ব্রাউজারে খেলুন।"},
+{id:"colorflood",name:"Color Flood",icon:"🟦",desc:"এক রঙে বোর্ড ভরুন",about:"এক রঙে বোর্ড ভরুন — ব্রাউজারে খেলুন।"},
+{id:"minisokoban",name:"Sokoban",icon:"📦",desc:"বাক্স নির্দিষ্ট স্থানে নিন",about:"বাক্স নির্দিষ্ট স্থানে নিন — ব্রাউজারে খেলুন।"},
+{id:"tictactoe3d",name:"Tic Tac Toe 3D",icon:"❎",desc:"ত্রিমাত্রিক ঘরে চাল দিন",about:"ত্রিমাত্রিক ঘরে চাল দিন — ব্রাউজারে খেলুন।"},
+{id:"dotsboxes",name:"Dots and Boxes",icon:"🔳",desc:"রেখা টেনে ঘর পূরণ করুন",about:"রেখা টেনে ঘর পূরণ করুন — ব্রাউজারে খেলুন।"},
+{id:"nim",name:"Nim Game",icon:"🪵",desc:"শেষ কাঠি এড়িয়ে জিতুন",about:"শেষ কাঠি এড়িয়ে জিতুন — ব্রাউজারে খেলুন।"},
+{id:"nimble",name:"Take Away",icon:"➖",desc:"সঠিক সংখ্যক বস্তু সরান",about:"সঠিক সংখ্যক বস্তু সরান — ব্রাউজারে খেলুন।"},
+{id:"higherlower",name:"Higher or Lower",icon:"📈",desc:"পরের কার্ড বড় না ছোট বলুন",about:"পরের কার্ড বড় না ছোট বলুন — ব্রাউজারে খেলুন।"},
+{id:"blackjack",name:"Blackjack 21",icon:"🂡",desc:"২১-এর কাছাকাছি স্কোর করুন",about:"২১-এর কাছাকাছি স্কোর করুন — ব্রাউজারে খেলুন।"},
+{id:"warcards",name:"কার্ড যুদ্ধ",icon:"🃏",desc:"বড় কার্ডটি জিতবে",about:"বড় কার্ডটি জিতবে — ব্রাউজারে খেলুন।"},
+{id:"battleship",name:"Battleship",icon:"🚢",desc:"লুকানো জাহাজ খুঁজুন",about:"লুকানো জাহাজ খুঁজুন — ব্রাউজারে খেলুন।"},
+{id:"mastermind",name:"Mastermind",icon:"🔐",desc:"রঙের গোপন কোড ভাঙুন",about:"রঙের গোপন কোড ভাঙুন — ব্রাউজারে খেলুন।"},
+{id:"pegsolitaire",name:"Peg Solitaire",icon:"🔵",desc:"লাফিয়ে গুটি কমান",about:"লাফিয়ে গুটি কমান — ব্রাউজারে খেলুন।"},
+{id:"hex",name:"Hex",icon:"⬡",desc:"নিজের দুই প্রান্ত যুক্ত করুন",about:"নিজের দুই প্রান্ত যুক্ত করুন — ব্রাউজারে খেলুন।"},
+{id:"nonogram",name:"Nonogram",icon:"🧩",desc:"সংখ্যার সূত্রে ছবি আঁকুন",about:"সংখ্যার সূত্রে ছবি আঁকুন — ব্রাউজারে খেলুন।"},
+{id:"minesweeper2",name:"Mini Mines",icon:"💥",desc:"নিরাপদ ঘর খুঁজুন",about:"নিরাপদ ঘর খুঁজুন — ব্রাউজারে খেলুন।"},
+{id:"towerdefense",name:"Tower Defense",icon:"🏰",desc:"দুর্গ রক্ষা করুন",about:"দুর্গ রক্ষা করুন — ব্রাউজারে খেলুন।"},
+{id:"targetpractice",name:"Target Practice",icon:"🎯",desc:"লক্ষ্যে আঘাত করুন",about:"লক্ষ্যে আঘাত করুন — ব্রাউজারে খেলুন।"},
+{id:"knifehit",name:"Knife Hit",icon:"🔪",desc:"ঘূর্ণায়মান লক্ষ্যে ছুঁড়ুন",about:"ঘূর্ণায়মান লক্ষ্যে ছুঁড়ুন — ব্রাউজারে খেলুন।"},
+{id:"bottleflip",name:"Bottle Flip",icon:"🍾",desc:"বোতল উল্টে দাঁড় করান",about:"বোতল উল্টে দাঁড় করান — ব্রাউজারে খেলুন।"},
+{id:"soccerjuggle",name:"Soccer Juggle",icon:"⚽",desc:"বল মাটিতে পড়তে দেবেন না",about:"বল মাটিতে পড়তে দেবেন না — ব্রাউজারে খেলুন।"},
+{id:"volleyball",name:"ভলিবল",icon:"🏐",desc:"বল ফিরিয়ে দিন",about:"বল ফিরিয়ে দিন — ব্রাউজারে খেলুন।"},
+{id:"tennis",name:"টেনিস",icon:"🎾",desc:"র‍্যাকেট দিয়ে বল মারুন",about:"র‍্যাকেট দিয়ে বল মারুন — ব্রাউজারে খেলুন।"},
+{id:"bowling",name:"বোলিং",icon:"🎳",desc:"সব পিন ফেলে দিন",about:"সব পিন ফেলে দিন — ব্রাউজারে খেলুন।"},
+{id:"pool",name:"বিলিয়ার্ড",icon:"🎱",desc:"পকেটে বল ফেলুন",about:"পকেটে বল ফেলুন — ব্রাউজারে খেলুন।"},
+{id:"darts",name:"ডার্টস",icon:"🎯",desc:"টার্গেটে পয়েন্ট করুন",about:"টার্গেটে পয়েন্ট করুন — ব্রাউজারে খেলুন।"},
+{id:"ski",name:"Ski Slalom",icon:"⛷️",desc:"গাছ এড়িয়ে স্কি করুন",about:"গাছ এড়িয়ে স্কি করুন — ব্রাউজারে খেলুন।"},
+{id:"bike",name:"Bike Trial",icon:"🚴",desc:"বাধা পেরিয়ে সাইকেল চালান",about:"বাধা পেরিয়ে সাইকেল চালান — ব্রাউজারে খেলুন।"},
+{id:"carparking",name:"Car Parking",icon:"🅿️",desc:"গাড়ি পার্ক করুন",about:"গাড়ি পার্ক করুন — ব্রাউজারে খেলুন।"},
+{id:"traffic",name:"Traffic Control",icon:"🚦",desc:"ট্রাফিক সামলান",about:"ট্রাফিক সামলান — ব্রাউজারে খেলুন।"},
+{id:"submarine",name:"Submarine",icon:"🛥️",desc:"সমুদ্রের বাধা এড়িয়ে চলুন",about:"সমুদ্রের বাধা এড়িয়ে চলুন — ব্রাউজারে খেলুন।"},
+{id:"rocketlanding",name:"Rocket Landing",icon:"🛬",desc:"রকেট নিরাপদে নামান",about:"রকেট নিরাপদে নামান — ব্রাউজারে খেলুন।"},
+{id:"planetmatch",name:"Planet Match",icon:"🪐",desc:"গ্রহের জোড়া মেলান",about:"গ্রহের জোড়া মেলান — ব্রাউজারে খেলুন।"},
+{id:"stargazer",name:"Star Catcher",icon:"🌟",desc:"তারকা সংগ্রহ করুন",about:"তারকা সংগ্রহ করুন — ব্রাউজারে খেলুন।"},
+{id:"dinosaur",name:"Dino Run",icon:"🦖",desc:"ডাইনোসর নিয়ে বাধা পার হন",about:"ডাইনোসর নিয়ে বাধা পার হন — ব্রাউজারে খেলুন।"},
+{id:"penguin",name:"Penguin Slide",icon:"🐧",desc:"বরফে স্লাইড করুন",about:"বরফে স্লাইড করুন — ব্রাউজারে খেলুন।"},
+{id:"bee",name:"Bee Garden",icon:"🐝",desc:"ফুল থেকে মধু সংগ্রহ করুন",about:"ফুল থেকে মধু সংগ্রহ করুন — ব্রাউজারে খেলুন।"},
+{id:"gardening",name:"Garden Match",icon:"🌻",desc:"বাগানের জিনিস মিলান",about:"বাগানের জিনিস মিলান — ব্রাউজারে খেলুন।"},
+{id:"cooking",name:"Quick Chef",icon:"🍳",desc:"দ্রুত খাবারের অর্ডার মিলান",about:"দ্রুত খাবারের অর্ডার মিলান — ব্রাউজারে খেলুন।"},
+{id:"treasure",name:"Treasure Hunt",icon:"💰",desc:"লুকানো ধন খুঁজুন",about:"লুকানো ধন খুঁজুন — ব্রাউজারে খেলুন।"},
 ];
 let cleanup=null;
 function cardList(list=games){grid.innerHTML=list.map(g=>'<button class="game-card" data-game="'+g.id+'"><span class="game-icon">'+g.icon+'</span><strong>'+g.name+'</strong><small>'+g.desc+'</small></button>').join("");}
@@ -160,7 +210,7 @@ function flappy(){
 }
 function extraGame(id){
  const icons={rps:"✊",dice:"🎲",coin:"🪙",mathquiz:"➗",geoquiz:"🇧🇩",generalquiz:"🧠",typing:"⌨️",scramble:"🔤",hangman:"🪢",numberguess:"🔍",reaction:"⚡",clicker:"👆",whack:"🐹",colormatch:"🎨",pattern:"🧩",lightsout:"💡",connect4:"🔴",fifteen:"🔢",maze:"🧭",pong:"🏓",basketball:"🏀",penalty:"⚽",golf:"⛳",space:"🚀",asteroid:"☄️",runner:"🏃",fruitcatch:"🍉",bubble:"🫧",stack:"🏗️",jump:"🦘",fishing:"🎣",archery:"🏹",brick2:"🧱",animalmemory:"🐼",fruitmemory:"🍓",emojimemory:"😃",quickcount:"🔢",oddone:"👀",sequence:"🔣",speedmath:"⏱️"};
- const icon=icons[id]||"🎮";let score=0,time=30,active=false,timer=null;
+ const icon=icons[id]||(games.find(g=>g.id===id)||{}).icon||"🎮";let score=0,time=30,active=false,timer=null;
  panel(toolbar('স্কোর: <b id="extraScore">0</b> · সময়: <b id="extraTime">30</b>')+'<h3 id="extraPrompt" style="text-align:center">শুরু চাপুন</h3><div id="extraArea" class="game-toolbar" style="min-height:170px;flex-wrap:wrap"></div><p id="gameMessage" class="game-message">লক্ষ্য আইকনটি খুঁজে চাপ দিন।</p><div class="game-toolbar"><button id="extraStart" class="game-action">শুরু / আবার</button></div>');
  function draw(){const area=$("extraArea");area.innerHTML="";const choices=[icon,"⭐","🎯","💎","🍀","🎈"].sort(()=>Math.random()-.5);$("extraPrompt").textContent="লক্ষ্য: "+icon+" — যত দ্রুত পারেন খুঁজে চাপ দিন!";choices.forEach(v=>{const b=btn(v,()=>{if(!active)return;if(v===icon){score++;$("extraScore").textContent=score;msg("সঠিক! +১ পয়েন্ট");draw();}else msg("এটি নয়, আবার চেষ্টা করুন।");});b.style.fontSize="28px";b.style.minWidth="58px";b.style.minHeight="58px";area.append(b);});}
  $("extraStart").onclick=()=>{clearInterval(timer);score=0;time=30;active=true;$("extraScore").textContent="0";$("extraTime").textContent="30";draw();timer=setInterval(()=>{time--;$("extraTime").textContent=String(time);if(time<=0){clearInterval(timer);active=false;msg("সময় শেষ! আপনার স্কোর "+score);}},1000);};cleanup=()=>clearInterval(timer);
