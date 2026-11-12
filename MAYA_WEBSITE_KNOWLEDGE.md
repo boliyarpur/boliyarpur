@@ -187,8 +187,7 @@ Maya must keep the following geographic groups separate. A nearby Savar attracti
 
 ## Facebook Page integration
 
-- Official Boliyapur Community Facebook Page URL: **not yet supplied/verified**.
-- Do not guess a Facebook page from the website name or create a fabricated link.
-- Once the owner supplies the exact public Page URL, add it to the website's official social links and Maya's contact answers.
-- Maya may then direct visitors to the verified Page for announcements and community updates, while reminding them that the website remains the directory source of record.
+- Facebook Page URL supplied by the website owner: https://www.facebook.com/profile.php?id=61596468413187
+- Treat this as the owner-provided official Facebook link; do not claim the page's name, ownership, or current content has been independently verified unless checked separately.
+- Maya may share this exact link when visitors ask for the community Facebook Page or social updates. Remind visitors that the website remains the directory source of record.
 
