@@ -1,5 +1,5 @@
 /* Network-first cache: always prefer current GitHub Pages files. */
-const CACHE="boliyapur-community-v11";
+const CACHE="boliyapur-community-v12";
 const CORE=["./","./index.html","./pages.css","./community.css","./future.css","./future.js","./professional.css","./feature-pack.css","./feature-pack.js","./community-portal.js","./games.html","./games.css","./games.js","./manifest.webmanifest","./logo.svg","./guide.css","./guide.js"];
 self.addEventListener("install",event=>{event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(CORE)).then(()=>self.skipWaiting()));});
 self.addEventListener("activate",event=>{event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(key=>key!==CACHE).map(key=>caches.delete(key)))).then(()=>self.clients.claim()));});
