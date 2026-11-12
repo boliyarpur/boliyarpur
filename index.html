@@ -429,7 +429,7 @@ renderDirectory();renderNotices();renderGallery();setContact();
   if(!canvas||!flash)return;
   const ctx=canvas.getContext('2d',{alpha:true});
   const reduced=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  let w=0,h=0,drops=[],raf=0,last=0,enabled=true,soundOn=false,audio=null,thunderTimer=0;
+  let w=0,h=0,drops=[],raf=0,last=0,enabled=true,soundOn=false,audio=null,thunderTimer=0,rainSource=null,rainGain=null;
   const isMobile=()=>window.innerWidth<700;
   function resize(){
     const dpr=Math.min(window.devicePixelRatio||1,1.6);
@@ -477,6 +477,16 @@ renderDirectory();renderNotices();renderGallery();setContact();
     if(audio.state==='suspended')audio.resume();
     return audio;
   }
+  function startRainAudio(){
+    const a=ensureAudio();if(!a||rainSource)return;
+    const seconds=3,buffer=a.createBuffer(1,Math.floor(a.sampleRate*seconds),a.sampleRate),data=buffer.getChannelData(0);
+    for(let i=0;i<data.length;i++)data[i]=(Math.random()*2-1)*(.45+Math.random()*.55);
+    rainSource=a.createBufferSource();rainSource.buffer=buffer;rainSource.loop=true;
+    const filter=a.createBiquadFilter();filter.type='lowpass';filter.frequency.value=1250;
+    rainGain=a.createGain();rainGain.gain.value=.075;
+    rainSource.connect(filter);filter.connect(rainGain);rainGain.connect(a.destination);rainSource.start();
+  }
+  function stopRainAudio(){if(rainSource){try{rainSource.stop()}catch(e){}rainSource.disconnect();rainSource=null;rainGain=null}}
   function playThunder(){
     const a=ensureAudio();if(!a)return;
     const now=a.currentTime;
@@ -493,11 +503,11 @@ renderDirectory();renderNotices();renderGallery();setContact();
   function setEnabled(v){
     enabled=v;document.body.classList.toggle('bc-storm-on',v);
     canvas.style.display=v?'block':'none';document.getElementById('bcStormTint').style.opacity=v?'1':'0';
-    if(v){start();lightning()}else{stop();clearTimeout(thunderTimer);flash.style.opacity='0'}
+    if(v){start();lightning();if(soundOn)startRainAudio()}else{stop();clearTimeout(thunderTimer);flash.style.opacity='0';stopRainAudio()}
     const b=document.getElementById('bcStormToggle');if(b){b.setAttribute('aria-pressed',String(v));b.textContent=v?'🌧️ বৃষ্টি ও 3D ঝড়: চালু':'🌤️ বৃষ্টি ও 3D ঝড়: বন্ধ'}
   }
   function setSound(v){
-    soundOn=v;if(v)ensureAudio();
+    soundOn=v;if(v){ensureAudio();if(enabled)startRainAudio()}else stopRainAudio();
     const b=document.getElementById('bcSoundToggle');if(b){b.setAttribute('aria-pressed',String(v));b.textContent=v?'🔊 বজ্রপাতের শব্দ: চালু':'🔇 বজ্রপাতের শব্দ: বন্ধ'}
   }
   window.addEventListener('resize',resize,{passive:true});
