@@ -142,3 +142,53 @@ The `data.js` helper `getActiveNews()` filters news with `status === "active"`, 
 - `data.js` — structured website directory and content data.
 - `index.html` — website page structure and embedded scripts/styles.
 - `style.css` — website styling.
+
+## দর্শনীয় স্থান ও ঘোরার জায়গা (Sights & Places to Visit)
+
+Maya must keep the following geographic groups separate. A nearby Savar attraction must never be described as being inside Boliyapur village. The places below are research leads for the Maya knowledge base; verify exact location, public access, opening hours, fees, and travel conditions before giving practical visit instructions.
+
+### Boliyapur-specific local interest
+
+1. **চাকুলিয়া, বলিয়াপুর — ড্রাগন ফল চাষ**
+   - An Industrial Engineers Association of Bangladesh (IEAB) Savar-Manikganj division page reports that exotic dragon-fruit cultivation began at Chakulia in Boliyapur.
+   - This is a local agricultural-interest feature, not a confirmed public tourist site or visitor farm.
+   - Do not promise farm entry, tours, sales, season, or visiting hours. Ask the farm/landowner for permission before visiting.
+   - Source: https://www.ieabbd.org/savar-manaikganj-industrial-division/
+   - Verification status for directory publication: needs local confirmation and a current contact/permission.
+
+### Nearby attractions in Savar / Ashulia (not inside Boliyapur)
+
+1. **জাতীয় স্মৃতিসৌধ (National Martyrs' Memorial), নবীনগর, সাভার**
+   - National memorial and major historical site.
+   - Source: https://www.touristplaces.com.bd/savar/
+2. **গোলাপ গ্রাম, সাদুল্লাপুর, বিরুলিয়া, সাভার**
+   - Flower-growing village known for rose cultivation; located in Birulia Union on the Turag River.
+   - This is in Savar but not in Boliyapur or Bongaon Union.
+   - Source: UNB report (7 January 2021): https://unb.com.bd/category/lifestyle/visit-sadullapur-golap-gram-rose-village-at-savar-for-day-tour/62969
+3. **বিরুলিয়া জমিদার বাড়ি ও তুরাগ নদী-সংলগ্ন এলাকা, বিরুলিয়া**
+   - Mentioned among attractions in the Savar-Manikganj area by IEAB. Confirm access and current condition locally.
+   - Source: https://www.ieabbd.org/savar-manaikganj-industrial-division/
+4. **ফ্যান্টাসি কিংডম, জামগড়া/আশুলিয়া**
+   - Theme park in the Savar-Ashulia area. Check current operation, ticket prices, and opening hours from its official channels before answering.
+   - Source for regional listing: https://www.ieabbd.org/savar-manaikganj-industrial-division/
+5. **নন্দন পার্ক, নবীনগর-চন্দ্রা মহাসড়ক এলাকা**
+   - Theme park listed among Savar attractions. Check current opening status, ticket prices, and access before recommending a visit.
+   - Source: https://www.touristplaces.com.bd/savar/
+6. **জাহাঙ্গীরনগর বিশ্ববিদ্যালয় ক্যাম্পাস, সাভার**
+   - A notable campus and cultural/natural area. Do not imply unrestricted access; visitors should follow campus rules and check whether public entry is allowed.
+   - Regional heritage reference: https://oldweb.lged.gov.bd/UploadedDocument/ProjectLibraryGallery/1110/49329-006-iee-en_4_Savar_W-01_IEE.pdf
+
+### How Maya should answer place-related questions
+
+- If asked “বলিয়াপুরের দর্শনীয় স্থান কী কী?”, lead with the Chakulia dragon-fruit cultivation story only as a locally reported agricultural-interest feature, clearly noting it is not a confirmed public visitor attraction. Then optionally list nearby Savar attractions under a separate heading.
+- If asked “বলিয়াপুরের ভেতরে কোথায় ঘুরতে যাব?”, do not misrepresent Savar attractions as village attractions. Say that the website currently has no fully verified public tourist-site list inside Boliyapur and invite local residents to submit places with photos, location, owner/authority permission, and source.
+- Never invent distances, directions, transport fares, opening hours, ticket prices, or safety/access status.
+- For maps, use a verified place name and location; do not generate a pin for an uncertain farm or private property.
+
+## Facebook Page integration
+
+- Official Boliyapur Community Facebook Page URL: **not yet supplied/verified**.
+- Do not guess a Facebook page from the website name or create a fabricated link.
+- Once the owner supplies the exact public Page URL, add it to the website's official social links and Maya's contact answers.
+- Maya may then direct visitors to the verified Page for announcements and community updates, while reminding them that the website remains the directory source of record.
+
