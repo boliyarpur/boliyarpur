@@ -1,7 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
 import { getFirestore, collection, addDoc, setDoc, doc, query, where, onSnapshot, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
-import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
-import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-storage.js";
 import { firebaseConfig } from "./firebase-config.js";
 
 const mount = document.createElement("section");
@@ -100,8 +98,9 @@ function renderFeed(snapshot) {
 }
 
 
-  // Direct WhatsApp submission; does not require Firebase Authentication.
-  form.addEventListener("submit", event => {
+  // Share post details and selected media through the device share sheet.
+  // Visitor chooses WhatsApp (or another app) and confirms sending.
+  form.addEventListener("submit", async event => {
     event.preventDefault();
     const name = $("citizenName").value.trim();
     const area = $("citizenArea").value.trim() || "বলিয়াপুর";
@@ -128,19 +127,40 @@ function renderFeed(snapshot) {
       "বিভাগ: " + category,
       "শিরোনাম: " + title,
       "বিস্তারিত: " + story,
-      file ? "ছবি/ভিডিও: " + file.name + " (WhatsApp-এ আলাদাভাবে attach করুন)" : "মিডিয়া: নেই",
       "অনুগ্রহ করে যাচাই করে ওয়েবসাইটে প্রকাশের ব্যবস্থা করুন।",
       "ওয়েবসাইট: https://boliyarpur.github.io/boliyarpur/"
-    ].join("\n");
-    const url = "https://wa.me/" + ADMIN_WHATSAPP + "?text=" + encodeURIComponent(message);
-    showStatus("WhatsApp খুলছে। সেখানে Send চাপুন। ছবি/ভিডিও থাকলে WhatsApp-এ সেটিও attach করে পাঠান।");
-    const win = window.open(url, "_blank");
-    if (!win) window.location.href = url;
+    ].join("\\n");
+    submit.disabled = true;
+    try {
+      if (file && navigator.share && navigator.canShare && navigator.canShare({ files: [file] })) {
+        await navigator.share({ title: "বলিয়াপুর কমিউনিটি পোস্ট", text: message, files: [file] });
+        showStatus("শেয়ার মেনু খুলেছে। WhatsApp নির্বাচন করে Admin-এর চ্যাটে Send করুন।");
+      } else if (!file && navigator.share) {
+        await navigator.share({ title: "বলিয়াপুর কমিউনিটি পোস্ট", text: message });
+        showStatus("শেয়ার মেনু খুলেছে। WhatsApp নির্বাচন করে Admin-এর চ্যাটে Send করুন।");
+      } else {
+        const url = "https://wa.me/" + ADMIN_WHATSAPP + "?text=" + encodeURIComponent(message);
+        showStatus(file
+          ? "এই ব্রাউজারে ফাইলসহ শেয়ার সমর্থিত নয়। WhatsApp খুলছে—ছবি/ভিডিওটি Attach করে Send করুন।"
+          : "WhatsApp খুলছে। Admin-এর চ্যাটে Send চাপুন।");
+        window.location.href = url;
+      }
+    } catch (error) {
+      if (error && error.name === "AbortError") {
+        showStatus("শেয়ার বাতিল করা হয়েছে। চাইলে আবার জমা দিন।");
+      } else {
+        const url = "https://wa.me/" + ADMIN_WHATSAPP + "?text=" + encodeURIComponent(message);
+        showStatus("শেয়ার মেনু খোলা যায়নি। WhatsApp-এ পাঠানোর পেজ খুলছি।");
+        window.location.href = url;
+      }
+    } finally {
+      submit.disabled = false;
+    }
   });
+
 
 if (!firebaseConfig.apiKey || !firebaseConfig.projectId ||
     firebaseConfig.apiKey.includes("PASTE_") || firebaseConfig.projectId.includes("PASTE_")) {
-  showStatus("Firebase Web App config সম্পূর্ণ নয়।", true);
   feed.innerHTML = '<div class="citizen-empty">Firebase সেটআপ প্রয়োজন।</div>';
 } else {
   try {
@@ -158,10 +178,6 @@ if (!firebaseConfig.apiKey || !firebaseConfig.projectId ||
         feed.innerHTML = '<div class="citizen-empty">পোস্ট লোড করা যায়নি। Firebase Firestore Rules পরীক্ষা করুন।</div>';
       }
     );
-
-    // Create an anonymous visitor session only when the visitor submits the form.
-    // This avoids an unhandled auth rejection during ordinary page loading.
-
 
   } catch (error) {
     console.error("Firebase initialization error:", error);
