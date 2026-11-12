@@ -120,7 +120,8 @@ if (!firebaseConfig.apiKey || !firebaseConfig.projectId ||
       }
     );
 
-    const sessionReady = signInAnonymously(auth);
+    // Create an anonymous visitor session only when the visitor submits the form.
+    // This avoids an unhandled auth rejection during ordinary page loading.
 
     form.addEventListener("submit", async event => {
       event.preventDefault();
@@ -150,9 +151,19 @@ if (!firebaseConfig.apiKey || !firebaseConfig.projectId ||
       $("citizenProgressText").textContent = "";
 
       try {
-        await sessionReady;
-        const user = auth.currentUser;
-        if (!user) throw new Error("নাগরিক সেশন তৈরি হয়নি।");
+        let user = auth.currentUser;
+        if (!user) {
+          try {
+            const credential = await signInAnonymously(auth);
+            user = credential.user;
+          } catch (authError) {
+            if (authError.code === "auth/admin-restricted-operation" || authError.code === "auth/operation-not-allowed") {
+              throw new Error("Firebase-এ Anonymous sign-in চালু নেই। Firebase Console → Authentication → Sign-in method (বা Sign-in providers) → Anonymous → Enable → Save করুন। তারপর পেজ Refresh করে আবার জমা দিন। Project ID: boliyapur-community.");
+            }
+            throw authError;
+          }
+        }
+        if (!user) throw new Error("নাগরিক সেশন তৈরি হয়নি। পেজ Refresh করে আবার চেষ্টা করুন।");
 
         const post = {
           uid: user.uid,
