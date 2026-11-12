@@ -63,7 +63,7 @@ function speak(text){lastText=text; speech.textContent=text;answer.textContent=t
  const voices=window.speechSynthesis.getVoices();const v=voices.find(x=>/^bn(-|_)/i.test(x.lang))||voices.find(x=>/bangla|bengali/i.test(x.name));if(v)u.voice=v;
  u.rate=.94;u.pitch=1.08;window.speechSynthesis.speak(u);
 }
-function go(href){if(href.startsWith("#")){const el=document.querySelector(href);if(el){el.scrollIntoView({behavior:"smooth",block:"start"});return true;}return false;}location.href=href;return true;}
+function go(href){if(href.startsWith("#")){const el=document.querySelector(href);if(el){el.scrollIntoView({behavior:"smooth",block:"start"});return true;}location.href="./index.html"+href;return true;}location.href=href;return true;}
 function respond(raw){const q=String(raw||"").toLowerCase().trim();if(!q)return;
  if(q.includes("ঘুরিয়ে")||q.includes("ঘুরে দেখি")){speak("চলো, আমি তোমাকে ওয়েবসাইট ঘুরিয়ে দেখাই। প্রথমে হোম পেজ, তারপর পরিচিতি, সেবা, গ্যালারি আর গেম দেখাবো।");go("#home");setTimeout(()=>{const e=document.querySelector("#about");if(e)e.scrollIntoView({behavior:"smooth"});},2600);return;}
  const r=routes.find(x=>x.keys.some(k=>q.includes(k)));
