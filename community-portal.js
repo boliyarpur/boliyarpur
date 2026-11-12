@@ -129,7 +129,7 @@ function renderFeed(snapshot) {
       "বিস্তারিত: " + story,
       "অনুগ্রহ করে যাচাই করে ওয়েবসাইটে প্রকাশের ব্যবস্থা করুন।",
       "ওয়েবসাইট: https://boliyarpur.github.io/boliyarpur/"
-    ].join("\\n");
+    ].join("\n");
     submit.disabled = true;
     try {
       if (file && navigator.share && navigator.canShare && navigator.canShare({ files: [file] })) {
@@ -166,8 +166,6 @@ if (!firebaseConfig.apiKey || !firebaseConfig.projectId ||
   try {
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
-    const auth = getAuth(app);
-    const storage = getStorage(app);
 
     // Approved content is subscribed live; new approvals appear without page refresh.
     onSnapshot(
@@ -181,6 +179,6 @@ if (!firebaseConfig.apiKey || !firebaseConfig.projectId ||
 
   } catch (error) {
     console.error("Firebase initialization error:", error);
-    showStatus("Firebase সংযোগে সমস্যা: " + error.message, true);
+    feed.innerHTML = '<div class="citizen-empty">অনুমোদিত পোস্ট লোড করা যাচ্ছে না। পরে আবার চেষ্টা করুন।</div>';
   }
 }
