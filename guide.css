@@ -1,0 +1,35 @@
+#bct-guide{position:fixed;right:16px;bottom:16px;z-index:10020;font-family:system-ui,"Noto Sans Bengali",sans-serif;color:#18324a}
+#bct-guide *{box-sizing:border-box}
+#bct-launch{display:flex;align-items:center;gap:9px;border:0;border-radius:999px;padding:9px 15px 9px 9px;background:linear-gradient(135deg,#267fc1,#4da9e7);color:#fff;font-weight:800;box-shadow:0 10px 32px #174e7c55;cursor:pointer}
+#bct-launch .bct-mini{width:39px;height:39px;border-radius:50%;background:#fff;display:grid;place-items:center;font-size:25px}
+#bct-panel{display:none;position:absolute;right:0;bottom:65px;width:min(360px,calc(100vw - 24px));max-height:min(78vh,650px);overflow:auto;background:#fff;border:1px solid #d8e9f7;border-radius:23px;box-shadow:0 22px 65px #153e603d}
+#bct-guide.open #bct-panel{display:block;animation:bctPop .22s ease-out}
+@keyframes bctPop{from{opacity:0;transform:translateY(12px) scale(.97)}to{opacity:1;transform:none}}
+.bct-head{display:flex;align-items:center;gap:12px;padding:14px 15px;background:linear-gradient(120deg,#eaf6ff,#f8fcff);border-bottom:1px solid #e0edf7}
+.bct-head strong{display:block;color:#205b8d}.bct-head small{color:#68849b}
+.bct-close{margin-left:auto;border:0;background:#fff;border-radius:50%;width:34px;height:34px;font-size:20px;color:#52738c;cursor:pointer}
+.bct-stage{height:185px;display:flex;align-items:center;justify-content:center;gap:12px;padding:12px;background:radial-gradient(ellipse at 50% 80%,#dcefff 0,#f8fcff 62%,#fff 100%);overflow:hidden}
+.bct-person{width:120px;height:170px;filter:drop-shadow(0 9px 8px #245c8425);animation:bctWalk 1.5s ease-in-out infinite}
+.bct-person .armL{transform-origin:43px 72px;animation:bctWave 2.4s ease-in-out infinite}
+.bct-person .armR{transform-origin:76px 72px;animation:bctPoint 3.8s ease-in-out infinite}
+.bct-person .legL{transform-origin:50px 123px;animation:bctLeg .7s ease-in-out infinite alternate}
+.bct-person .legR{transform-origin:69px 123px;animation:bctLeg .7s ease-in-out infinite alternate-reverse}
+@keyframes bctWalk{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+@keyframes bctWave{0%,65%,100%{transform:rotate(0)}72%,82%{transform:rotate(-28deg)}77%,87%{transform:rotate(8deg)}}
+@keyframes bctPoint{0%,20%,100%{transform:rotate(0)}35%,65%{transform:rotate(-32deg)}}
+@keyframes bctLeg{from{transform:rotate(-7deg)}to{transform:rotate(7deg)}}
+.bct-speech{flex:1;align-self:center;background:#fff;border:1px solid #dcebf6;border-radius:16px;padding:11px;color:#365a76;font-size:13px;line-height:1.55;box-shadow:0 5px 18px #2c638c0c}
+.bct-speech:after{content:"";display:block;width:9px;height:9px;position:absolute;background:#fff;border-right:1px solid #dcebf6;border-bottom:1px solid #dcebf6;transform:rotate(45deg);margin:8px 0 0 -18px}
+.bct-body{padding:14px}
+.bct-answer{min-height:50px;padding:11px 12px;border-radius:13px;background:#f2f8fd;color:#345b79;font-size:13px;line-height:1.6;margin-bottom:11px}
+.bct-quick{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+.bct-quick button,.bct-actions button{border:1px solid #dceaf5;background:#fff;color:#286a9f;border-radius:11px;padding:9px 10px;font-size:12px;font-weight:750;cursor:pointer}
+.bct-quick button:hover,.bct-actions button:hover{background:#edf7ff}
+.bct-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:11px}
+.bct-actions button.primary{background:#2e8acb;color:white;border-color:#2e8acb}
+.bct-inputrow{display:flex;gap:7px;margin-top:11px}
+.bct-inputrow input{min-width:0;flex:1;border:1px solid #d9e8f3;border-radius:11px;padding:10px;font:inherit;font-size:13px;outline-color:#4b9bd2}
+.bct-inputrow button{border:0;border-radius:11px;background:#2e8acb;color:#fff;padding:0 13px;font-weight:800}
+.bct-foot{font-size:10px;color:#8297a8;padding:0 14px 13px}
+@media(max-width:480px){#bct-guide{right:10px;bottom:10px}#bct-panel{bottom:62px}.bct-stage{height:165px}.bct-person{height:150px;width:105px}}
+@media(prefers-reduced-motion:reduce){.bct-person,.bct-person *{animation:none!important}#bct-panel{animation:none!important}}
