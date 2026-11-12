@@ -112,7 +112,16 @@ header .brand{margin-right:auto}
 .quick-links-section{display:none!important}
 .hero .hero-actions{display:none!important}
 .more-menu{display:block!important;margin-left:auto}
-</style>
+
+/* Live rain + occasional lightning atmosphere */
+body{position:relative;isolation:isolate}
+body:before{content:"";position:fixed;inset:-20% 0 0;z-index:19;pointer-events:none;opacity:.34;background-image:repeating-linear-gradient(103deg,transparent 0 17px,#d8efff88 18px,#d8efff88 19px,transparent 20px 39px),repeating-linear-gradient(106deg,transparent 0 43px,#ffffff55 44px,#ffffff55 45px,transparent 46px 71px);background-size:100% 190px,100% 250px;animation:boliRainFall .72s linear infinite}
+body:after{content:"";position:fixed;inset:0;z-index:18;pointer-events:none;background:rgba(215,235,255,0);opacity:0;animation:boliLightning 11s infinite}
+@keyframes boliRainFall{from{transform:translate3d(0,-100px,0)}to{transform:translate3d(-32px,190px,0)}}
+@keyframes boliLightning{0%,91%,93%,95%,100%{opacity:0;background:rgba(210,230,255,0)}91.3%{opacity:.72;background:rgba(220,237,255,.68)}91.8%{opacity:.08;background:rgba(220,237,255,.1)}92.2%{opacity:.9;background:rgba(220,237,255,.8)}92.7%{opacity:0}94%{opacity:.55;background:rgba(220,237,255,.5)}94.4%{opacity:0}}
+@media(prefers-reduced-motion:reduce){body:before,body:after{animation:none;opacity:.12}}
+
+  </style>
   <link rel="stylesheet" href="./feature-pack.css?v=20261108">\n  <link rel="stylesheet" href="./site-refresh.css?v=20261112">
 <style>
 /* Boliyapur cinematic monsoon mode */
