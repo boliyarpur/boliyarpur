@@ -201,6 +201,19 @@ const DATA = {
       source: "The Daily Star, ১২ নভেম্বর ২০২৬",
       link: "https://www.thedailystar.net/news/bangladesh/news/rmg-unrest-continues-savar-ashulia-4321521",
       status: "published"
+    },
+    {
+      id: "NEWS-005",
+      title: "মহাসড়কের পাশের বর্জ্য: পরিচ্ছন্নতা রক্ষায় সবার দায়িত্ব",
+      category: "সামাজিক সচেতনতা",
+      date: "2026-11-12",
+      author: "Boliyapur Community",
+      location: "বলিয়াপুর ও সাভার, ঢাকা",
+      description: "ঢাকা-আরিচা মহাসড়কের বলিয়াপুর অংশে বর্জ্য অপসারণ ও পরিচ্ছন্নতা উদ্যোগ নিয়ে ১১ জুলাই ২০২৬-এ The Business Standard প্রতিবেদন প্রকাশ করে। প্রতিবেদনে রাস্তার পাশে বর্জ্য না ফেলে নির্ধারিত বর্জ্যস্থল ব্যবহারের জন্য আশপাশের এলাকার বাসিন্দাদের সহযোগিতা চাওয়ার কথা বলা হয়। পরিচ্ছন্নতা শুধু প্রশাসনের কাজ নয়—বাড়ির বর্জ্য নির্ধারিত সংগ্রহকারীর হাতে দেওয়া, রাস্তা-খাল-জলাশয়ে ময়লা না ফেলা, প্লাস্টিক আলাদা রাখা এবং অন্যকে সচেতন করাও নাগরিক দায়িত্ব। স্থানীয় কোনো নির্দিষ্ট বর্জ্য সংগ্রহস্থল বা সময়সূচি এখানে নিশ্চিত করা হয়নি; ব্যবহার করার আগে স্থানীয় কর্তৃপক্ষের নির্দেশনা জেনে নিন। সংযুক্ত ছবিটি ৪ অক্টোবর ২০২৫-এর TBS প্রতিবেদনের পুরোনো চিত্র—এটি বর্তমান পরিস্থিতির ছবি নয়।",
+      image: "https://www.tbsnews.net/sites/default/files/styles/big_3/public/images/2025/10/04/dji_0929.jpg",
+      source: "The Business Standard, ১১ জুলাই ২০২৬; ছবির উৎস: TBS, ৪ অক্টোবর ২০২৫",
+      link: "https://www.tbsnews.net/bangladesh/environment/govt-begins-clearing-waste-along-dhaka-aricha-highway-plans-tree-plantation",
+      status: "draft"
     }
   ],
 
