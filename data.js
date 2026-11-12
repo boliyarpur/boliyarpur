@@ -214,6 +214,20 @@ const DATA = {
       source: "The Business Standard, ১১ জুলাই ২০২৬; ছবির উৎস: TBS, ৪ অক্টোবর ২০২৫",
       link: "https://www.tbsnews.net/bangladesh/environment/govt-begins-clearing-waste-along-dhaka-aricha-highway-plans-tree-plantation",
       status: "draft"
+    },
+    {
+      id: "NEWS-006",
+      title: "স্কুলপথে শিশুদের নিরাপত্তা: দুর্ঘটনা কমাতে পরিবার ও চালকদের ৭টি করণীয়",
+      category: "শিক্ষা ও সামাজিক সচেতনতা",
+      date: "2026-11-12",
+      author: "Boliyapur Community",
+      location: "বলিয়াপুর ও সাভার",
+      description: "শিশুদের স্কুলে যাওয়া-আসার পথে নিরাপত্তা নিশ্চিত করা পরিবার, চালক ও পুরো কমিউনিটির দায়িত্ব। বিশ্ব স্বাস্থ্য সংস্থার ২০ জুলাই ২০২৬-এর তথ্য অনুযায়ী, ৫–২৯ বছর বয়সীদের মৃত্যুর প্রধান কারণ সড়ক দুর্ঘটনা। তাই স্কুলের সামনে ও আবাসিক এলাকায় গতি কমানো, শিশুদের রাস্তা পার হওয়ার সময় বড়দের সঙ্গে থাকা, ফুটপাত বা নিরাপদ পাশ ব্যবহার, রাস্তা পার হওয়ার আগে দুই দিক দেখা, চলন্ত গাড়ির সামনে দৌড়ে না যাওয়া, মোটরসাইকেলে মানসম্মত হেলমেট পরা এবং গাড়িতে সিটবেল্ট ও শিশু-সুরক্ষা আসন ব্যবহার জরুরি। চালকদের স্কুল ও জনবসতিপূর্ণ এলাকায় ধীরে চালাতে হবে এবং গাড়ি চালানোর সময় মোবাইল ব্যবহার করা যাবে না। এগুলো সাধারণ সড়ক-নিরাপত্তা পরামর্শ; বলিয়াপুরের কোনো নির্দিষ্ট দুর্ঘটনা বা স্কুলের বর্তমান ট্রাফিক পরিস্থিতির দাবি নয়।",
+      image: "https://images.unsplash.com/photo-1768225325069-ed25753a95b0?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=80&w=1600",
+      source: "বিশ্ব স্বাস্থ্য সংস্থা (WHO), Road traffic injuries, ২০ জুলাই ২০২৬; ছবির উৎস: Tanya Barrow, Unsplash",
+      link: "https://www.who.int/news-room/fact-sheets/detail/road-traffic-injuries/",
+      imageCredit: "Tanya Barrow / Unsplash — https://unsplash.com/photos/school-crossing-sign-with-speed-indicator-and-20-limit-twQ8-CJlLzo",
+      status: "draft"
     }
   ],
 
