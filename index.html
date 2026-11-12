@@ -22,7 +22,7 @@
     .searchbar{display:flex;gap:10px;margin:0 0 18px}.searchbar input{flex:1;min-width:0;border:1px solid var(--line);border-radius:12px;padding:13px 15px;background:white;outline-color:var(--green2)}
     .filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px}.filter{border:1px solid var(--line);background:white;color:#43564b;border-radius:999px;padding:8px 14px;cursor:pointer}.filter.active{background:var(--green);border-color:var(--green);color:white}
     .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}.card{background:white;border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;min-width:0}.card-img{height:155px;background:linear-gradient(135deg,#dceee3,#f1f7f3);display:grid;place-items:center;color:var(--green);font-size:2.4rem;overflow:hidden}.card-img img{width:100%;height:100%;object-fit:cover}.card-body{padding:17px;display:flex;flex-direction:column;flex:1}.card h3{font-size:1.08rem;line-height:1.45;margin:0 0 7px}.card p{margin:0 0 10px;color:var(--muted);font-size:.92rem}.meta{font-size:.84rem;color:#68776e;margin:0 0 12px}.tag{display:inline-block;font-size:.76rem;background:#eaf4ee;color:var(--green);padding:4px 9px;border-radius:999px;margin-bottom:9px;align-self:flex-start}.status{font-size:.74rem;color:#6b5a20;background:#fff4d6;padding:3px 8px;border-radius:999px;margin-left:5px}.card-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:auto}.small-btn{font-size:.83rem;padding:7px 11px;border-radius:8px;background:#eaf4ee;color:var(--green);font-weight:700}.small-btn.disabled{opacity:.45;pointer-events:none}
-    .notice-list{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.notice{padding:18px;background:white;border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:13px}.notice h3{margin:0 0 5px;font-size:1.05rem}.notice p{margin:0;color:var(--muted)}
+    .notice-list{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}\n    .news-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.news-card{background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column}.news-card img{width:100%;height:220px;object-fit:cover;background:#eaf4ee}.news-card-body{padding:18px}.news-card h3{margin:6px 0 8px;color:var(--green);font-size:1.12rem;line-height:1.5}.news-card p{margin:0 0 10px;color:var(--muted);font-size:.94rem}.news-meta{font-size:.8rem;color:var(--muted);margin-bottom:8px}.news-links{display:flex;gap:12px;flex-wrap:wrap;margin-top:12px}.news-links a{font-size:.85rem;font-weight:750;color:var(--green2);text-decoration:underline}@media(max-width:600px){.news-grid{grid-template-columns:1fr}.news-card img{height:200px}}.notice{padding:18px;background:white;border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:13px}.notice h3{margin:0 0 5px;font-size:1.05rem}.notice p{margin:0;color:var(--muted)}
     .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.gallery-item{height:190px;border-radius:15px;overflow:hidden;background:#e4eee7;position:relative}.gallery-item img{width:100%;height:100%;object-fit:cover}.gallery-item span{position:absolute;bottom:0;left:0;right:0;padding:28px 13px 12px;color:white;font-weight:700;background:linear-gradient(transparent,#0009)}
     .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.contact-box{background:white;border:1px solid var(--line);border-radius:16px;padding:22px}.contact-box h3{margin-top:0;color:var(--green)}.contact-line{margin:8px 0;color:#506157}.empty{grid-column:1/-1;text-align:center;padding:35px;color:var(--muted);background:white;border:1px dashed var(--line);border-radius:14px}
     footer{background:#102f21;color:#e6f1e9;padding:34px 0}.footer-inner{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}.footer-inner p{margin:5px 0;color:#c4d7ca;font-size:.9rem}
@@ -211,6 +211,13 @@ body.bc-storm-on .card,body.bc-storm-on .quick-card,body.bc-storm-on .about-pane
     </div>
   </section>
 
+  <section id="news">
+    <div class="container">
+      <div class="section-head"><div><h2>স্থানীয় সংবাদ ও সচেতনতা</h2><p>যাচাইকৃত সূত্রভিত্তিক কমিউনিটি আপডেট</p></div></div>
+      <div class="news-grid" id="newsGrid"></div>
+    </div>
+  </section>
+
   <section id="gallery">
     <div class="container">
       <div class="section-head"><div><h2>ছবি গ্যালারি</h2><p>বলিয়াপুরের ছবি এখানে দেখা যাবে</p></div></div>
@@ -355,6 +362,18 @@ const DATA = {
     { name:"বনগাঁও ইউনিয়ন স্বাস্থ্য ও পরিবার কল্যাণ কেন্দ্র", category:"স্বাস্থ্যসেবা", description:"ইউনিয়নের প্রাথমিক স্বাস্থ্য ও পরিবার পরিকল্পনা সেবা সম্পর্কে তথ্য।", phone:"", email:"", address:"বনগাঁও ইউনিয়ন, সাভার, ঢাকা", image:"", map:"https://www.google.com/maps/search/?api=1&query=Bongaon+Union+Health+Family+Welfare+Center", website:"https://bongaonup.dhaka.gov.bd/", verification:"পুনরায় যাচাই প্রয়োজন", serviceArea:"পুরো বনগাঁও ইউনিয়ন" }
   ],
   businesses: [],
+  news: [
+    {
+      title: "বনগাঁওয়ে মশা নিয়ন্ত্রণ উদ্যোগ: ডেঙ্গু প্রতিরোধে ঘর-আঙিনা পরিষ্কারে সবার অংশগ্রহণ জরুরি",
+      category: "স্বাস্থ্য সচেতনতা",
+      date: "২০২৬-১১-১২",
+      location: "বনগাঁও ইউনিয়ন, সাভার, ঢাকা",
+      description: "বনগাঁও ইউনিয়নে ১০ অক্টোবর ২০২৬ তারিখে তিন দিনের মশা নিয়ন্ত্রণ ও সচেতনতামূলক কার্যক্রম শুরু হয়েছিল বলে স্থানীয় সংবাদমাধ্যম জানিয়েছে। উদ্যোগটির পাশাপাশি প্রতিটি পরিবার নিয়মিত জমে থাকা পানি সরানো, পানির পাত্র ঢেকে রাখা, ফুলের টব ও ড্রেন পরিষ্কার করা এবং অব্যবহৃত বোতল-টায়ার উল্টে রাখার মাধ্যমে মশার বংশবিস্তার কমাতে পারে। বিশ্ব স্বাস্থ্য সংস্থার পরামর্শ অনুযায়ী পানি রাখার পাত্র সপ্তাহে অন্তত একবার খালি করে ঘষে পরিষ্কার করতে হবে। এটি সচেতনতামূলক লেখা; এলাকায় বর্তমানে কোনো সরকারি অভিযান চলছে—এমন দাবি নয়।",
+      image: "https://www.who.int/images/default-source/wpro/health-topic/dengue/dengue-7.jpg?sfvrsn=cf10d9f7_3",
+      source: "https://www.morenewsbd.com/en/country/6846/savar-bongaon-mosquito-control-campaign",
+      reference: "https://www.who.int/news-room/fact-sheets/detail/dengue-and-severe-dengue"
+    }
+  ],
   notices: [
     { title:"বলিয়াপুর কমিউনিটি নোটিশ", category:"সাধারণ ঘোষণা", text:"বলিয়াপুর গ্রামের নাগরিকদের জন্য গুরুত্বপূর্ণ ঘোষণা এখানে প্রকাশ করা হবে।" },
     { title:"শিক্ষাপ্রতিষ্ঠানের ভর্তি বিজ্ঞপ্তি", category:"শিক্ষা", text:"স্থানীয় শিক্ষাপ্রতিষ্ঠানের যাচাইকৃত ভর্তি বিজ্ঞপ্তি এখানে প্রকাশ করা হবে।" }
@@ -402,6 +421,14 @@ function renderDirectory(){
 function renderNotices(){
   document.getElementById("noticeList").innerHTML=DATA.notices.map(n=>`<article class="notice"><span class="tag">${esc(n.category)}</span><h3>${esc(n.title)}</h3><p>${esc(n.text)}</p></article>`).join("");
 }
+function renderNews(){
+  const host=document.getElementById("newsGrid");
+  host.innerHTML=DATA.news.filter(n=>n.status==="published").map(n=>`<article class="news-card">
+    ${n.image?`<img src="${esc(n.image)}" alt="${esc(n.title)}" loading="lazy" onerror="this.style.display='none'">`:""}
+    <div class="news-card-body"><span class="tag">${esc(n.category)}</span><div class="news-meta">${esc(n.date)} · ${esc(n.location||"সাভার")}</div>
+    <h3>${esc(n.title)}</h3><p>${esc(n.description)}</p><div class="news-meta">সূত্র: ${esc(n.source||"Boliyapur Community")}</div>
+    <div class="news-links"><a href="${esc(n.link)}" target="_blank" rel="noopener">স্থানীয় সংবাদসূত্র ↗</a>${n.reference?`<a href="${esc(n.reference)}" target="_blank" rel="noopener">WHO নির্দেশনা ↗</a>`:""}</div></div></article>`).join("");
+}
 function renderGallery(){
   document.getElementById("galleryGrid").innerHTML=DATA.gallery.map(g=>`<div class="gallery-item"><img src="${esc(g.image)}" alt="${esc(g.title)}" onerror="this.style.display='none'"><span>${esc(g.title)}${g.regional?' · সাভার এলাকার ছবি, বলিয়াপুরের নির্দিষ্ট স্থান নয়':''}${g.source?`<br><a href="${esc(g.source)}" target="_blank" rel="noopener" style="color:#fff;text-decoration:underline;font-size:.75rem">ছবির উৎস ও স্বত্ব ${esc(g.credit||'')}</a>`:''}</span></div>`).join("");
 }
@@ -421,7 +448,7 @@ function updateCounts(){
 document.getElementById("searchInput").addEventListener("input",renderDirectory);
 document.getElementById("clearSearch").addEventListener("click",()=>{document.getElementById("searchInput").value="";currentFilter="all";document.querySelectorAll(".filter").forEach(b=>b.classList.toggle("active",b.dataset.filter==="all"));renderDirectory();});
 document.getElementById("filters").addEventListener("click",e=>{const b=e.target.closest("[data-filter]");if(!b)return;currentFilter=b.dataset.filter;document.querySelectorAll(".filter").forEach(x=>x.classList.toggle("active",x===b));renderDirectory();});
-renderDirectory();renderNotices();renderGallery();setContact();
+renderDirectory();renderNotices();renderNews();renderGallery();setContact();
 </script>
 <link rel="stylesheet" href="community.css?v=20261112-menufinal">\n<link rel="stylesheet" href="./future.css?v=20261112-menufinal">
 <link rel="stylesheet" href="./professional.css?v=20261112-menufinal">

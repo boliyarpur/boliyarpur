@@ -190,6 +190,20 @@ const DATA = {
       status: "draft"
     },
     {
+      id: "NEWS-005",
+      title: "বনগাঁওয়ে মশা নিয়ন্ত্রণ উদ্যোগ: ডেঙ্গু প্রতিরোধে ঘর-আঙিনা পরিষ্কারে সবার অংশগ্রহণ জরুরি",
+      category: "স্বাস্থ্য সচেতনতা",
+      date: "২০২৬-১১-১২",
+      author: "Boliyapur Community",
+      location: "বনগাঁও ইউনিয়ন, সাভার, ঢাকা",
+      description: "বনগাঁও ইউনিয়নে ১০ অক্টোবর ২০২৬ তারিখে তিন দিনের মশা নিয়ন্ত্রণ ও সচেতনতামূলক কার্যক্রম শুরু হয়েছিল বলে স্থানীয় সংবাদমাধ্যম জানিয়েছে। উদ্যোগটির পাশাপাশি প্রতিটি পরিবার নিয়মিত জমে থাকা পানি সরানো, পানির পাত্র ঢেকে রাখা, ফুলের টব ও ড্রেন পরিষ্কার করা এবং অব্যবহৃত বোতল-টায়ার উল্টে রাখার মাধ্যমে মশার বংশবিস্তার কমাতে পারে। বিশ্ব স্বাস্থ্য সংস্থার পরামর্শ অনুযায়ী পানি রাখার পাত্র সপ্তাহে অন্তত একবার খালি করে ঘষে পরিষ্কার করতে হবে। এটি সচেতনতামূলক লেখা; এলাকায় বর্তমানে কোনো সরকারি অভিযান চলছে—এমন দাবি নয়।",
+      image: "https://www.who.int/images/default-source/wpro/health-topic/dengue/dengue-7.jpg?sfvrsn=cf10d9f7_3",
+      source: "More News BD, ১০ অক্টোবর ২০২৬; World Health Organization",
+      link: "https://www.morenewsbd.com/en/country/6846/savar-bongaon-mosquito-control-campaign",
+      reference: "https://www.who.int/news-room/fact-sheets/detail/dengue-and-severe-dengue",
+      status: "published"
+    }
+    {
       id: "NEWS-004",
       title: "সাভার-আশুলিয়ায় শ্রমিক বিক্ষোভ: ৫০টি কারখানায় ছুটি, চলাচলে সতর্ক থাকার পরামর্শ",
       category: "স্থানীয় সংবাদ",
