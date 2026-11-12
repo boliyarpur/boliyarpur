@@ -214,6 +214,20 @@ const DATA = {
       source: "The Business Standard, ১১ জুলাই ২০২৬; ছবির উৎস: TBS, ৪ অক্টোবর ২০২৫",
       link: "https://www.tbsnews.net/bangladesh/environment/govt-begins-clearing-waste-along-dhaka-aricha-highway-plans-tree-plantation",
       status: "draft"
+    },
+    {
+      id: "NEWS-006",
+      title: "ডেঙ্গু প্রতিরোধে ঘর ও পাড়া—সপ্তাহে একদিন জমে থাকা পানি পরিষ্কার করুন",
+      category: "সামাজিক সচেতনতা",
+      date: "2026-11-12",
+      author: "Boliyapur Community",
+      location: "বলিয়াপুর, বনগাঁও ইউনিয়ন, সাভার, ঢাকা",
+      description: "ডেঙ্গু প্রতিরোধে সবচেয়ে কার্যকর কমিউনিটি উদ্যোগগুলোর একটি হলো এডিস মশার প্রজননস্থল কমানো। বিশ্ব স্বাস্থ্য সংস্থার পরামর্শ অনুযায়ী বাড়ি ও আশপাশে পানি জমতে পারে এমন পাত্র নিয়মিত খালি ও পরিষ্কার করুন; পানির ট্যাংক ও ড্রাম ঢেকে রাখুন; ফুলের টবের নিচের ট্রে, পুরোনো টায়ার, বোতল, কৌটা ও ডাবের খোসায় পানি জমতে দেবেন না; ছাদ, বারান্দা ও নালা পরিষ্কার রাখুন। এডিস মশা দিনের বেলাতেও কামড়াতে পারে—তাই প্রয়োজনমতো মশারি, দরজা-জানালার জাল ও নির্দেশনা মেনে মশা প্রতিরোধক ব্যবহার করুন। বলিয়াপুরের প্রতিটি পরিবার সপ্তাহে অন্তত একদিন নিজের বাড়ি ও আশপাশ পরীক্ষা করলে সম্মিলিতভাবে ঝুঁকি কমাতে সাহায্য হবে। জ্বর হলে নিজে থেকে ওষুধ না খেয়ে দ্রুত চিকিৎসকের পরামর্শ নিন। এটি সচেতনতামূলক পোস্ট; বলিয়াপুরে ডেঙ্গু রোগীর সংখ্যা বা প্রাদুর্ভাব সম্পর্কে কোনো দাবি নয়।",
+      image: "https://www.who.int/images/default-source/wpro/health-topic/dengue/dengue-7.jpg?sfvrsn=cf10d9f7_3",
+      source: "WHO Bangladesh, ৫ সেপ্টেম্বর ২০২৬; WHO Western Pacific Region dengue prevention infographic",
+      link: "https://www.who.int/bangladesh/news/detail/05-09-2026-who--shastho-chorcha--dialogue-puts-whole-of-government--whole-of-society-action-at-the-centre-of-dengue-response",
+      status: "pending",
+      approvalNote: "প্রশাসকের যাচাই ও অনুমোদনের পরেই status 'published' করা যাবে।"
     }
   ],
 
