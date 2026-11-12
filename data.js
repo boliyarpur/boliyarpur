@@ -231,6 +231,21 @@ const DATA = {
     }
   ],
 
+    {
+      id: "NEWS-007",
+      title: "ঘরে ঘরে বই পড়ার অভ্যাস: শিশুর শেখার পথে পরিবারের ছোট উদ্যোগ",
+      category: "শিক্ষা ও সচেতনতা",
+      date: "2026-11-12",
+      author: "Boliyapur Community",
+      location: "বলিয়াপুর ও আশপাশের এলাকা",
+      description: "শিশুর পড়ার অভ্যাস গড়ে তুলতে বড় আয়োজনের প্রয়োজন নেই—প্রতিদিন অল্প সময় একসঙ্গে বই পড়া, গল্প শোনা ও গল্প নিয়ে কথা বলাই হতে পারে ভালো শুরু। UNICEF-এর Bangladesh MICS 2025 প্রাথমিক ফলাফলে দেখা যায়, বয়স অনুযায়ী দ্বিতীয়/তৃতীয় শ্রেণির মাত্র ২৪ শতাংশ শিশু মৌলিক পড়ার দক্ষতা অর্জন করেছে। এটি জাতীয় পর্যায়ের তথ্য; বলিয়াপুরের শিশুদের আলাদা পরিসংখ্যান নয়। পরিবারের করণীয়: (১) প্রতিদিন ১০–১৫ মিনিট গল্প বা ছবির বই পড়ুন, (২) শিশুকে নিজের ভাষায় গল্প বলতে দিন, (৩) পড়ার পর সহজ প্রশ্ন করুন, (৪) বই না থাকলে পরিচিত গল্প, ছড়া ও সাইনবোর্ড পড়ে শেখার সুযোগ তৈরি করুন, (৫) শিশুর অগ্রগতি নিয়ে শিক্ষকের সঙ্গে কথা বলুন। ভুল করলে বকাঝকা নয়—উৎসাহ দিন। এই ছোট অভ্যাস শিশুর ভাষা, বোঝার ক্ষমতা ও শেখার আগ্রহ বাড়াতে সহায়ক হতে পারে।",
+      image: "https://commons.wikimedia.org/wiki/Special:FilePath/Child_reading_book.jpg",
+      source: "UNICEF Bangladesh, MICS 2025 Preliminary Findings; ছবি: Widad.sirkhotte / Wikimedia Commons, CC BY 4.0",
+      link: "https://www.unicef.org/bangladesh/en/media/12191/file/MICS%20Preliminary%20findings%202025.pdf.pdf",
+      imageCredit: "Widad.sirkhotte / Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Child_reading_book.jpg (CC BY 4.0)",
+      status: "published"
+    },
+
   // ========================================================
   // 07. EDUCATION CATEGORIES
   // ========================================================
