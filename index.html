@@ -68,6 +68,27 @@
     @media(max-width:850px){.nature-story-grid{grid-template-columns:1fr 1fr}.nature-story-large{grid-column:1/-1}.nature-values{grid-template-columns:repeat(2,1fr)}}
     @media(max-width:600px){.nature-section{padding:58px 0}.nature-cover{height:430px;border-radius:18px}.nature-cover-shade{background:linear-gradient(0deg,#071e13e8 0%,#0c281b55 70%,#102b1b10 100%)}.nature-story-grid{grid-template-columns:1fr}.nature-story-large{grid-column:auto}.nature-story-image,.nature-story-large .nature-story-image{height:220px}.nature-community-cta{align-items:flex-start;flex-direction:column;padding:23px}.nature-values{gap:9px}.nature-values>div{padding:16px 10px}}
 \n  
+
+/* Unified three-dot navigation and square service shortcuts */
+.more-menu{position:relative;margin-left:auto;flex:0 0 auto;z-index:50}
+.more-menu>summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:7px;min-width:48px;min-height:44px;padding:7px 12px;border:1px solid var(--line,#dce8df);border-radius:12px;background:#fff;color:var(--green,var(--g,#0b4937));font-weight:800;box-shadow:0 4px 14px #123b2410;user-select:none}
+.more-menu>summary::-webkit-details-marker{display:none}
+.more-menu .dots{font-size:23px;letter-spacing:2px;line-height:1;transform:translateY(-3px)}
+.more-menu .menu-word{font-size:13px}
+.more-menu[open]>summary{background:#edf6f0;border-color:#b9d5c2}
+.more-menu-panel{position:absolute;right:0;top:calc(100% + 10px);width:min(280px,86vw);padding:9px;background:#fff;border:1px solid #e0e9e2;border-radius:16px;box-shadow:0 18px 48px #102e1d25;display:grid;gap:4px;max-height:min(72vh,520px);overflow:auto}
+.more-menu-panel a{display:flex;align-items:center;min-height:43px;padding:9px 12px;border-radius:10px;color:#234536;font-size:14px;font-weight:650}
+.more-menu-panel a:hover,.more-menu-panel a[aria-current=page]{background:#edf6f0;color:#0b6848}
+.quick-links-section{padding:38px 0 54px}
+.quick-links-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.quick-link-tile{aspect-ratio:1/1;min-width:0;position:relative;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:9px;padding:clamp(14px,2vw,23px);overflow:hidden;background:linear-gradient(150deg,#fff,#f5faf6);border:1px solid #dfebe2;border-radius:19px;box-shadow:0 8px 25px #173e2a09;transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease}
+.quick-link-tile:hover{transform:translateY(-4px);border-color:#a9cdb4;box-shadow:0 15px 32px #173e2a14}
+.quick-link-icon{width:48px;height:48px;display:grid;place-items:center;border-radius:15px;background:#e9f4ec;font-size:25px}
+.quick-link-tile strong{font-size:clamp(14px,1.4vw,18px);color:#124c35;line-height:1.4}
+.quick-link-tile small{color:#718077;font-size:12px;line-height:1.5}
+.tile-arrow{position:absolute;right:15px;bottom:13px;color:#7a9b86;font-size:18px}
+@media(max-width:850px){.quick-links-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:560px){.quick-links-section{padding:28px 0 40px}.quick-links-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}.quick-link-tile{border-radius:15px;padding:13px}.quick-link-icon{width:42px;height:42px;font-size:22px}.quick-link-tile small{font-size:11px}.more-menu>summary{min-width:45px;padding:7px 10px}}
 </style>
   <link rel="stylesheet" href="./feature-pack.css?v=20261108">\n  <link rel="stylesheet" href="./site-refresh.css?v=20261112">
 </head>
@@ -76,9 +97,7 @@
   <div class="container nav">
     <a class="brand" href="./index.html"><span class="brand-mark">ব</span><span>বলিয়াপুর কমিউনিটি</span></a>
     <button class="menu-btn" id="menuBtn" aria-label="মেনু খুলুন">☰</button>
-    <nav class="navlinks" id="navLinks">
-      <a href="./index.html">হোম</a><a href="./village.html">আমাদের গ্রাম</a><a href="./directory.html">সেবা ও প্রতিষ্ঠান</a><a href="./gallery.html">ছবি ও গল্প</a><a href="./attractions.html">দর্শনীয় স্থান</a><a href="./contribute.html">নাগরিক পোস্ট</a><a class="admin-nav-link" href="./admin.html">Admin Portal</a>
-    </nav>
+    <details class="more-menu"><summary aria-label="আরও পেজ ও সেবা" title="আরও পেজ ও সেবা"><span class="dots">•••</span><span class="menu-word">মেনু</span></summary><nav class="more-menu-panel" aria-label="ওয়েবসাইট মেনু"><a href="./index.html" aria-current="page">হোম</a><a href="./village.html">আমাদের গ্রাম</a><a href="./directory.html">সেবা ও প্রতিষ্ঠান</a><a href="./attractions.html">দর্শনীয় স্থান</a><a href="./gallery.html">ছবি ও গল্প</a><a href="./contribute.html">নাগরিক পোস্ট</a><a href="./admin.html">Admin Portal</a></nav></details>
   </div>
 </header>
 
@@ -101,6 +120,8 @@
     <div class="quick-card"><strong id="countUnion">০</strong><span>ইউনিয়ন সেবা</span></div>
     <div class="quick-card"><strong id="countBusiness">০</strong><span>স্থানীয় ব্যবসা</span></div>
   </div>
+
+  <section class="quick-links-section" aria-labelledby="quickLinksTitle"><div class="container"><div class="section-head"><div><h2 id="quickLinksTitle">এক নজরে সব বিভাগ</h2><p>আপনার প্রয়োজনীয় বিভাগে সরাসরি প্রবেশ করুন</p></div></div><div class="quick-links-grid"><a class="quick-link-tile" href="./attractions.html"><span class="quick-link-icon" aria-hidden="true">📍</span><strong>দর্শনীয় স্থান</strong><small>ঘুরে দেখার মতো জায়গা</small><span class="tile-arrow" aria-hidden="true">↗</span></a><a class="quick-link-tile" href="./directory.html"><span class="quick-link-icon" aria-hidden="true">🏫</span><strong>শিক্ষা প্রতিষ্ঠান</strong><small>স্কুল, কলেজ ও মাদ্রাসা</small><span class="tile-arrow" aria-hidden="true">↗</span></a><a class="quick-link-tile" href="./directory.html"><span class="quick-link-icon" aria-hidden="true">🩺</span><strong>স্বাস্থ্যসেবা</strong><small>চিকিৎসা ও স্বাস্থ্য তথ্য</small><span class="tile-arrow" aria-hidden="true">↗</span></a><a class="quick-link-tile" href="./directory.html"><span class="quick-link-icon" aria-hidden="true">🏛️</span><strong>সরকারি সেবা</strong><small>ইউনিয়ন পর্যায়ের সেবা</small><span class="tile-arrow" aria-hidden="true">↗</span></a><a class="quick-link-tile" href="./directory.html"><span class="quick-link-icon" aria-hidden="true">🛍️</span><strong>স্থানীয় ব্যবসা</strong><small>দোকান ও প্রয়োজনীয় সেবা</small><span class="tile-arrow" aria-hidden="true">↗</span></a><a class="quick-link-tile" href="./gallery.html"><span class="quick-link-icon" aria-hidden="true">📷</span><strong>ছবি ও গল্প</strong><small>এলাকার ছবি ও স্মৃতি</small><span class="tile-arrow" aria-hidden="true">↗</span></a><a class="quick-link-tile" href="./village.html"><span class="quick-link-icon" aria-hidden="true">🌿</span><strong>আমাদের গ্রাম</strong><small>বলিয়াপুরের পরিচিতি</small><span class="tile-arrow" aria-hidden="true">↗</span></a><a class="quick-link-tile" href="./contribute.html"><span class="quick-link-icon" aria-hidden="true">✍️</span><strong>তথ্য জমা দিন</strong><small>ছবি, ভিডিও ও তথ্য পাঠান</small><span class="tile-arrow" aria-hidden="true">↗</span></a></div></div></section>
 
   <section id="about">
     <div class="container about-grid">
