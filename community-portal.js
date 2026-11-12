@@ -99,6 +99,45 @@ function renderFeed(snapshot) {
     </article>`).join("");
 }
 
+
+  // Direct WhatsApp submission; does not require Firebase Authentication.
+  form.addEventListener("submit", event => {
+    event.preventDefault();
+    const name = $("citizenName").value.trim();
+    const area = $("citizenArea").value.trim() || "বলিয়াপুর";
+    const category = $("citizenCategory").value;
+    const title = $("citizenTitle").value.trim();
+    const story = $("citizenStory").value.trim();
+    const file = $("citizenMedia").files[0] || null;
+    const imageTypes = ["image/jpeg", "image/png", "image/webp", "image/gif"];
+    const videoTypes = ["video/mp4", "video/webm", "video/quicktime"];
+    const isImage = file && imageTypes.includes(file.type);
+    const isVideo = file && videoTypes.includes(file.type);
+    if (file && !isImage && !isVideo) {
+      showStatus("এই ফাইল ফরম্যাট সমর্থিত নয়।", true);
+      return;
+    }
+    if (file && file.size > (isImage ? 15 : 100) * 1024 * 1024) {
+      showStatus(isImage ? "ছবির সাইজ ১৫ MB-এর বেশি।" : "ভিডিওর সাইজ ১০০ MB-এর বেশি।", true);
+      return;
+    }
+    const message = [
+      "বলিয়াপুর কমিউনিটি — নতুন পোস্ট জমা",
+      "প্রেরকের নাম: " + name,
+      "এলাকা / গ্রাম: " + area,
+      "বিভাগ: " + category,
+      "শিরোনাম: " + title,
+      "বিস্তারিত: " + story,
+      file ? "ছবি/ভিডিও: " + file.name + " (WhatsApp-এ আলাদাভাবে attach করুন)" : "মিডিয়া: নেই",
+      "অনুগ্রহ করে যাচাই করে ওয়েবসাইটে প্রকাশের ব্যবস্থা করুন।",
+      "ওয়েবসাইট: https://boliyarpur.github.io/boliyarpur/"
+    ].join("\n");
+    const url = "https://wa.me/" + ADMIN_WHATSAPP + "?text=" + encodeURIComponent(message);
+    showStatus("WhatsApp খুলছে। সেখানে Send চাপুন। ছবি/ভিডিও থাকলে WhatsApp-এ সেটিও attach করে পাঠান।");
+    const win = window.open(url, "_blank");
+    if (!win) window.location.href = url;
+  });
+
 if (!firebaseConfig.apiKey || !firebaseConfig.projectId ||
     firebaseConfig.apiKey.includes("PASTE_") || firebaseConfig.projectId.includes("PASTE_")) {
   showStatus("Firebase Web App config সম্পূর্ণ নয়।", true);
@@ -123,112 +162,7 @@ if (!firebaseConfig.apiKey || !firebaseConfig.projectId ||
     // Create an anonymous visitor session only when the visitor submits the form.
     // This avoids an unhandled auth rejection during ordinary page loading.
 
-    form.addEventListener("submit", async event => {
-      event.preventDefault();
-      // Open a tab during the user gesture so mobile browsers do not block WhatsApp later.
-      const file = $("citizenMedia").files[0] || null;
-      const imageTypes = ["image/jpeg", "image/png", "image/webp", "image/gif"];
-      const videoTypes = ["video/mp4", "video/webm", "video/quicktime"];
 
-      if (file) {
-        const isImage = imageTypes.includes(file.type);
-        const isVideo = videoTypes.includes(file.type);
-        if (!isImage && !isVideo) {
-          showStatus("এই ফাইল ফরম্যাট সমর্থিত নয়।", true);
-          return;
-        }
-        if (file.size > (isImage ? 15 : 100) * 1024 * 1024) {
-          showStatus(isImage ? "ছবির সাইজ ১৫ MB-এর বেশি।" : "ভিডিওর সাইজ ১০০ MB-এর বেশি।", true);
-          return;
-        }
-      }
-
-      const whatsappTab = window.open("about:blank", "_blank");
-      submit.disabled = true;
-      submit.textContent = "জমা হচ্ছে...";
-      $("citizenProgress").style.display = file ? "block" : "none";
-      $("citizenProgressBar").style.width = "0%";
-      $("citizenProgressText").textContent = "";
-
-      try {
-        let user = auth.currentUser;
-        if (!user) {
-          try {
-            const credential = await signInAnonymously(auth);
-            user = credential.user;
-          } catch (authError) {
-            if (authError.code === "auth/admin-restricted-operation" || authError.code === "auth/operation-not-allowed") {
-              throw new Error("Firebase-এ Anonymous sign-in চালু নেই। Firebase Console → Authentication → Sign-in method (বা Sign-in providers) → Anonymous → Enable → Save করুন। তারপর পেজ Refresh করে আবার জমা দিন। Project ID: boliyapur-community.");
-            }
-            throw authError;
-          }
-        }
-        if (!user) throw new Error("নাগরিক সেশন তৈরি হয়নি। পেজ Refresh করে আবার চেষ্টা করুন।");
-
-        const post = {
-          uid: user.uid,
-          authorName: $("citizenName").value.trim(),
-          area: $("citizenArea").value.trim() || "বলিয়াপুর",
-          category: $("citizenCategory").value,
-          title: $("citizenTitle").value.trim(),
-          story: $("citizenStory").value.trim(),
-          status: "pending",
-          createdAt: serverTimestamp()
-        };
-
-        if (file) {
-          const postRef = doc(collection(db, "communityPosts"));
-          const safeName = file.name.replace(/[^a-zA-Z0-9._-]/g, "_").slice(-90) || "media";
-          const storagePath = "communityUploads/" + user.uid + "/" + postRef.id + "/" + safeName;
-          const task = uploadBytesResumable(ref(storage, storagePath), file, { contentType: file.type });
-
-          await new Promise((resolve, reject) => task.on(
-            "state_changed",
-            progress => {
-              const percent = Math.round(progress.bytesTransferred / progress.totalBytes * 100);
-              $("citizenProgressBar").style.width = percent + "%";
-              $("citizenProgressText").textContent = "ফাইল আপলোড হচ্ছে: " + percent + "%";
-            },
-            reject,
-            resolve
-          ));
-
-          post.mediaUrl = await getDownloadURL(task.snapshot.ref);
-          post.mediaType = file.type;
-          post.mediaName = file.name;
-          post.storagePath = storagePath;
-          await setDoc(postRef, post);
-        } else {
-          const { addDoc } = await import("https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js");
-          await addDoc(collection(db, "communityPosts"), post);
-        }
-
-        const whatsappMessage = [
-          "Boliyapur Community — নতুন নাগরিক পোস্ট জমা পড়েছে",
-          "প্রেরকের নাম: " + post.authorName,
-          "এলাকা: " + post.area,
-          "বিভাগ: " + post.category,
-          "শিরোনাম: " + post.title,
-          "বিস্তারিত: " + post.story,
-          post.mediaUrl ? "ছবি/ভিডিও: " + post.mediaUrl : "মিডিয়া: সংযুক্ত করা হয়নি",
-          "অবস্থা: Admin অনুমোদনের অপেক্ষায় (Pending)",
-          "Admin Dashboard: https://boliyarpur.github.io/boliyarpur/admin.html"
-        ].join("\n");
-        const whatsappUrl = "https://wa.me/" + ADMIN_WHATSAPP + "?text=" + encodeURIComponent(whatsappMessage);
-        form.reset();
-        showStatus("আপনার পোস্ট জমা হয়েছে। Admin অনুমোদন করার পরই ওয়েবসাইটে প্রকাশ হবে। WhatsApp-এ পোস্টের তথ্য পাঠানোর ব্যবস্থা করা হয়েছে।");
-        if (whatsappTab) { whatsappTab.location.href = whatsappUrl; }
-        else { statusBox.insertAdjacentHTML("beforeend", '<p><a href="' + whatsappUrl + '" target="_blank" rel="noopener noreferrer">WhatsApp-এ Admin-কে পোস্টের তথ্য পাঠান (01605150864)</a></p>'); }
-        $("citizenProgressText").textContent = file ? "ফাইল আপলোড সম্পন্ন। পোস্ট Pending তালিকায় পাঠানো হয়েছে।" : "লেখা সফলভাবে জমা হয়েছে।";
-      } catch (error) {
-        if (whatsappTab) whatsappTab.close();
-        console.error("Submission error:", error);
-        showStatus("জমা দেওয়া যায়নি: " + (error.message || "Firebase সেটআপ পরীক্ষা করুন।"), true);
-      } finally {
-        submit.disabled = false;
-        submit.innerHTML = '<span>অনুমোদনের জন্য জমা দিন</span><small>WhatsApp: 01605150864</small>';
-      }
-    });
   } catch (error) {
     console.error("Firebase initialization error:", error);
     showStatus("Firebase সংযোগে সমস্যা: " + error.message, true);
