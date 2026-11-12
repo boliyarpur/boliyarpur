@@ -60,7 +60,7 @@ const DATA = {
   logo: "images/logo.png",
   favicon: "images/favicon.png",
 
-  facebook: "",
+  facebook: "https://www.facebook.com/profile.php?id=61596468413187",
   youtube: "",
   instagram: "",
 
